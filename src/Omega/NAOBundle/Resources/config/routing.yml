@@ -1,0 +1,3 @@
+omega_nao_homepage:
+    path:     /
+    defaults: { _controller: OmegaNAOBundle:Default:index }
