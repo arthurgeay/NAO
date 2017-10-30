@@ -1,1 +1,9 @@
-Hello World!
+{% extends "OmegaNAOBundle::layout.html.twig" %}
+
+{% block title %}
+	Accueil - {{ parent() }}
+{% endblock %}
+
+{% block naobundle_body %}
+	<h1 class="text-center">Hello World!</h1>
+{% endblock %}
