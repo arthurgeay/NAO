@@ -52,7 +52,7 @@ class Observations
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="blob", nullable=true)
+     * @ORM\Column(name="photo", type="string", nullable=true)
      */
     private $photo;
 
@@ -187,4 +187,3 @@ class Observations
         return $this->photo;
     }
 }
-

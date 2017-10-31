@@ -3,6 +3,8 @@
 namespace Omega\NAOBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * Utilisateurs
@@ -24,51 +26,62 @@ class Utilisateurs
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=100)
+     * @ORM\Column(name="nom", type="string", length=100, unique=true)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=100)
+     * @ORM\Column(name="username", type="string", length=100, unique=true)
      */
-    private $prenom;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=150)
+     * @ORM\Column(name="email", type="string", length=150, unique=true)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mdp", type="string", length=50)
+     * @ORM\Column(name="password", type="string", length=50)
      */
-    private $mdp;
+    private $password;
+
+    /**
+      * @var string
+      *
+      * @ORM\Column(name="compte", type="string", length=30)
+     */
+     private $compte;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="verifie", type="boolean", nullable=true)
+     * @ORM\Column(name="verifie", type="boolean")
      */
-    private $verifie;
+    private $verifie = false;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
+     * @ORM\Column(name="salt", type="string", length=255)
      */
     private $salt;
 
     /**
      * @var array
      *
-     * @ORM\Column(name="roles", type="array", nullable=true)
+     * @ORM\Column(name="roles", type="array")
      */
-    private $roles;
+    private $roles = array();
+
+    public function eraseCredentials()
+    {
+    }
 
 
     /**
@@ -106,30 +119,6 @@ class Utilisateurs
     }
 
     /**
-     * Set prenom
-     *
-     * @param string $prenom
-     *
-     * @return Utilisateurs
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    /**
-     * Get prenom
-     *
-     * @return string
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
      * Set email
      *
      * @param string $email
@@ -151,30 +140,6 @@ class Utilisateurs
     public function getEmail()
     {
         return $this->email;
-    }
-
-    /**
-     * Set mdp
-     *
-     * @param string $mdp
-     *
-     * @return Utilisateurs
-     */
-    public function setMdp($mdp)
-    {
-        $this->mdp = $mdp;
-
-        return $this;
-    }
-
-    /**
-     * Get mdp
-     *
-     * @return string
-     */
-    public function getMdp()
-    {
-        return $this->mdp;
     }
 
     /**
@@ -248,5 +213,76 @@ class Utilisateurs
     {
         return $this->roles;
     }
-}
 
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Utilisateurs
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Utilisateurs
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set compte
+     *
+     * @param string $compte
+     *
+     * @return Utilisateurs
+     */
+    public function setCompte($compte)
+    {
+        $this->compte = $compte;
+
+        return $this;
+    }
+
+    /**
+     * Get compte
+     *
+     * @return string
+     */
+    public function getCompte()
+    {
+        return $this->compte;
+    }
+}
