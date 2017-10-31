@@ -50,11 +50,25 @@ class Utilisateurs
     private $mdp;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="verifie", type="boolean", nullable=true)
+     */
+    private $verifie;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="compte", type="string", length=30)
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
      */
-    private $compte;
+    private $salt;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array", nullable=true)
+     */
+    private $roles;
 
 
     /**
@@ -164,27 +178,75 @@ class Utilisateurs
     }
 
     /**
-     * Set compte
+     * Set verifie
      *
-     * @param string $compte
+     * @param boolean $verifie
      *
      * @return Utilisateurs
      */
-    public function setCompte($compte)
+    public function setVerifie($verifie)
     {
-        $this->compte = $compte;
+        $this->verifie = $verifie;
 
         return $this;
     }
 
     /**
-     * Get compte
+     * Get verifie
+     *
+     * @return bool
+     */
+    public function getVerifie()
+    {
+        return $this->verifie;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return Utilisateurs
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
      *
      * @return string
      */
-    public function getCompte()
+    public function getSalt()
     {
-        return $this->compte;
+        return $this->salt;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     *
+     * @return Utilisateurs
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
     }
 }
 

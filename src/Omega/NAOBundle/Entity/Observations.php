@@ -5,12 +5,12 @@ namespace Omega\NAOBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * observation
+ * Observations
  *
- * @ORM\Table(name="observation")
- * @ORM\Entity(repositoryClass="Omega\NAOBundle\Repository\observationRepository")
+ * @ORM\Table(name="observations")
+ * @ORM\Entity(repositoryClass="Omega\NAOBundle\Repository\ObservationsRepository")
  */
-class observation
+class Observations
 {
     /**
      * @var int
@@ -72,7 +72,7 @@ class observation
      *
      * @param string $espece
      *
-     * @return observation
+     * @return Observations
      */
     public function setEspece($espece)
     {
@@ -96,7 +96,7 @@ class observation
      *
      * @param \DateTime $date
      *
-     * @return observation
+     * @return Observations
      */
     public function setDate($date)
     {
@@ -120,7 +120,7 @@ class observation
      *
      * @param float $longitude
      *
-     * @return observation
+     * @return Observations
      */
     public function setLongitude($longitude)
     {
@@ -144,7 +144,7 @@ class observation
      *
      * @param float $latitude
      *
-     * @return observation
+     * @return Observations
      */
     public function setLatitude($latitude)
     {
@@ -168,7 +168,7 @@ class observation
      *
      * @param string $photo
      *
-     * @return observation
+     * @return Observations
      */
     public function setPhoto($photo)
     {
