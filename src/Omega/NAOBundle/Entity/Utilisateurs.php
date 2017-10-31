@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="utilisateurs")
  * @ORM\Entity(repositoryClass="Omega\NAOBundle\Repository\UtilisateursRepository")
  */
-class Utilisateurs
+class Utilisateurs implements UserInterface
 {
     /**
      * @var int
