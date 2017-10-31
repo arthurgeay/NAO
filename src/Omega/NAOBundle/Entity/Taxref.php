@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Taxref
  *
  * @ORM\Table(name="taxref")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Omega\NAOBundle\Repository\TaxrefRepository")
  */
 class Taxref
 {
