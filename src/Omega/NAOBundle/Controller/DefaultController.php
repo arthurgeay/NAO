@@ -40,10 +40,14 @@ class DefaultController extends Controller
 
         if ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
         {
+            $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
             $inscription->setSalt('');
             $inscription->setRoles(array('ROLE_PARTICULIER'));
             $em->persist($inscription);
             $em->flush();
+
+            $mailerService = $this->container->get('NAOBundle.mail');
+            $mailerService->getMailService($emailBody, $inscription->getEmail());
         }
 
         return $this->render('OmegaNAOBundle:Default:inscription.html.twig', array('formInscription' => $formInscription->createView()));

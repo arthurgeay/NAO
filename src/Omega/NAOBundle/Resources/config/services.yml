@@ -2,3 +2,5 @@ services:
 #    omega_nao.example:
 #        class: Omega\NAOBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    NAOBundle.mail:
+            class: Omega\NAOBundle\Services\MailService
