@@ -2,9 +2,11 @@
 
 namespace Omega\NAOBundle\Controller;
 
+use Omega\NAOBundle\Entity\Utilisateurs;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Omega\NAOBundle\Form\UtilisateursType;
 
 class DefaultController extends Controller
 {
@@ -19,7 +21,6 @@ class DefaultController extends Controller
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('omega_nao_homepage');
         }
-
         // Le service authentication_utils permet de récupérer le nom d'utilisateur
         // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
         // (mauvais mot de passe par exemple)
@@ -29,5 +30,22 @@ class DefaultController extends Controller
             'last_username' => $authenticationUtils->getLastUsername(),
             'error'         => $authenticationUtils->getLastAuthenticationError(),
         ));
+    }
+
+    public function inscriptionAction (Request $request)
+    {
+        $inscription = new Utilisateurs();
+        $formInscription = $this->get('form.factory')->create(UtilisateursType::class, $inscription);
+        $em = $this->getDoctrine()->getManager();
+
+        if ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
+        {
+            $inscription->setSalt('');
+            $inscription->setRoles(array('ROLE_PARTICULIER'));
+            $em->persist($inscription);
+            $em->flush();
+        }
+
+        return $this->render('OmegaNAOBundle:Default:inscription.html.twig', array('formInscription' => $formInscription->createView()));
     }
 }

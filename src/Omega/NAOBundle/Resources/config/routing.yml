@@ -1,3 +1,7 @@
 omega_nao_homepage:
     path:     /
     defaults: { _controller: OmegaNAOBundle:Default:index }
+
+inscription:
+    path:     /inscription
+    defaults: { _controller: OmegaNAOBundle:Default:inscription }
