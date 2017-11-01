@@ -21,6 +21,16 @@ class DefaultController extends Controller
 
     	if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
     	{
+
+    		$file = $observation->getPhoto();
+    		$filename = md5(uniqid()).'.'.$file->guessExtension();
+
+    		$file->move(
+    			$this->getParameter('img_directory'),
+    			$filename
+    		);
+    		$observation->setPhoto($filename);
+
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($observation);
     		$em->flush();
