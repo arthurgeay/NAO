@@ -1,3 +1,7 @@
 omega_nao_homepage:
     path:     /
     defaults: { _controller: OmegaNAOBundle:Default:index }
+
+omega_nao_add_observation:
+    path: /saisir-une-observation
+    defaults: { _controller: OmegaNAOBundle:Default:addObservation }

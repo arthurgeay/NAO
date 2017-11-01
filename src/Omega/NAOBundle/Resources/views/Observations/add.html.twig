@@ -1,0 +1,120 @@
+{% extends "OmegaNAOBundle::layout.html.twig" %}
+
+{% block title %}
+	Ajouter une observation - {{ parent() }}
+{% endblock %}
+
+{% block naobundle_body %}
+	<h1 class="text-center">Ajouter une observation</h1>
+	<hr>
+	{% if app.session.flashBag.has('success') %}
+		<div class="alert alert-success">
+			{% for message in app.session.flashbag.get('success') %}
+		        <p>{{ message }}</p>
+		    {% endfor %}
+	    </div>
+	{% endif %}
+	
+
+	<div class="well">
+	  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+	  {# Les erreurs générales du formulaire. #}
+	  {{ form_errors(form) }}
+
+	  {# Génération manuelle et éclatée : #}
+	  <div class="form-group">
+	    {# Génération du label. #}
+	    {{ form_label(form.espece, "Espèce", {'label_attr': {'class': 'col-sm-2'}}) }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.espece) }}
+
+	    <div class="col-md-10">
+	      {# Génération de l'input. #}
+	      {{ form_widget(form.espece, {'attr': {'class': 'form-control'}}) }}
+	    </div>
+	  </div>
+
+	  <div class="form-group">
+	    {# Génération du label. #}
+	    {{ form_label(form.date, "Date d'observation", {'label_attr': {'class': 'col-sm-2'}}) }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.date) }}
+
+	    <div class="col-md-10">
+	      {# Génération de l'input. #}
+	      {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+	    </div>
+	  </div>
+
+	  <div class="form-group">
+	    {# Génération du label. #}
+	    {{ form_label(form.commentaire, "Commentaire", {'label_attr': {'class': 'col-sm-2'}}) }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.commentaire) }}
+
+	    <div class="col-md-10">
+	      {# Génération de l'input. #}
+	      {{ form_widget(form.commentaire, {'attr': {'class': 'form-control'}}) }}
+	    </div>
+	  </div>
+
+	  <div class="form-group">
+	    {# Génération du label. #}
+	    {{ form_label(form.longitude, "Longitude", {'label_attr': {'class': 'col-sm-2'}}) }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.longitude) }}
+
+	    <div class="col-md-10">
+	      {# Génération de l'input. #}
+	      {{ form_widget(form.longitude, {'attr': {'class': 'form-control'}}) }}
+	    </div>
+	  </div>
+
+	  <div class="form-group">
+	    {# Génération du label. #}
+	    {{ form_label(form.latitude, "Latitude", {'label_attr': {'class': 'col-sm-2'}}) }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.latitude) }}
+
+	    <div class="col-md-10">
+	      {# Génération de l'input. #}
+	      {{ form_widget(form.latitude, {'attr': {'class': 'form-control'}}) }}
+	    </div>
+	  </div>
+
+	  <div class="form-group">
+	    {# Génération du label. #}
+	    {{ form_label(form.photo, "Ajouter une photo", {'label_attr': {'class': 'col-sm-2'}}) }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.photo) }}
+
+	    <div class="col-md-10">
+	      {# Génération de l'input. #}
+	      {{ form_widget(form.photo, {'attr': {'class': 'form-control'}}) }}
+	    </div>
+	  </div>
+	
+	  <div class="form-group">
+	  	<div class="col-md-10">	
+	  		<input type="submit" class="btn btn-success" value="Ajouter une observation" />
+	  	</div>
+	  </div>
+
+
+
+	  {# Génération automatique des champs pas encore écrits.
+	     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+	     et tous les champs cachés (type « hidden »). #}
+	  {{ form_rest(form) }}
+
+	  {# Fermeture de la balise <form> du formulaire HTML #}
+	  {{ form_end(form) }}
+	</div>
+{% endblock %}

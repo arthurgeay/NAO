@@ -21,10 +21,11 @@ class ObservationsType extends AbstractType
         $builder
             ->add('espece', SearchType::class)
             ->add('commentaire', TextareaType::class)
-            ->add('date', DateType::class)
+            ->add('date', DateType::class, array(
+                'widget' => 'single_text'))
             ->add('longitude', NumberType::class)
             ->add('latitude', NumberType::class)
-            ->add('photo', FileType::class);
+            ->add('photo', FileType::class, array('required' => false));
     }
     
     /**

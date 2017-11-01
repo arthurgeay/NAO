@@ -42,7 +42,12 @@ class Observations
      */
     private $date;
 
-
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="verifie", type="boolean")
+     */
+    private $verifie = false;
 
     /**
      * @var float
@@ -218,5 +223,29 @@ class Observations
     public function getCommentaire()
     {
         return $this->commentaire;
+    }
+
+    /**
+     * Set verifie
+     *
+     * @param boolean $verifie
+     *
+     * @return Observations
+     */
+    public function setVerifie($verifie)
+    {
+        $this->verifie = $verifie;
+
+        return $this;
+    }
+
+    /**
+     * Get verifie
+     *
+     * @return boolean
+     */
+    public function getVerifie()
+    {
+        return $this->verifie;
     }
 }
