@@ -3,6 +3,7 @@
 namespace Omega\NAOBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Observations
@@ -25,6 +26,7 @@ class Observations
      * @var string
      *
      * @ORM\Column(name="espece", type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ ne peut être vide")
      */
     private $espece;
 
@@ -32,6 +34,7 @@ class Observations
      * @var string
      *
      * @ORM\Column(name="commentaire", type="text")
+     * @Assert\NotBlank(message="Ce champ ne peut être vide")
      */
     private $commentaire;
 
@@ -39,6 +42,8 @@ class Observations
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     * @Assert\Date(message="Veuillez insérer une date valide")
+     * @Assert\LessThanOrEqual("today", message="La date d'observation doit être inférieure ou égale à aujourd'hui.")
      */
     private $date;
 
@@ -53,6 +58,8 @@ class Observations
      * @var float
      *
      * @ORM\Column(name="longitude", type="float")
+     * @Assert\NotBlank(message="Ce champ ne peut être vide")
+     * @Assert\Type(type="float", message="Cette valeur n'est pas une longitude")
      */
     private $longitude;
 
@@ -60,6 +67,8 @@ class Observations
      * @var float
      *
      * @ORM\Column(name="latitude", type="float")
+     * @Assert\NotBlank(message="Ce champ ne peut être vide")
+     * @Assert\Type(type="float", message="Cette valeur n'est pas une longitude")
      */
     private $latitude;
 
@@ -67,6 +76,9 @@ class Observations
      * @var string
      *
      * @ORM\Column(name="photo", type="string", nullable=true)
+     * @Assert\Image(mimeTypesMessage="Ce fichier n'est pas une image valide",
+     * mimeTypes = {"image/jpeg"},
+     * maxSize = "1024k")
      */
     private $photo;
 
