@@ -19,6 +19,18 @@ class DefaultController extends Controller
     	$observation = new Observations();
     	$form = $this->get('form.factory')->create(ObservationsType::class, $observation);
 
+    	$repository = $this
+		  ->getDoctrine()
+		  ->getManager()
+		  ->getRepository('OmegaNAOBundle:Taxref')
+		;
+
+		$especes = $repository->findAll();
+		$noms = array();
+		foreach ($especes as $espece) {
+		  $noms[] = $espece->getNomVern();
+		}
+
     	if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
     	{
     		$file = $observation->getPhoto();
@@ -43,6 +55,7 @@ class DefaultController extends Controller
     	}
 
     	return $this->render('OmegaNAOBundle:Observations:add.html.twig', array('form' => $form->createView(),
+    		'noms' => $noms
     	));
     }
 }

@@ -32,7 +32,7 @@
 
 	    <div class="col-md-10">
 	      {# Génération de l'input. #}
-	      {{ form_widget(form.espece, {'attr': {'class': 'form-control'}}) }}
+	      {{ form_widget(form.espece, {'attr': {'data-provide': 'typeahead'}}) }}
 	    </div>
 	  </div>
 
@@ -45,7 +45,7 @@
 
 	    <div class="col-md-10">
 	      {# Génération de l'input. #}
-	      {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+	      {{ form_widget(form.date) }}
 	    </div>
 	  </div>
 
@@ -58,7 +58,7 @@
 
 	    <div class="col-md-10">
 	      {# Génération de l'input. #}
-	      {{ form_widget(form.commentaire, {'attr': {'class': 'form-control'}}) }}
+	      {{ form_widget(form.commentaire) }}
 	    </div>
 	  </div>
 
@@ -71,7 +71,7 @@
 
 	    <div class="col-md-10">
 	      {# Génération de l'input. #}
-	      {{ form_widget(form.longitude, {'attr': {'class': 'form-control'}}) }}
+	      {{ form_widget(form.longitude) }}
 	    </div>
 	  </div>
 
@@ -84,7 +84,7 @@
 
 	    <div class="col-md-10">
 	      {# Génération de l'input. #}
-	      {{ form_widget(form.latitude, {'attr': {'class': 'form-control'}}) }}
+	      {{ form_widget(form.latitude) }}
 	    </div>
 	  </div>
 
@@ -97,7 +97,7 @@
 
 	    <div class="col-md-10">
 	      {# Génération de l'input. #}
-	      {{ form_widget(form.photo, {'attr': {'class': 'form-control'}}) }}
+	      {{ form_widget(form.photo) }}
 	    </div>
 	  </div>
 	
@@ -117,4 +117,16 @@
 	  {# Fermeture de la balise <form> du formulaire HTML #}
 	  {{ form_end(form) }}
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/bootstrap3-typeahead.js')}}"></script>
+	<script>
+           var noms = {% if noms is defined %}
+           	{{ noms|json_encode|raw }}
+           	{% else %} null
+           	{% endif %}
+       </script>
+	<script src="{{ asset('js/autocomplete.js') }}"></script>
 {% endblock %}
