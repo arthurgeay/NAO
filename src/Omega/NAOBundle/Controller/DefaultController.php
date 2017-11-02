@@ -19,31 +19,11 @@ class DefaultController extends Controller
     	$observation = new Observations();
     	$form = $this->get('form.factory')->create(ObservationsType::class, $observation);
 
-    	$repository = $this
-		  ->getDoctrine()
-		  ->getManager()
-		  ->getRepository('OmegaNAOBundle:Taxref')
-		;
-
-		$especes = $repository->findAll();
-		$noms = array();
-		foreach ($especes as $espece) {
-		  $noms[] = $espece->getNomVern();
-		}
+    	$noms = $this->get('omega_nao.datataxref')->getData();
 
     	if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
     	{
-    		$file = $observation->getPhoto();
-    		if($file != null)
-    		{
-    			$filename = md5(uniqid()).'.'.$file->guessExtension();
-
-	    		$file->move(
-	    			$this->getParameter('img_directory'),
-	    			$filename
-	    		);
-	    		$observation->setPhoto($filename);
-    		}
+    		$this->get('omega_nao.upload')->upload($observation);
     		
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($observation);

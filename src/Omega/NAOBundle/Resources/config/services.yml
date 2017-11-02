@@ -1,4 +1,10 @@
 services:
-#    omega_nao.example:
-#        class: Omega\NAOBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    omega_nao.datataxref:
+        class: Omega\NAOBundle\DataAutoComplete\DataTaxref
+        arguments:
+            - "@doctrine.orm.entity_manager"
+
+    omega_nao.upload:
+        class: Omega\NAOBundle\UploadedFile\UploadedPhotos
+        arguments:
+            $targetDir: '%img_directory%'
