@@ -22,7 +22,9 @@ class ObservationsType extends AbstractType
             ->add('espece', TextType::class)
             ->add('commentaire', TextareaType::class)
             ->add('date', DateType::class, array(
-                'widget' => 'single_text'))
+                'widget' => 'single_text',
+                'html5' => false, 
+                'format' => 'dd/MM/yyyy'))
             ->add('longitude', NumberType::class)
             ->add('latitude', NumberType::class)
             ->add('photo', FileType::class, array('required' => false));
