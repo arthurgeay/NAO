@@ -61,6 +61,18 @@
 	      {{ form_widget(form.commentaire) }}
 	    </div>
 	  </div>
+	
+	  <div class="form-group">
+	  	<div class="col-md-10">
+			<button id="geolocation"class="btn btn-primary"><i class="fa fa-location-arrow" aria-hidden="true"></i> Me trouver</button>
+		</div>
+	  </div>
+	
+	  <div class="form-group">
+	  	<div class="col-md-10">
+	  		<div id="map"></div>
+	  	</div>
+	  </div>
 
 	  <div class="form-group">
 	    {# Génération du label. #}
@@ -103,7 +115,9 @@
 	
 	  <div class="form-group">
 	  	<div class="col-md-10">	
-	  		<input type="submit" class="btn btn-success" value="Ajouter une observation" />
+	  		<button type="submit" class="btn btn-success">
+	  			<i class="fa fa-plus" aria-hidden="true"></i> Ajouter une observation
+	  		</button>
 	  	</div>
 	  </div>
 
@@ -129,4 +143,8 @@
            	{% endif %}
        </script>
 	<script src="{{ asset('js/autocomplete.js') }}"></script>
+	<script src="{{ asset('js/localisation.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtE4xVHrJdaSivopE-_T93pQfJ41Z3Hds&callback=initMap" async defer>
+    </script>
+
 {% endblock %}

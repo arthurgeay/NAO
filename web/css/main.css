@@ -1,3 +1,7 @@
 body {
   padding-top: 5rem;
 }
+
+#map {
+	height: 350px;
+}
