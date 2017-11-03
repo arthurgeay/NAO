@@ -82,6 +82,5 @@ class DefaultController extends Controller
         }
 
         return $this->render('OmegaNAOBundle:Default:inscription.html.twig', array('formInscription' => $formInscription->createView()));
-
     }
 }
