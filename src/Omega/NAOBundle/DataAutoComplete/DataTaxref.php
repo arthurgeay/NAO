@@ -19,9 +19,9 @@ class DataTaxref
 		  ->getRepository('OmegaNAOBundle:Taxref')
 		;
 
-		$especes = $repository->findAll();
+		$especes = $repository->findAll(); // On récupère les données
 		$noms = array();
-		foreach ($especes as $espece) {
+		foreach ($especes as $espece) {  // Boucle sur le nom de l'espèce inséré dans un tableau
 		  $noms[] = $espece->getNomVern();
 		}
 

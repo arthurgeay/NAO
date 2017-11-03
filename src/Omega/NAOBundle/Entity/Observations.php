@@ -4,6 +4,7 @@ namespace Omega\NAOBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Omega\NAOBundle\Validator\Verifespece;
 
 /**
  * Observations
@@ -27,6 +28,7 @@ class Observations
      *
      * @ORM\Column(name="espece", type="string", length=255)
      * @Assert\NotBlank(message="Ce champ ne peut être vide")
+     * @Verifespece()
      */
     private $espece;
 

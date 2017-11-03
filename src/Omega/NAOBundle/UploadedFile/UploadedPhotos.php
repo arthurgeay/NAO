@@ -16,11 +16,12 @@ class UploadedPhotos
 	public function upload(Observations $observation)
 	{
 		$file = $observation->getPhoto();
+		// Si la photo est importée
     	if($file != null)
     	{
-    		$filename = md5(uniqid()).'.'.$file->guessExtension();
-			$file->move($this->targetDir, $filename);
-	    	$observation->setPhoto($filename);
+    		$filename = md5(uniqid()).'.'.$file->guessExtension(); // On génère un nom unique
+			$file->move($this->targetDir, $filename); // On le déplace dans le répertoire
+	    	$observation->setPhoto($filename); // On modifie son nom avec le nom généré
     	}
 
 	}
