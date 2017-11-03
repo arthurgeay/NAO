@@ -5,3 +5,8 @@ omega_nao_homepage:
 omega_nao_add_observation:
     path: /saisir-une-observation
     defaults: { _controller: OmegaNAOBundle:Default:addObservation }
+
+inscription:
+    path:     /inscription
+    defaults: { _controller: OmegaNAOBundle:Default:inscription }
+
