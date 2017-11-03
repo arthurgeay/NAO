@@ -9,3 +9,7 @@ omega_nao_add_observation:
 inscription:
     path:     /inscription
     defaults: { _controller: OmegaNAOBundle:Default:inscription }
+
+recherche:
+    path:     /recherche
+    defaults: { _controller: OmegaNAOBundle:Default:recherche }
