@@ -44,7 +44,8 @@ class DefaultController extends Controller
     	return $this->render('OmegaNAOBundle:Observations:add.html.twig', array('form' => $form->createView(),
     		'noms' => $noms
     	));
-
+    }
+    
     public function loginAction(Request $request)
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
@@ -81,6 +82,5 @@ class DefaultController extends Controller
         }
 
         return $this->render('OmegaNAOBundle:Default:inscription.html.twig', array('formInscription' => $formInscription->createView()));
-
     }
 }
