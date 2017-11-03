@@ -44,6 +44,7 @@ class DefaultController extends Controller
     	return $this->render('OmegaNAOBundle:Observations:add.html.twig', array('form' => $form->createView(),
     		'noms' => $noms
     	));
+    }
 
     public function loginAction(Request $request)
     {
