@@ -5,8 +5,13 @@ namespace Omega\NAOBundle\Controller;
 use Omega\NAOBundle\Entity\Utilisateurs;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
+use Omega\NAOBundle\Entity\Observations;
+use Omega\NAOBundle\Form\ObservationsType;
+
 use Symfony\Component\Security\Core\SecurityContext;
 use Omega\NAOBundle\Form\UtilisateursType;
+
 
 class DefaultController extends Controller
 {
@@ -14,6 +19,31 @@ class DefaultController extends Controller
     {
         return $this->render('OmegaNAOBundle:Default:index.html.twig');
     }
+
+
+    public function addObservationAction(Request $request)
+    {
+    	$observation = new Observations();
+    	$form = $this->get('form.factory')->create(ObservationsType::class, $observation);
+
+    	$noms = $this->get('omega_nao.datataxref')->getData();
+
+    	if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+    	{
+    		$this->get('omega_nao.upload')->upload($observation);
+    		
+    		$em = $this->getDoctrine()->getManager();
+    		$em->persist($observation);
+    		$em->flush();
+
+    		$this->get('session')->getFlashBag()->add('success', 'Votre observation a bien été ajoutée');
+
+    		return $this->redirectToRoute('omega_nao_add_observation');
+    	}
+
+    	return $this->render('OmegaNAOBundle:Observations:add.html.twig', array('form' => $form->createView(),
+    		'noms' => $noms
+    	));
 
     public function loginAction(Request $request)
     {
@@ -51,5 +81,6 @@ class DefaultController extends Controller
         }
 
         return $this->render('OmegaNAOBundle:Default:inscription.html.twig', array('formInscription' => $formInscription->createView()));
+
     }
 }
