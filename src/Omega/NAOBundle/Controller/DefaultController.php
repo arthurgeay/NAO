@@ -12,6 +12,8 @@ use Omega\NAOBundle\Form\ObservationsType;
 use Symfony\Component\Security\Core\SecurityContext;
 use Omega\NAOBundle\Form\UtilisateursType;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class DefaultController extends Controller
 {
@@ -44,6 +46,59 @@ class DefaultController extends Controller
     	return $this->render('OmegaNAOBundle:Observations:add.html.twig', array('form' => $form->createView(),
     		'noms' => $noms
     	));
+    }
+
+    public function moderationCompteAction()
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
+        $comptes = $repository->getCompte();
+
+        return $this->render('OmegaNAOBundle:Moderation:compte.html.twig', array('comptes' => $comptes));
+
+    }
+
+    public function acceptCompteAction($id)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
+        $compte = $repository->find($id);
+
+        if($compte == null)
+        {
+            throw new NotFoundHttpException("Le compte n'existe pas");
+        }
+
+        $compte->setVerifie(true);
+        $compte->setRoles(array('ROLE_NATURALISTE'));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($compte);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'Le compte a bien été validé en tant que naturaliste.');
+
+        return $this->redirectToRoute('omega_nao_moderation_compte');
+    }
+
+    public function refusedCompteAction($id)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
+        $compte = $repository->find($id);
+
+        if($compte == null)
+        {
+            throw new NotFoundHttpException("Le compte n'existe pas");
+        }
+
+        $compte->setCompte('particulier');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($compte);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'Le compte a bien été refusé. Le type du compte a été basculé en particulier.');
+
+        return $this->redirectToRoute('omega_nao_moderation_compte');
+
     }
 
     public function loginAction(Request $request)

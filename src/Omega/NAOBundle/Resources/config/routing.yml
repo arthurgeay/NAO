@@ -9,3 +9,15 @@ omega_nao_add_observation:
 inscription:
     path:     /inscription
     defaults: { _controller: OmegaNAOBundle:Default:inscription }
+
+omega_nao_moderation_compte:
+    path: /moderation-compte
+    defaults: { _controller: OmegaNAOBundle:Default:moderationCompte }
+
+omega_nao_accept_compte:
+    path: /moderation-compte/accept-{id}
+    defaults: { _controller: OmegaNAOBundle:Default:acceptCompte }
+
+omega_nao_refused_compte:
+    path: /moderation-compte/refused-{id}
+    defaults: { _controller: OmegaNAOBundle:Default:refusedCompte }
