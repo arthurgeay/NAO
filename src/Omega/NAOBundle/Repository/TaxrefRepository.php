@@ -10,4 +10,17 @@ namespace Omega\NAOBundle\Repository;
  */
 class TaxrefRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function isNotEspece($espece)
+	{
+		$qb = $this->createQueryBuilder('t');
+		$qb
+		 ->where('t.nomVern = :espece')
+		 ->setParameter('espece', $espece)
+		 ;
+
+		 return $qb
+		 	->getQuery()
+		 	->getResult()
+		 ;
+	}
 }

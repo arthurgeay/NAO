@@ -107,7 +107,7 @@
 
 	  <div class="form-group">
 	    {# Génération du label. #}
-	    {{ form_label(form.photo, "Ajouter une photo", {'label_attr': {'class': 'col-sm-2'}}) }}
+	    {{ form_label(form.photo, "Ajouter une photo (JPG | max. 1024 Ko)", {'label_attr': {'class': 'col-sm-5'}}) }}
 
 	    {# Affichage des erreurs pour ce champ précis. #}
 	    {{ form_errors(form.photo) }}
