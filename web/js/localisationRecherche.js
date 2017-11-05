@@ -1,37 +1,32 @@
-function initMap() {
-    var uluru = {lat: -25.363, lng: 131.044};
+function initMap()
+{
+    var uluru = {lat: 40.363, lng: -10.044};
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 2,
         center: uluru
     });
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-    });
-
-    map.addListener('click', function(e) {
-        placeMarkerAndPanTo(e.latLng, map);
-    });
 }
+
 var marker;
 
-function placeMarkerAndPanTo(latLng, map) {
-    if (marker) {
-        marker.setPosition(latLng);
-    } else {
-        marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-        });
-        map.panTo(latLng);
-    }
+function addMarkerTest ()
+{
+    var placement = {lat: 50.00215, lng: 10.2510}
 
-    document.getElementById('omega_naobundle_observations_longitude').value = latLng.lng();
-    document.getElementById('omega_naobundle_observations_latitude').value = latLng.lat();
-
+    marker = new google.maps.Marker({
+        position: placement,
+        map: map
+    });
+    marker.setMap(map);
 }
 
-function addMarkerWithBDD (latLng, map)
+function addMarkerWithBDD (latitude, longitude, map)
 {
-    //ajout des marqueurt de la bdd
+    var placement = {lat: latitude, lng: longitude}
+
+    marker = new google.maps.Marker({
+        position: placement,
+        map: map
+    });
+    marker.setMap(map);
 }

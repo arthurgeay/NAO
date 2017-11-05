@@ -89,6 +89,9 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $formRecherche = $this->createForm(RechercheType::class, null);
+        $recherche = array();
+        $count = 0;
+
         if ($request->isMethod('POST') && $formRecherche->handleRequest($request)->isValid())
         {
             $espece[0] = $formRecherche->getData('espece');
@@ -96,15 +99,7 @@ class DefaultController extends Controller
             $countRecherche = $em->getRepository('OmegaNAOBundle:Observations')->countObservation($espece);
             $count = (int) $countRecherche;
 
-            var_dump($count);
-
-            for( $i =0; $count > $i ; $i++)
-            {
-                var_dump($recherche[$i]->getEspece());
-            }
-
-            //return $this->redirectToRoute('recherche', array('formRecherche' => $formRecherche->createView(), 'espece' => $espece[0]));
         }
-        return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView()));
+        return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche, 'count' => $count));
     }
 }

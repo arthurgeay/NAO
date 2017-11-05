@@ -9,10 +9,26 @@
     <style>
        #map {
         height: 400px;
-        width: 80S%;
+        width: 80%;
        }
     </style>
-
+<div id="espece">
+    {% if count > 0 %}
+	<table  class="table-responsive">
+		<th>Test espece</th>
+        {% for i in 1..count %}
+			<tr>
+				<td>
+					recherche {{ i-1 }} = {{ recherche[i-1].espece }} , {{ recherche[i-1].longitude }}, {{ recherche[i-1].latitude }}
+				</td>
+			</tr>
+			<script>
+				var map = new google.maps.Map(document.getElementById('map'), {zoom : 2});
+                addMarkerWithBDD(5.274572, 47.7119232, map);
+			</script>
+        {% endfor %}
+		{% endif %}
+	</table></div>
     <div id="map"></div>
 {% endblock %}
 
