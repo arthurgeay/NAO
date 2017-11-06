@@ -37,4 +37,5 @@ security:
                 target: login
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/moderation-observation, roles: ROLE_NATURALISTE }
+        - { path: ^/moderation-compte, roles: ROLE_ADMIN }

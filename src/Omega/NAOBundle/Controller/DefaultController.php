@@ -24,7 +24,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Security("has_role('ROLE_USER')")
+     * @Security("has_role('ROLE_PARTICULIER')")
      */
     public function addObservationAction(Request $request)
     {
