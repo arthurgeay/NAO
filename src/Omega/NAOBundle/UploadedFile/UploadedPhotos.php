@@ -26,4 +26,15 @@ class UploadedPhotos
 
 	}
 
+	public function remove(Observations $observation)
+	{
+		$file = $observation->getPhoto();
+
+		if($file != null)
+		{
+			$path = 'uploads/img/'.$file;
+			unlink($path);
+		}
+	}
+
 }

@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Omega\NAOBundle\Form\UtilisateursType;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 
 class DefaultController extends Controller
@@ -22,7 +23,9 @@ class DefaultController extends Controller
         return $this->render('OmegaNAOBundle:Default:index.html.twig');
     }
 
-
+    /**
+     * @Security("has_role('ROLE_USER')")
+     */
     public function addObservationAction(Request $request)
     {
     	$observation = new Observations();
@@ -33,12 +36,28 @@ class DefaultController extends Controller
     	if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
     	{
     		$this->get('omega_nao.upload')->upload($observation); // service d'upload d'image
+
+            $user = $this->getUser(); // On récupère le user courant et on le relie à l'observation
+            $observation->setUtilisateur($user);
+
+            $roles = $user->getRoles(); // Si le user est naturaliste
+            if($roles == array('ROLE_NATURALISTE'))
+            {
+                $observation->setVerifie(true); //On valide directement son observation
+            }
     		
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($observation);
     		$em->flush();
 
-    		$this->get('session')->getFlashBag()->add('success', 'Votre observation a bien été ajoutée');
+            if($roles == array('ROLE_PARTICULIER'))
+            {
+                $this->get('session')->getFlashBag()->add('success', 'Votre observation a bien été prise en compte, et est désormais en attente de modération.');
+            }
+            else if($roles = array('ROLE_NATURALISTE'))
+            {
+                $this->get('session')->getFlashBag()->add('success', 'Votre observation a bien été ajoutée');
+            }
 
     		return $this->redirectToRoute('omega_nao_add_observation');
     	}
@@ -99,6 +118,60 @@ class DefaultController extends Controller
 
         return $this->redirectToRoute('omega_nao_moderation_compte');
 
+    }
+
+    public function moderationObsAction()
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Observations');
+        $observations = $repository->getObservationParticulier();
+
+        return $this->render('OmegaNAOBundle:Moderation:observation.html.twig', array('observations' => $observations));
+    }
+
+    public function acceptObsAction($id)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Observations');
+        $observation = $repository->find($id);
+
+        if($observation == null)
+        {
+            throw new NotFoundHttpException("L'observation n'existe pas");
+        }
+
+        $observation->setVerifie(true);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($observation);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', "L'observation a bien été validée.");
+
+        return $this->redirectToRoute('omega_nao_moderation_observation');   
+    }
+
+    public function deleteObsAction($id)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Observations');
+        $observation = $repository->find($id);
+
+        if($observation == null)
+        {
+            throw new NotFoundHttpException("L'observation n'existe pas");
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($observation);
+
+        if($observation->getPhoto() != null)
+        {
+            $this->get('omega_nao.upload')->remove($observation);
+        }
+
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', "L'observation a bien été supprimée.");
+
+        return $this->redirectToRoute('omega_nao_moderation_observation');
     }
 
     public function loginAction(Request $request)

@@ -85,7 +85,7 @@ class Observations
     private $photo;
 
     /**
-     * @ORM\OneToOne(targetEntity="Omega\NAOBundle\Entity\Utilisateurs", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Omega\NAOBundle\Entity\Utilisateurs", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateur;

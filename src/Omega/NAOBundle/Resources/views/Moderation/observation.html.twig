@@ -1,0 +1,60 @@
+{% extends "OmegaNAOBundle::layout.html.twig" %}
+
+{% block title %}
+	Modération des observations - {{ parent() }}
+{% endblock %}
+
+{% block naobundle_body %}
+  
+  <h1 class="text-center">Modération - Observations</h1>
+  <hr>
+	
+  {% if app.session.flashBag.has('success') %}
+		<div class="alert alert-success">
+			{% for message in app.session.flashbag.get('success') %}
+		        <p>{{ message }}</p>
+		    {% endfor %}
+	    </div>
+  {% endif %}
+
+  {% if observations == null %}
+  	<div class="alert alert-info">
+  		<p>Il n'y a pas d'observation à modérer pour le moment. Revenez plus tard.</p>
+  	</div>
+  {% endif %}
+
+{% if observations != null %}
+  <table class="table table-striped table-bordered">
+	  <thead>
+	    <tr>
+	      <th class="text-center" scope="col">Espèce</th>
+	      <th class="text-center" scope="col">Date d'observation</th>
+	      <th class="text-center" scope="col">Commentaire</th>
+	      <th class="text-center" scope="col">Longitude</th>
+	      <th class="text-center" scope="col">Lattitude</th>
+	      <th class="text-center" scope="col">Photo</th>
+	      <th class="text-center" scope="col">Valider</th>
+	      <th class="text-center" scope="col">Supprimer</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{% for observation in observations %}
+	    <tr>
+	      <th class="text-center" scope="row">{{ observation.espece}}</th>
+	      <td class="text-center">{{ observation.date|date("d/m/Y") }}</td>
+	      <td class="text-center">{{ observation.commentaire }}</td>
+	      <td class="text-center">{{ observation.longitude }}</td>
+	      <td class="text-center">{{ observation.latitude }}</td>
+	      <td class="text-center">
+	      	{% if observation.photo != null %}
+	      		<a href="{{ asset('uploads/img/' ~ observation.photo) }}">Voir l'image</a>
+	      	{% endif %}
+	      </td>
+	      <td class="text-center"><a href="{{ path('omega_nao_accept_observation', {'id': observation.id} )}}"><i class="fa fa-check-circle-o" aria-hidden="true" style="color: green"></i></a></td>
+	      <td class="text-center"><a href="{{ path('omega_nao_delete_observation', {'id': observation.id} )}}"><i class="fa fa-ban" aria-hidden="true" style="color: red"></i></a></td>
+	    </tr>
+		{% endfor %}
+	  </tbody>
+  </table>
+ {% endif %}
+{% endblock %}
