@@ -98,7 +98,7 @@ class DefaultController extends Controller
 
         
         $mail = $this->container->get('NAOBundle.mail');
-        $mail->sendMailCompte($emailBody, $compte->getEmail(), $subject);
+        $mail->getMailService($emailBody, $compte->getEmail(), $subject);
 
 
         $this->get('session')->getFlashBag()->add('success', 'Le compte a bien été validé en tant que naturaliste.');
@@ -116,7 +116,7 @@ class DefaultController extends Controller
             throw new NotFoundHttpException("Le compte n'existe pas");
         }
 
-        $compte->setCompte('Particulier');
+        $compte->setCompte('particulier');
 
         $emailBody = $this->renderView('OmegaNAOBundle:Default:mailRefusedCompte.html.twig', array('name' => $compte->getUsername()));
         $subject = "Votre demande a été rejetée";
@@ -126,7 +126,7 @@ class DefaultController extends Controller
         $em->flush();
 
         $mail = $this->container->get('NAOBundle.mail');
-        $mail->sendMailCompte($emailBody, $compte->getEmail(), $subject);
+        $mail->getMailService($emailBody, $compte->getEmail(), $subject);
 
         $this->get('session')->getFlashBag()->add('success', 'Le compte a bien été refusé. Le type du compte a été basculé en particulier.');
 
@@ -154,9 +154,15 @@ class DefaultController extends Controller
 
         $observation->setVerifie(true);
 
+        $emailBody = $this->renderView('OmegaNAOBundle:Default:mailAcceptObs.html.twig', array('name' => $observation->getUtilisateur()->getUsername()));
+        $subject = "Validation de votre observation";
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($observation);
         $em->flush();
+
+        $mail = $this->container->get('NAOBundle.mail');
+        $mail->getMailService($emailBody, $observation->getUtilisateur()->getEmail(), $subject);
 
         $this->get('session')->getFlashBag()->add('success', "L'observation a bien été validée.");
 
@@ -173,6 +179,9 @@ class DefaultController extends Controller
             throw new NotFoundHttpException("L'observation n'existe pas");
         }
 
+        $emailBody = $this->renderView('OmegaNAOBundle:Default:mailDeleteObs.html.twig', array('name' => $observation->getUtilisateur()->getUsername()));
+        $subject = "Observation refusée";
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($observation);
 
@@ -182,6 +191,9 @@ class DefaultController extends Controller
         }
 
         $em->flush();
+
+        $mail = $this->container->get('NAOBundle.mail');
+        $mail->getMailService($emailBody, $observation->getUtilisateur()->getEmail(), $subject);
 
         $this->get('session')->getFlashBag()->add('success', "L'observation a bien été supprimée.");
 
@@ -214,13 +226,14 @@ class DefaultController extends Controller
         if ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
         {
             $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
+            $subject = 'Votre compte a bien été enregistré';
             $inscription->setSalt('');
             $inscription->setRoles(array('ROLE_PARTICULIER'));
             $em->persist($inscription);
             $em->flush();
 
             $mailerService = $this->container->get('NAOBundle.mail');
-            $mailerService->getMailService($emailBody, $inscription->getEmail());
+            $mailerService->getMailService($emailBody, $inscription->getEmail(), $subject);
         }
 
         return $this->render('OmegaNAOBundle:Default:inscription.html.twig', array('formInscription' => $formInscription->createView()));
