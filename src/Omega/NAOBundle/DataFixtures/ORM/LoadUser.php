@@ -17,15 +17,48 @@ class LoadUser implements FixtureInterface
 
             $user = new Utilisateurs();
 
-            $user->setNom("Boulnois");
-            $user->setUsername("Julien");
-            $user->setPassword("Password");
-            $user->setEmail("julien.boulnois12@gmail.com");
-            $user->setCompte("Naturaliste");
+            $user->setNom("part");
+            $user->setUsername("part");
+            $user->setPassword("part");
+            $user->setEmail("jpart@gmail.com");
+            $user->setCompte("Particulier");
             $user->setSalt('');
-            $user->setRoles(array('ROLE_USER'));
+            $user->setRoles(array('ROLE_PARTICULIER'));
+
+            $user2 = new Utilisateurs();
+            $user2->setNom('admin')
+                  ->setUsername('admin')
+                  ->setPassword('admin')
+                  ->setEmail('admin@gmail.com')
+                  ->setCompte('Naturaliste')
+                  ->setSalt('')
+                  ->setVerifie(true)
+                  ->setRoles(array('ROLE_ADMIN'));
+
+            $user3 = new Utilisateurs();
+            $user3->setNom('nature')
+                  ->setUsername('nature')
+                  ->setPassword('nature')
+                  ->setEmail('nature@gmail.com')
+                  ->setCompte('Naturaliste')
+                  ->setVerifie(true)
+                  ->setSalt('')
+                  ->setRoles(array('ROLE_NATURALISTE'));
+
+            $user4 = new Utilisateurs();
+            $user4->setNom("test");
+            $user4->setUsername("test");
+            $user4->setPassword("test");
+            $user4->setEmail("test@gmail.com");
+            $user4->setCompte("Naturaliste");
+            $user4->setSalt('');
+            $user4->setRoles(array('ROLE_PARTICULIER'));
+
 
             $manager->persist($user);
+            $manager->persist($user2);
+            $manager->persist($user3);
+            $manager->persist($user4);
 
             $manager->flush();
     }

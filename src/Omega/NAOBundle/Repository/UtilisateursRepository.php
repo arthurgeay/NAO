@@ -10,4 +10,19 @@ namespace Omega\NAOBundle\Repository;
  */
 class UtilisateursRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getCompte()
+	{
+		$qb = $this->createQueryBuilder('u');
+		$qb
+		 ->where('u.compte = :compte')
+		 ->setParameter('compte', 'naturaliste')
+		 ->andWhere('u.verifie = :verifie')
+		 ->setParameter('verifie', false)
+		 ;
+
+		 return $qb
+		 	->getQuery()
+		 	->getResult()
+		 ;
+	}
 }

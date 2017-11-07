@@ -84,6 +84,12 @@ class Observations
      */
     private $photo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Omega\NAOBundle\Entity\Utilisateurs", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $utilisateur;
+
 
     /**
      * Get id
@@ -261,5 +267,53 @@ class Observations
     public function getVerifie()
     {
         return $this->verifie;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \Omega\NAOBundle\Entity\Utilisateurs $utilisateur
+     *
+     * @return Observations
+     */
+    public function setUtilisateur(\Omega\NAOBundle\Entity\Utilisateurs $utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \Omega\NAOBundle\Entity\Utilisateurs
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * Set utilisateurs
+     *
+     * @param \Omega\NAOBundle\Entity\Utilisateurs $utilisateurs
+     *
+     * @return Observations
+     */
+    public function setUtilisateurs(\Omega\NAOBundle\Entity\Utilisateurs $utilisateurs)
+    {
+        $this->utilisateurs = $utilisateurs;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateurs
+     *
+     * @return \Omega\NAOBundle\Entity\Utilisateurs
+     */
+    public function getUtilisateurs()
+    {
+        return $this->utilisateurs;
     }
 }

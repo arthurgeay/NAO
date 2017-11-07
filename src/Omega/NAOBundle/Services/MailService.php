@@ -5,7 +5,7 @@ namespace Omega\NAOBundle\Services;
 
 class MailService
 {
-    public function getMailService($bodyEmail, $mail)
+    public function getMailService($bodyEmail, $mail, $subject)
     {
         $transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
             ->setUsername('geteolastpiece')
@@ -13,7 +13,7 @@ class MailService
         //création d'un objet mailer
         $mailer = \Swift_Mailer::newInstance($transport);
         $message = \Swift_Message::newInstance();
-        $message->setSubject("Votre compte a bien été enregistré");
+        $message->setSubject($subject);
         $message->setFrom('geteolastpiece@gmail.com');
         $message->setTo($mail);
         // pour envoyer le message en HTML
@@ -21,4 +21,5 @@ class MailService
         //envoi du message
         $mailer->send($message);
     }
+
 }

@@ -1,0 +1,48 @@
+{% extends "OmegaNAOBundle::layout.html.twig" %}
+
+{% block title %}
+	Modération des comptes - {{ parent() }}
+{% endblock %}
+
+{% block naobundle_body %}
+  
+  <h1 class="text-center">Modération - Compte</h1>
+  <hr>
+	
+  {% if app.session.flashBag.has('success') %}
+		<div class="alert alert-success">
+			{% for message in app.session.flashbag.get('success') %}
+		        <p>{{ message }}</p>
+		    {% endfor %}
+	    </div>
+  {% endif %}
+
+  {% if comptes == null %}
+  	<div class="alert alert-info">
+  		<p>Il n'y a pas de compte à modérer pour le moment. Revenez plus tard.</p>
+  	</div>
+  {% endif %}
+
+{% if comptes != null %}
+  <table class="table table-striped table-bordered">
+	  <thead>
+	    <tr>
+	      <th class="text-center" scope="col">Adresse mail</th>
+	      <th class="text-center" scope="col">Nom d'utilisateur</th>
+	      <th class="text-center" scope="col">Valider</th>
+	      <th class="text-center" scope="col">Refuser</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{% for compte in comptes %}
+	    <tr>
+	      <th class="text-center" scope="row">{{ compte.email}}</th>
+	      <td class="text-center">{{ compte.username }}</td>
+	      <td class="text-center"><a href="{{ path('omega_nao_accept_compte', {'id': compte.id} )}}"><i class="fa fa-check-circle-o" aria-hidden="true" style="color: green"></i></a></td>
+	      <td class="text-center"><a href="{{ path('omega_nao_refused_compte', {'id': compte.id} )}}"><i class="fa fa-ban" aria-hidden="true" style="color: red"></i></a></td>
+	    </tr>
+		{% endfor %}
+	  </tbody>
+  </table>
+ {% endif %}
+{% endblock %}
