@@ -1,32 +1,34 @@
+var map;
+var marker;
+espece      = document.querySelectorAll("#tableEspece td");
+longitude   = document.querySelectorAll("#tableLong td");
+latitude    = document.querySelectorAll("#tableLat td");
 function initMap()
 {
     var uluru = {lat: 40.363, lng: -10.044};
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 2,
         center: uluru
     });
+
+    for (var i = 0; i < espece.length ; i++)
+    {
+        alert(espece[i].textContent);
+        alert(longitude[i].textContent);
+        alert(latitude[i].textContent);
+       longitudeFloat = parseFloat(longitude[i].textContent);
+        latitudeFloat = parseFloat(latitude[i].textContent);
+
+        ajouterMarqueur(latitudeFloat, longitudeFloat);
+    }
 }
 
-var marker;
-
-function addMarkerTest ()
+function ajouterMarqueur (latitude, longitude)
 {
-    var placement = {lat: 50.00215, lng: 10.2510}
-
-    marker = new google.maps.Marker({
-        position: placement,
-        map: map
-    });
-    marker.setMap(map);
-}
-
-function addMarkerWithBDD (latitude, longitude, map)
-{
-    var placement = {lat: latitude, lng: longitude}
-
-    marker = new google.maps.Marker({
-        position: placement,
-        map: map
-    });
-    marker.setMap(map);
+    var placement = {lat: latitude, lng: longitude};
+        marker = new google.maps.Marker({
+            position: placement,
+            map: map
+        });
+        marker.setMap(map);
 }
