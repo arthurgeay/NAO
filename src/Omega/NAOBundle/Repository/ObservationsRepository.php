@@ -27,4 +27,25 @@ class ObservationsRepository extends \Doctrine\ORM\EntityRepository
 		 	->getResult()
 		 ;
 	}
+    public function RecupObservation ($espece)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.espece = :espece')
+            ->setParameter('espece', $espece);
+
+        return $qb  ->getQuery()
+                    ->getResult();
+
+    }
+    public function countObservation ($espece)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('count(a)')
+            ->where('a.espece = :espece')
+            ->setParameter('espece', $espece);
+
+        return $qb  ->getQuery()
+            ->getSingleScalarResult();
+
+    }
 }

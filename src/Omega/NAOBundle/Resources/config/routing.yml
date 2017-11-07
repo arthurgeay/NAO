@@ -9,7 +9,7 @@ omega_nao_add_observation:
 inscription:
     path:     /inscription
     defaults: { _controller: OmegaNAOBundle:Default:inscription }
-
+    
 omega_nao_moderation_compte:
     path: /moderation-compte
     defaults: { _controller: OmegaNAOBundle:Default:moderationCompte }
@@ -33,3 +33,8 @@ omega_nao_accept_observation:
 omega_nao_delete_observation:
     path: /moderation-observation/delete-{id}
     defaults: { _controller: OmegaNAOBundle:Default:deleteObs }
+
+recherche:
+    path:     /recherche
+    defaults: { _controller: OmegaNAOBundle:Default:recherche }
+
