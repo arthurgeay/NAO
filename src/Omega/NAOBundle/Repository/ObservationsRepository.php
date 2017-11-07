@@ -46,7 +46,9 @@ class ObservationsRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('a')
             ->select('count(a)')
             ->where('a.espece = :espece')
-            ->setParameter('espece', $espece);
+            ->setParameter('espece', $espece)
+            ->andWhere('a.verifie = :verifie')
+            ->setParameter('verifie', true);
 
         return $qb  ->getQuery()
             ->getSingleScalarResult();

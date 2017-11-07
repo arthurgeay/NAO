@@ -259,8 +259,8 @@ class DefaultController extends Controller
             $ficheEspece = $em->getRepository('OmegaNAOBundle:Taxref')->RecupEspece($espece);
             $countEspece = $em->getRepository('OmegaNAOBundle:Taxref')->countEspece($espece);
             $countEspeces = (int) $countEspece;
-
         }
+
         return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche,
                                                                                             'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces, 'noms' => $noms));
     }
