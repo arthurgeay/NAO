@@ -248,6 +248,7 @@ class DefaultController extends Controller
         $ficheEspece = null;
         $count = 0;
         $countEspeces = 0;
+        $noms = $this->get('omega_nao.datataxref')->getData(); // On récupère les données pour l'autocomplétion
 
         if ($request->isMethod('POST') && $formRecherche->handleRequest($request)->isValid())
         {
@@ -261,6 +262,6 @@ class DefaultController extends Controller
 
         }
         return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche,
-                                                                                            'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces));
+                                                                                            'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces, 'noms' => $noms));
     }
 }

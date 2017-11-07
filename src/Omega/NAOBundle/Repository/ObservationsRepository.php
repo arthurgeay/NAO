@@ -29,9 +29,13 @@ class ObservationsRepository extends \Doctrine\ORM\EntityRepository
 	}
     public function RecupObservation ($espece)
     {
-        $qb = $this->createQueryBuilder('a')
+        $qb = $this->createQueryBuilder('a');
+        $qb
             ->where('a.espece = :espece')
-            ->setParameter('espece', $espece);
+            ->setParameter('espece', $espece)
+            ->andWhere('a.verifie = :verifie')
+            ->setParameter('verifie', true);
+
 
         return $qb  ->getQuery()
                     ->getResult();

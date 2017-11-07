@@ -52,7 +52,14 @@ function ajouterMarqueur (latitude, longitude, espece, commentaire, date, photo)
         if (currentInfoWindow != null) {
             currentInfoWindow.close();
         }
+        if (photo.length > 0)
+        {
             infowindow.setContent(espece + "<br>" + date + "<br>" + commentaire + "<br>" + "<a href='../uploads/img/"+photo+"'>image</a> " );
+        }
+        else
+        {
+            infowindow.setContent(espece + "<br>" + date + "<br>" + commentaire );
+        }
             infowindow.open(map, marker);
         currentInfoWindow = infowindow;
     });
