@@ -25,13 +25,13 @@ class DefaultController extends Controller
     public function addObservationAction(Request $request)
     {
     	$observation = new Observations();
-    	$form = $this->get('form.factory')->create(ObservationsType::class, $observation);
+    	$form = $this->get('form.factory')->create(ObservationsType::class, $observation); // Création du form
 
-    	$noms = $this->get('omega_nao.datataxref')->getData();
+    	$noms = $this->get('omega_nao.datataxref')->getData(); // On récupère les données pour l'autocomplétion
 
     	if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
     	{
-    		$this->get('omega_nao.upload')->upload($observation);
+    		$this->get('omega_nao.upload')->upload($observation); // service d'upload d'image
     		
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($observation);
@@ -46,7 +46,7 @@ class DefaultController extends Controller
     		'noms' => $noms
     	));
     }
-    
+
     public function loginAction(Request $request)
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil

@@ -31,4 +31,17 @@ class TaxrefRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleScalarResult();
 
     }
+	public function isNotEspece($espece)
+	{
+		$qb = $this->createQueryBuilder('t');
+		$qb
+		 ->where('t.nomVern = :espece')
+		 ->setParameter('espece', $espece)
+		 ;
+
+		 return $qb
+		 	->getQuery()
+		 	->getResult()
+		 ;
+	}
 }
