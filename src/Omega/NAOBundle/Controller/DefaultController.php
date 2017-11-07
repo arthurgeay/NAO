@@ -90,7 +90,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $formRecherche = $this->createForm(RechercheType::class, null);
         $recherche = array();
+        $ficheEspece = null;
         $count = 0;
+        $countEspeces = 0;
 
         if ($request->isMethod('POST') && $formRecherche->handleRequest($request)->isValid())
         {
@@ -98,8 +100,12 @@ class DefaultController extends Controller
             $recherche = $em->getRepository('OmegaNAOBundle:Observations')->RecupObservation($espece);
             $countRecherche = $em->getRepository('OmegaNAOBundle:Observations')->countObservation($espece);
             $count = (int) $countRecherche;
+            $ficheEspece = $em->getRepository('OmegaNAOBundle:Taxref')->RecupEspece($espece);
+            $countEspece = $em->getRepository('OmegaNAOBundle:Taxref')->countEspece($espece);
+            $countEspeces = (int) $countEspece;
 
         }
-        return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche, 'count' => $count));
+        return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche,
+                                                                                            'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces));
     }
 }

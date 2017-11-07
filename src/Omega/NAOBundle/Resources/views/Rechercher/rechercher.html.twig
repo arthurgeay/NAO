@@ -5,17 +5,24 @@
 {% endblock %}
 
 {% block naobundle_body %}
-	<script src="{{ asset('js/localisationRecherche.js') }}"></script>
-    {{ form(formRecherche) }} <br>
+
+	<center><p id="pErreur"></p></center>
+    <div>    {{ form_start(formRecherche) }}
+        {{ form_row(formRecherche.espece) }}
+        {{ form_row(formRecherche.rechercher) }} <br/>
+        {{ form_end(formRecherche) }}<br>
+    </div>
+
     <style>
        #map {
         height: 400px;
         width: 80%;
        }
     </style>
+    <div id="countEspece" style="display: none">{{ countEspece }}</div>
 <div id="espece">
     {% if count > 0 %}
-	<table  class="table-responsive" id="tableEspece">
+	<table  class="table-responsive" id="tableEspece" style="display:none">
 			<th>Test espece</th>
             {% for i in 1..count %}
 				<tr>
@@ -25,7 +32,7 @@
 				</tr>
         {% endfor %}
 		</table>
-	<table  class="table-responsive" id="tableLong">
+	<table  class="table-responsive" id="tableLong" style="display:none">
 		<th>Test longitude</th>
         {% for i in 1..count %}
 			<tr>
@@ -35,7 +42,7 @@
 			</tr>
         {% endfor %}
 	</table>
-	<table  class="table-responsive" id="tableLat">
+	<table  class="table-responsive" id="tableLat" style="display:none">
 		<th>Test latitude</th>
         {% for i in 1..count %}
 			<tr>
@@ -44,10 +51,76 @@
 				</td>
 			</tr>
         {% endfor %}
-        {% endif %}
 	</table>
+		<table  class="table-responsive" id="tableComm" style="display:none">
+		<th>Test commentaire</th>
+        {% for i in 1..count %}
+			<tr>
+				<td>
+                    {{ recherche[i-1].commentaire }}
+				</td>
+			</tr>
+        {% endfor %}
+		</table>
+		<table  class="table-responsive" id="tableDate" style="display:none">
+		<th>Test date</th>
+        {% for i in 1..count %}
+			<tr>
+				<td>
+                    {{ recherche[i-1].date|date('d/m/Y') }}
+				</td>
+			</tr>
+        {% endfor %}
+		</table>
+		<table  class="table-responsive" id="tablePhoto" style="display:none">
+		<th>Test photo</th>
+        {% for i in 1..count %}
+			<tr>
+				<td>
+                    {{ recherche[i-1].photo }}
+				</td>
+			</tr>
+        {% endfor %}
+		</table>
+        {% endif %}
 </div>
     <div id="map"></div>
+    <table  class="table-responsive" id="ficheEspece">
+        <th>Fiche technique</th>
+        <tr>
+                <td>
+                    Nom de l'espèce --
+                </td>
+                <td>
+                    {{ ficheEspece[0].a_nomVern }}
+                </td>
+        </tr>
+        <tr>
+                <td>
+                    ordre --
+                </td>
+                <td>
+                    {{ ficheEspece[0].a_ordre }}
+                </td>
+        </tr>
+        <tr>
+            <td>
+                Famille --
+            </td>
+            <td>
+                {{ ficheEspece[0].a_famille }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nom complet (avec auteur) --
+            </td>
+            <td>
+                {{ ficheEspece[0].a_nomComplet }}
+            </td>
+        </tr>
+
+    </table>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

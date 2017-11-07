@@ -10,4 +10,25 @@ namespace Omega\NAOBundle\Repository;
  */
 class TaxrefRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function RecupEspece ($espece)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.nomVern = :espece')
+            ->setParameter('espece', $espece);
+
+        return $qb  ->getQuery()
+            ->getScalarResult();
+
+    }
+    public function countEspece ($espece)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('count(a)')
+            ->where('a.nomVern = :espece')
+            ->setParameter('espece', $espece);
+
+        return $qb  ->getQuery()
+            ->getSingleScalarResult();
+
+    }
 }
