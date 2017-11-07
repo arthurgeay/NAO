@@ -21,7 +21,24 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('OmegaNAOBundle:Default:index.html.twig');
+        $nbCompte = null;
+        $nbObs = null;
+
+        $security = $this->get('security.authorization_checker');
+
+        if($security->isGranted('ROLE_ADMIN'))
+        {
+            $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
+            $nbCompte = $repository->countCompte(); 
+        }
+
+        if($security->isGranted('ROLE_NATURALISTE') OR $security->isGranted('ROLE_ADMIN'))
+        {
+            $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Observations');
+            $nbObs = $repository->countObsNotVerifie();
+        }
+        
+        return $this->render('OmegaNAOBundle:Default:index.html.twig', array('nbCompte' => $nbCompte, 'nbObs' => $nbObs));
     }
 
     /**

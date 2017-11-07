@@ -48,4 +48,17 @@ class ObservationsRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleScalarResult();
 
     }
+
+    public function countObsNotVerifie()
+    {
+    	$qb = $this->createQueryBuilder('o')
+            ->select('count(o)')
+            ->where('o.verifie = :verifie')
+            ->setParameter('verifie', false)
+            ;
+
+        return $qb  ->getQuery()
+            ->getSingleScalarResult();
+
+    }
 }

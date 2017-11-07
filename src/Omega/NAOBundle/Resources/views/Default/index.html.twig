@@ -6,4 +6,18 @@
 
 {% block naobundle_body %}
 	<h1 class="text-center">Hello World!</h1>
+	
+	{% if nbCompte > 0 %}
+	<div class="alert alert-warning">
+		<p>Il y a {{ nbCompte }} compte(s) en attente de modération.</p>
+	</div>
+	{% endif %}
+
+	{% if nbObs > 0 %}
+		<div class="alert alert-info">
+			<p>Il y a {{ nbObs }} observation(s) en attente de modération.</p>
+		</div>
+	{% endif %}
+	
+
 {% endblock %}
