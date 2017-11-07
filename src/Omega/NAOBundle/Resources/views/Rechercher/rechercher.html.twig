@@ -85,7 +85,9 @@
         {% endif %}
 </div>
     <div id="map"></div>
+{% if countEspece > 0 %}
     <table  class="table-responsive" id="ficheEspece">
+
         <th>Fiche technique</th>
         <tr>
                 <td>
@@ -119,8 +121,8 @@
                 {{ ficheEspece[0].a_nomComplet }}
             </td>
         </tr>
-
     </table>
+{% endif %}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
