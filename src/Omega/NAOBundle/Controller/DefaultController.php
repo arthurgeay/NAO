@@ -89,9 +89,17 @@ class DefaultController extends Controller
         $compte->setVerifie(true);
         $compte->setRoles(array('ROLE_NATURALISTE'));
 
+        $emailBody = $this->renderView('OmegaNAOBundle:Default:mailAcceptCompte.html.twig', array('name' => $compte->getUsername()));
+        $subject = "Validation du compte";
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($compte);
         $em->flush();
+
+        
+        $mail = $this->container->get('NAOBundle.mail');
+        $mail->sendMailCompte($emailBody, $compte->getEmail(), $subject);
+
 
         $this->get('session')->getFlashBag()->add('success', 'Le compte a bien été validé en tant que naturaliste.');
 
@@ -108,11 +116,17 @@ class DefaultController extends Controller
             throw new NotFoundHttpException("Le compte n'existe pas");
         }
 
-        $compte->setCompte('particulier');
+        $compte->setCompte('Particulier');
+
+        $emailBody = $this->renderView('OmegaNAOBundle:Default:mailRefusedCompte.html.twig', array('name' => $compte->getUsername()));
+        $subject = "Votre demande a été rejetée";
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($compte);
         $em->flush();
+
+        $mail = $this->container->get('NAOBundle.mail');
+        $mail->sendMailCompte($emailBody, $compte->getEmail(), $subject);
 
         $this->get('session')->getFlashBag()->add('success', 'Le compte a bien été refusé. Le type du compte a été basculé en particulier.');
 
