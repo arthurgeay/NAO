@@ -59,7 +59,7 @@ class DefaultController extends Controller
             $observation->setUtilisateur($user);
 
             $roles = $user->getRoles(); // Si le user est naturaliste
-            if($roles == array('ROLE_NATURALISTE'))
+            if($roles == array('ROLE_NATURALISTE') OR $roles == array('ROLE_ADMIN'))
             {
                 $observation->setVerifie(true); //On valide directement son observation
             }
