@@ -25,4 +25,21 @@ class UtilisateursRepository extends \Doctrine\ORM\EntityRepository
 		 	->getResult()
 		 ;
 	}
+
+	public function countCompte()
+	{
+		$qb = $this->createQueryBuilder('u');
+		$qb
+		 ->select('COUNT(u)')
+		 ->where('u.compte = :compte')
+		 ->setParameter('compte', 'naturaliste')
+		 ->andWhere('u.verifie = :verifie')
+		 ->setParameter('verifie', false)
+		 ;
+
+		 return $qb
+		 		 ->getQuery()
+		 		 ->getSingleScalarResult()
+		 		 ;
+	}
 }

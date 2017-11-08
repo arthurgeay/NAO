@@ -21,7 +21,24 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('OmegaNAOBundle:Default:index.html.twig');
+        $nbCompte = null;
+        $nbObs = null;
+
+        $security = $this->get('security.authorization_checker');
+
+        if($security->isGranted('ROLE_ADMIN'))
+        {
+            $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
+            $nbCompte = $repository->countCompte(); 
+        }
+
+        if($security->isGranted('ROLE_NATURALISTE') OR $security->isGranted('ROLE_ADMIN'))
+        {
+            $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Observations');
+            $nbObs = $repository->countObsNotVerifie();
+        }
+        
+        return $this->render('OmegaNAOBundle:Default:index.html.twig', array('nbCompte' => $nbCompte, 'nbObs' => $nbObs));
     }
 
     /**
@@ -42,7 +59,7 @@ class DefaultController extends Controller
             $observation->setUtilisateur($user);
 
             $roles = $user->getRoles(); // Si le user est naturaliste
-            if($roles == array('ROLE_NATURALISTE'))
+            if($roles == array('ROLE_NATURALISTE') OR $roles == array('ROLE_ADMIN'))
             {
                 $observation->setVerifie(true); //On valide directement son observation
             }

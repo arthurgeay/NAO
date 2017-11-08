@@ -5,5 +5,47 @@
 {% endblock %}
 
 {% block naobundle_body %}
-	<h1 class="text-center">Hello World!</h1>
+	
+	{% if nbCompte > 0 %}
+	<div class="alert alert-warning">
+		<p>Il y a {{ nbCompte }} compte(s) en attente de modération.</p>
+	</div>
+	{% endif %}
+
+	{% if nbObs > 0 %}
+		<div class="alert alert-info">
+			<p>Il y a {{ nbObs }} observation(s) en attente de modération.</p>
+		</div>
+	{% endif %}
+
+	<div class="jumbotron">
+	  <h1 class="display-3 text-center">Bienvenue à tous !</h1>
+	  <hr class="my-4">
+	  <h3>Notre vocation</h3>
+	  <p>L'association Nos Amis les Oiseaux a pour but d'aider à la survie des oiseaux en protégeant leur lieu d'habitat.<br />
+	  	Sur le site vous pourrez <strong>consulter</strong> les lieux d'habitats des différentes espèces mais aussi <strong>devenir acteur</strong> de notre programme de recherche en saissisant les informations relatives à l'espèce que vous observez. <p/>
+	  	<p>Pour cela rien de plus simple, il suffit de créer un compte en cliquant sur le bouton "Participer".</p>
+		
+			<div class="center-block text-center">
+		    	<a href="{{ path('recherche')}}"><button class="btn btn-info btn-lg">Rechercher</button></a>
+
+		    	<a href="{{ path('inscription')}}"><button class="btn btn-info btn-lg">Participer</button></a>
+		  </div>
+		
+		<hr> 
+		<h3>S'inscrire à la newsletter</h3>
+        <form action="">
+          <div class="form-group row ">
+          	<div class="col-md-6">
+            	<input class="form-control" type="email" placeholder="Adresse e-mail" />
+        	</div>
+          </div>
+          <div class="form-group">
+            <input class="btn btn-success" type="submit" value="S'inscrire" />
+          </div>
+        </div>
+      </form>
+	</div>
+	
+
 {% endblock %}
