@@ -233,8 +233,8 @@ class DefaultController extends Controller
             $em->persist($inscription);
             $em->flush();
 
-            $mailerService = $this->container->get('NAOBundle.mail');
-            $mailerService->getMailService($emailBody, $inscription->getEmail(), $subject);
+            $mailerService = $this->container->get('NAOBundle.mailInscription');
+            $mailerService->getMailService($emailBody, $inscription->getEmail());
         }
 
         return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView()));
