@@ -32,15 +32,35 @@
             <a class="nav-link" href="{{ path('omega_nao_homepage') }}">Accueil <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ path('recherche') }}">Rechercher une espèce</a>
+          </li>
+
+          {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+          <li class="nav-item">
             <a class="nav-link" href="{{ path('omega_nao_add_observation') }}">Saisir une observation</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Se connecter</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
-              <a class="dropdown-item" href="{{ path('inscription') }}">Inscription</a>
-            </div>
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bonjour, {{ app.user.username }}</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_NATURALISTE') %}
+                  <a class="dropdown-item" href="{{ path('omega_nao_moderation_observation') }}">Modération des observations</a>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                  <a class="dropdown-item" href="{{ path('omega_nao_moderation_compte') }}">Modération des comptes</a>
+                {% endif %}
+                <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
+              </div>
           </li>
+            {% else %}
+            <li class="nav item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Se connecter</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
+                <a class="dropdown-item" href="{{ path('inscription') }}">Inscription</a>
+              </div>
+            </li>
+          {% endif %}
+
         </ul>
       </div>
     </nav>
