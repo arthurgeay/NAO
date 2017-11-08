@@ -233,8 +233,8 @@ class DefaultController extends Controller
             $em->persist($inscription);
             $em->flush();
 
-            $mailerService = $this->container->get('NAOBundle.mail');
-            $mailerService->getMailService($emailBody, $inscription->getEmail(), $subject);
+            $mailerService = $this->container->get('NAOBundle.mailInscription');
+            $mailerService->getMailService($emailBody, $inscription->getEmail());
         }
 
         return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView()));
@@ -248,6 +248,7 @@ class DefaultController extends Controller
         $ficheEspece = null;
         $count = 0;
         $countEspeces = 0;
+        $noms = $this->get('omega_nao.datataxref')->getData(); // On récupère les données pour l'autocomplétion
 
         if ($request->isMethod('POST') && $formRecherche->handleRequest($request)->isValid())
         {
@@ -258,9 +259,9 @@ class DefaultController extends Controller
             $ficheEspece = $em->getRepository('OmegaNAOBundle:Taxref')->RecupEspece($espece);
             $countEspece = $em->getRepository('OmegaNAOBundle:Taxref')->countEspece($espece);
             $countEspeces = (int) $countEspece;
-
         }
+
         return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche,
-                                                                                            'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces));
+                                                                                            'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces, 'noms' => $noms));
     }
 }

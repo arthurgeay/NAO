@@ -20,3 +20,6 @@ services:
         tags:
             - { name: validator.constraint_validator, alias: omega_nao_espece }
 
+    NAOBundle.mailInscription :
+            class: Omega\NAOBundle\Services\MailServiceInscription
+
