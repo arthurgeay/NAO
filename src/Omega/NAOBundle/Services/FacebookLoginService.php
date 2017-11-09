@@ -13,50 +13,27 @@ use Facebook\FacebookRequest;
 
 class FacebookLoginService
 {
-    private $appId;
-    private $appSecret;
-
-
-        function connect($redirect_url)
+        function getConnect($page)
         {
-            //v4.X//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-           /* FacebookSession::setDefaultApplication($this->appId, $this->appSecret);
-            $helper = new FacebookRedirectLoginHelper($redirect_url);
-            if(isset($_SESSION) && isset($_SESSION['fb_token'])){
-                $session = new FacebookSession($_SESSION['fb_token']);
-            }else{
-                $session = $helper->getSessionFromRedirect();
-            }
-            if($session){
-                try{
-                    $_SESSION['fb_token'] = $session->getToken();
-                    $request = new FacebookRequest($session, 'GET', '/me');
-                    $profile = $request->execute()->getGraphObject('Facebook\GraphUser');
-                    if($profile->getEmail() === null){
-                        throw new \Exception('L\'email n\'est pas disponible');
-                    }
-                    return $profile;
-                }catch (\Exception $e){
-                    unset($_SESSION['fb_token']);
-                    return $helper->getReRequestUrl(['email']);
-                }
-            }else{
-                return $helper->getLoginUrl(['email']);
-            }*/
-
+            $pageCourante = $page;
             //v5.X//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             $fb = new Facebook([
                 'app_id' =>  '164427444154033',
                 'app_secret' =>'d50ce35719164703e0941dc134283aed',
-                'default_graph_version' => 'v2.2',
+                'default_graph_version' => 'v2.4',
             ]);
 
             $helper = $fb->getRedirectLoginHelper();
 
-            try {
+            if (isset($_GET['state'])) {
+                $helper->getPersistentDataHandler()->set('state', $_GET['state']);
+            }
+
+           try {
                 $accessToken = $helper->getAccessToken();
+
             } catch(FacebookResponseException $e) {
                 // When Graph returns an error
                 echo 'Graph returned an error: ' . $e->getMessage();
@@ -114,8 +91,33 @@ class FacebookLoginService
 
             $_SESSION['fb_access_token'] = (string) $accessToken;
 
+            try {
+                // Returns a `Facebook\FacebookResponse` object
+                $response = $fb->get('/me?fields=id,name,email', $accessToken);
+            } catch(FacebookResponseException $e) {
+                echo 'Graph returned an error: ' . $e->getMessage();
+                exit;
+            } catch(FacebookSDKException $e) {
+                echo 'Facebook SDK returned an error: ' . $e->getMessage();
+                exit;
+            }
+
+            $user = $response->getGraphUser();
+
+           var_dump($user);
+
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
 //header('Location: https://example.com/members.php');
+
+            if ($pageCourante == "inscription")
+            {
+                echo 'page inscription !!';
+
+            }
+            elseif ($pageCourante == "connexion")
+            {
+                echo 'page connexion !!';
+            }
         }
 }

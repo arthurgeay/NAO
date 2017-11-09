@@ -59,6 +59,20 @@ class Utilisateurs implements UserInterface
      private $compte;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=100)
+     */
+    private $facebookId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="google", type="string", length=100)
+     */
+    private $googleId;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="verifie", type="boolean")
@@ -284,5 +298,37 @@ class Utilisateurs implements UserInterface
     public function getCompte()
     {
         return $this->compte;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param string $facebookId
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param string $googleId
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
     }
 }

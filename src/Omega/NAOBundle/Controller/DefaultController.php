@@ -2,7 +2,9 @@
 
 namespace Omega\NAOBundle\Controller;
 
+use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Facebook;
+use Facebook\FacebookSDKException;
 use Omega\NAOBundle\Entity\Utilisateurs;
 use Omega\NAOBundle\Form\RechercheType;
 use Omega\NAOBundle\Services\FacebookLoginService;
@@ -226,13 +228,13 @@ class DefaultController extends Controller
         $formInscription = $this->get('form.factory')->create(UtilisateursType::class, $inscription);
         $em = $this->getDoctrine()->getManager();
 
-        //Facebook inscription
-
-        //v.5.x  //////////////////////////////////////////////////////////////////////////
+        //Facebook inscription//////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //v.5.x  ///////////////////////////////////////////////////////////////////////////////////////////////////////
         $fb = new Facebook([
             'app_id' => '164427444154033', // Replace {app-id} with your app id
             'app_secret' => 'd50ce35719164703e0941dc134283aed',
-            'default_graph_version' => 'v2.2',
+            'default_graph_version' => 'v2.4',
         ]);
 
         $helper = $fb->getRedirectLoginHelper();
@@ -242,23 +244,11 @@ class DefaultController extends Controller
 
         echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
 
-
-        //v.4.x  //////////////////////////////////////////////////////////////////////////
-       /* $appId = '164427444154033';
-        $appSecret = 'd50ce35719164703e0941dc134283aed';
-        $connect = new FacebookLoginService($appId, $appSecret);
         $user = $this->container->get('NAOBundle.FacebookLogin');
-        $user = $connect->connect('http://localhost/NAO/web/app_dev.php/');
-        session_start();
+        $user->getConnect('inscription');
 
-        if(is_string($user))
-        {
-            echo "<a href='$user'> se connecter avec Facebook</a>";
-        }
-        else
-        {
-          var_dump($user);
-        }*/
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         if ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
         {
