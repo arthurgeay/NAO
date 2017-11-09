@@ -6,6 +6,8 @@ use Omega\NAOBundle\Entity\Utilisateurs;
 use Omega\NAOBundle\Form\RechercheType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Omega\NAOBundle\Entity\Observations;
 use Omega\NAOBundle\Form\ObservationsType;
@@ -255,6 +257,45 @@ class DefaultController extends Controller
         }
 
         return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView()));
+    }
+
+    public function inscriptionGoogleAction(Request $request)
+    {
+
+        if($request->isXMLHttpRequest())
+        {
+            $lastname = $request->get('lastname');
+            $firstname = $request->get('firstname');
+            $email = $request->get('email');
+            $idToken = $request->get('idtoken');
+
+            $username = $lastname.''.$firstname;
+            $password = uniqid();
+
+            $inscription = new Utilisateurs();
+            $inscription->setNom($lastname)
+                        ->setUsername($username)
+                        ->setEmail($email)
+                        ->setPassword($password)
+                        ->setCompte('particulier')
+                        ->setRoles(array('ROLE_PARTICULIER'))
+                        ->setSalt('')
+                        ->setGoogleId($idToken)
+            ;
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($inscription);
+            $em->flush();
+
+            $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
+            $subject = 'Votre compte a bien été enregistré';
+            $mailerService = $this->container->get('NAOBundle.mailInscription');
+            $mailerService->getMailService($emailBody, $email);
+
+            return $this->redirectToRoute('omega_nao_homepage');
+
+        }
+
+        return new Response('Erreur ce n\'est pas une requête Ajax', 400);
     }
 
     public function rechercheAction (Request $request)

@@ -9,7 +9,12 @@ omega_nao_add_observation:
 inscription:
     path:     /inscription
     defaults: { _controller: OmegaNAOBundle:Default:inscription }
-    
+
+omega_nao_inscription_google:
+    path: /inscription/google
+    defaults: { _controller: OmegaNAOBundle:Default:inscriptionGoogle }
+    methods: [post]
+
 omega_nao_moderation_compte:
     path: /moderation-compte
     defaults: { _controller: OmegaNAOBundle:Default:moderationCompte }

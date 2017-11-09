@@ -25,8 +25,15 @@ class Utilisateurs implements UserInterface
 
     /**
      * @var string
+     * 
+     * @ORM\Column(name="googleid", type="string", nullable=true)
+     */
+    private $googleId;
+
+    /**
+     * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=100, unique=true)
+     * @ORM\Column(name="nom", type="string", length=100)
      */
     private $nom;
 
@@ -284,5 +291,29 @@ class Utilisateurs implements UserInterface
     public function getCompte()
     {
         return $this->compte;
+    }
+
+    /**
+     * Set googleId
+     *
+     * @param string $googleId
+     *
+     * @return Utilisateurs
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
     }
 }
