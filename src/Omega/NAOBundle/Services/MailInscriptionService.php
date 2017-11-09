@@ -3,9 +3,9 @@
 namespace Omega\NAOBundle\Services;
 
 
-class MailServiceInscription
+class MailInscriptionService
 {
-    public function getMailService($bodyEmail, $mail)
+    public function getMailInscriptionService($bodyEmail, $mail)
     {
         $transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
             ->setUsername('geteolastpiece')

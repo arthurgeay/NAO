@@ -2,8 +2,10 @@
 
 namespace Omega\NAOBundle\Controller;
 
+use Facebook\Facebook;
 use Omega\NAOBundle\Entity\Utilisateurs;
 use Omega\NAOBundle\Form\RechercheType;
+use Omega\NAOBundle\Services\FacebookLoginService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -224,6 +226,40 @@ class DefaultController extends Controller
         $formInscription = $this->get('form.factory')->create(UtilisateursType::class, $inscription);
         $em = $this->getDoctrine()->getManager();
 
+        //Facebook inscription
+
+        //v.5.x  //////////////////////////////////////////////////////////////////////////
+        $fb = new Facebook([
+            'app_id' => '164427444154033', // Replace {app-id} with your app id
+            'app_secret' => 'd50ce35719164703e0941dc134283aed',
+            'default_graph_version' => 'v2.2',
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+
+        $permissions = ['email']; // Optional permissions
+        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/inscription', $permissions);
+
+        echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+
+
+        //v.4.x  //////////////////////////////////////////////////////////////////////////
+       /* $appId = '164427444154033';
+        $appSecret = 'd50ce35719164703e0941dc134283aed';
+        $connect = new FacebookLoginService($appId, $appSecret);
+        $user = $this->container->get('NAOBundle.FacebookLogin');
+        $user = $connect->connect('http://localhost/NAO/web/app_dev.php/');
+        session_start();
+
+        if(is_string($user))
+        {
+            echo "<a href='$user'> se connecter avec Facebook</a>";
+        }
+        else
+        {
+          var_dump($user);
+        }*/
+
         if ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
         {
             $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
@@ -234,7 +270,7 @@ class DefaultController extends Controller
             $em->flush();
 
             $mailerService = $this->container->get('NAOBundle.mailInscription');
-            $mailerService->getMailService($emailBody, $inscription->getEmail());
+            $mailerService->getMailInscriptionService($emailBody, $inscription->getEmail());
         }
 
         return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView()));
