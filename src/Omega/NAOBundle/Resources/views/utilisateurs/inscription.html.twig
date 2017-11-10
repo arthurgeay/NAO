@@ -40,10 +40,11 @@
             $.ajax({
            type: 'post',
            url: '{{ path('omega_nao_inscription_google')}}',
-           data: {idtoken: id_token, lastname: lastname, firstname: firstname, email: email}
+           data: {idtoken: id_token, lastname: lastname, firstname: firstname, email: email},
+           complete: function(resultat, statut){
+            document.location.href="{{ path('login') }}";
+           }
             });
-
-            document.location.href="{{ path('login')}}";
         }
     </script>
     <script>
