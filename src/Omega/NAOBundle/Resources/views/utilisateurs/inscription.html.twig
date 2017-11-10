@@ -35,38 +35,9 @@
     {{ parent() }}
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
-        function sendData(id_token, lastname, firstname, email)
-        {
-            $.ajax({
-           type: 'post',
-           url: '{{ path('omega_nao_inscription_google')}}',
-           data: {idtoken: id_token, lastname: lastname, firstname: firstname, email: email},
-           complete: function(resultat, statut){
-            document.location.href="{{ path('login') }}";
-           }
-            });
-        }
+    var path = '{{ path('omega_nao_inscription_google') }}';
+    var login = '{{ path('login') }}';
     </script>
-    <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-
-        var lastname = profile.getFamilyName();
-        var firstname = profile.getGivenName();
-        var email = profile.getEmail();
-        
-        sendData(id_token, lastname, firstname, email);
-      };
-    </script>
+    <script src="{{ asset('js/sendData.js') }}"></script>
+    <script src="{{ asset('js/googleAccount.js') }}"></script>
 {% endblock %}
