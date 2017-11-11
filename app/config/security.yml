@@ -20,6 +20,11 @@ security:
                 class:    Omega\NAOBundle\Entity\Utilisateurs
                 property: username
 
+        api:
+            entity:
+                class: Omega\NAOBundle\Entity\Utilisateurs
+                property: googleId
+
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -35,6 +40,10 @@ security:
             logout:
                 path:   logout
                 target: login
+
+            guard:
+                authenticators: 
+                    - omega_nao.authenticator
 
     access_control:
         - { path: ^/moderation-observation, roles: ROLE_NATURALISTE }

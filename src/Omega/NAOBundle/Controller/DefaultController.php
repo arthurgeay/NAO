@@ -267,7 +267,7 @@ class DefaultController extends Controller
             $lastname = $request->get('lastname');
             $firstname = $request->get('firstname');
             $email = $request->get('email');
-            $idToken = $request->get('idtoken');
+            $googleId = $request->get('id');
 
             $username = $lastname.''.$firstname;
             $password = uniqid();
@@ -280,7 +280,7 @@ class DefaultController extends Controller
                         ->setCompte('particulier')
                         ->setRoles(array('ROLE_PARTICULIER'))
                         ->setSalt('')
-                        ->setGoogleId($idToken)
+                        ->setGoogleId($googleId)
             ;
             $em = $this->getDoctrine()->getManager();
             $em->persist($inscription);

@@ -23,3 +23,8 @@ services:
     NAOBundle.mailInscription :
             class: Omega\NAOBundle\Services\MailServiceInscription
 
+    omega_nao.authenticator:
+        class: Omega\NAOBundle\Security\TokenAuthenticator
+        arguments:
+            - "@doctrine.orm.entity_manager"
+
