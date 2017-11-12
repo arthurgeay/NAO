@@ -27,4 +27,5 @@ services:
         class: Omega\NAOBundle\Security\TokenAuthenticator
         arguments:
             - "@doctrine.orm.entity_manager"
+            - "@router"
 

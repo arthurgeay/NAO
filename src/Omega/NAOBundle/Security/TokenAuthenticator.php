@@ -11,6 +11,8 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class TokenAuthenticator extends AbstractGuardAuthenticator
 {
@@ -21,10 +23,12 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      */
     
     private $em;
+    private $router;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, RouterInterface $router)
     {
         $this->em = $em;
+        $this->router = $router;
     }
 
     public function getCredentials(Request $request)
@@ -58,14 +62,9 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $data = array(
-            'message' => strtr($exception->getMessageKey(), $exception->getMessageData())
+        $url = $this->router->generate('inscription');
 
-            // or to translate this message
-            // $this->translator->trans($exception->getMessageKey(), $exception->getMessageData())
-        );
-
-        return new JsonResponse($data, Response::HTTP_FORBIDDEN);
+        return new RedirectResponse($url);
     }
 
     /**
