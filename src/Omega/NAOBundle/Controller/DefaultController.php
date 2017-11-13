@@ -322,4 +322,34 @@ class DefaultController extends Controller
         return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche,
                                                                                             'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces, 'noms' => $noms));
     }
+
+    /**
+     * @Security("has_role('ROLE_PARTICULIER')")
+     */
+    public function profilAction()
+    {
+        $user = $this->getUser();
+        $id = $user->getId();
+        $username = $user->getUsername();
+        $email = $user->getEmail();
+        $compte = $user->getCompte();
+
+        return $this->render('OmegaNAOBundle:utilisateurs:profil.html.twig', array('username' => $username, 'email' => $email, 'compte' => $compte, 'id' => $id));
+    }
+
+    public function changerTypeCompteAction($id)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
+        $utilisateur = $repository->find($id);
+
+        $utilisateur->setCompte('naturaliste');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($utilisateur);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('infoCompte', "Votre demande de changement de type de compte a été pris en compte. Votre recevrez très prochainement une réponse concernant votre demande. ");           
+
+        return $this->redirectToRoute('omega_nao_profile');
+    }
 }

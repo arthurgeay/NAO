@@ -51,3 +51,14 @@ recherche:
     path:     /recherche
     defaults: { _controller: OmegaNAOBundle:Default:recherche }
 
+
+omega_nao_profile:
+    path: /profil
+    defaults: {_controller: OmegaNAOBundle:Default:profil }
+
+omega_nao_changement_compte:
+    path: /changement-compte-{id}
+    defaults: { _controller: OmegaNAOBundle:Default:changerTypeCompte }
+    requirements:
+        id: \d+
+

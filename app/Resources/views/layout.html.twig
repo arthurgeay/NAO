@@ -45,6 +45,7 @@
                 {% if is_granted('ROLE_ADMIN') %}
                   <a class="dropdown-item" href="{{ path('omega_nao_moderation_compte') }}">Modération des comptes</a>
                 {% endif %}
+                <a class="dropdown-item" href="{{ path('omega_nao_profile') }}">Mon profil</a>
                 <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
               </div>
             </li>
