@@ -22,10 +22,14 @@ omega_nao_moderation_compte:
 omega_nao_accept_compte:
     path: /moderation-compte/accept-{id}
     defaults: { _controller: OmegaNAOBundle:Default:acceptCompte }
+    requirements:
+        id: \d+
 
 omega_nao_refused_compte:
     path: /moderation-compte/refused-{id}
     defaults: { _controller: OmegaNAOBundle:Default:refusedCompte }
+    requirements:
+        id: \d+
 
 omega_nao_moderation_observation:
     path: /moderation-observation
@@ -34,10 +38,14 @@ omega_nao_moderation_observation:
 omega_nao_accept_observation:
     path: /moderation-observation/accept-{id}
     defaults: { _controller: OmegaNAOBundle:Default:acceptObs }
+    requirements:
+        id: \d+
 
 omega_nao_delete_observation:
     path: /moderation-observation/delete-{id}
     defaults: { _controller: OmegaNAOBundle:Default:deleteObs }
+    requirements:
+        id: \d+
 
 recherche:
     path:     /recherche
