@@ -1,12 +1,12 @@
 services:
 
     omega_nao.datataxref:
-        class: Omega\NAOBundle\DataAutoComplete\DataTaxref
+        class: Omega\NAOBundle\Services\DataTaxrefService
         arguments:
             - "@doctrine.orm.entity_manager"
 
     omega_nao.upload:
-        class: Omega\NAOBundle\UploadedFile\UploadedPhotos
+        class: Omega\NAOBundle\Services\UploadedPhotosService
         arguments:
             $targetDir: '%img_directory%'
 
@@ -24,7 +24,7 @@ services:
             class: Omega\NAOBundle\Services\MailServiceInscription
 
     omega_nao.authenticator:
-        class: Omega\NAOBundle\Security\TokenAuthenticator
+        class: Omega\NAOBundle\Services\TokenAuthenticatorService
         arguments:
             - "@doctrine.orm.entity_manager"
             - "@router"

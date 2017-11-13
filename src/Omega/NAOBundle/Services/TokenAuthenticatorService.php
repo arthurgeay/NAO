@@ -1,6 +1,6 @@
 <?php
 
-namespace Omega\NAOBundle\Security;
+namespace Omega\NAOBundle\Services;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,7 +14,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class TokenAuthenticator extends AbstractGuardAuthenticator
+class TokenAuthenticatorService extends AbstractGuardAuthenticator
 {
     /**
      * Called on every request. Return whatever credentials you want to

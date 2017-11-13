@@ -1,9 +1,9 @@
 <?php
 
-namespace Omega\NAOBundle\DataAutoComplete;
+namespace Omega\NAOBundle\Services;
 use Doctrine\ORM\EntityManager;
 
-class DataTaxref
+class DataTaxrefService
 {
 	protected $em;
 
