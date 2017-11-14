@@ -1,7 +1,6 @@
-body {
-  padding-top: 5rem;
+.container {
+	padding-top: 2rem;
 }
-
 #map {
 	height: 350px;
 }
