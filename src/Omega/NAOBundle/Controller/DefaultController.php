@@ -21,6 +21,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 
+
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -207,6 +208,27 @@ class DefaultController extends Controller
 
     public function loginAction(Request $request)
     {
+        //Facebook inscription//////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //v.5.x  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        $fb = new Facebook([
+            'app_id' => '164427444154033', // Replace {app-id} with your app id
+            'app_secret' => 'd50ce35719164703e0941dc134283aed',
+            'default_graph_version' => 'v2.4',
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+
+        $permissions = ['email']; // Optional permissions
+        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/login', $permissions);
+
+        echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+        if ($request->query->get('code'))
+        {
+            $user = $this->container->get('NAOBundle.FacebookLogin');
+            $user->getConnect('connexion');
+        }
+
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('omega_nao_homepage');
@@ -243,10 +265,12 @@ class DefaultController extends Controller
         $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/inscription', $permissions);
 
         echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+        if ($request->query->get('code'))
+        {
+            $user = $this->container->get('NAOBundle.FacebookLogin');
+            $user->getConnect('inscription');
 
-        $user = $this->container->get('NAOBundle.FacebookLogin');
-        $user->getConnect('inscription');
-
+        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -61,14 +61,14 @@ class Utilisateurs implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="facebookId", type="string", length=100, nullable=true)
+     * @ORM\Column(name="facebook", type="string", length=100, nullable=true)
      */
     private $facebookId;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="googleId", type="string", length=100, nullable=true)
+     * @ORM\Column(name="google", type="string", length=100, nullable=true)
      */
     private $googleId;
 
@@ -301,8 +301,6 @@ class Utilisateurs implements UserInterface
     }
 
     /**
-     * Get facebookId
-     *
      * @return string
      */
     public function getFacebookId()

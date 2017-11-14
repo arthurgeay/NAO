@@ -2,17 +2,31 @@
 
 namespace Omega\NAOBundle\Services;
 
+use Omega\NAOBundle\Entity\Utilisateurs;
+
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
-
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
 class FacebookLoginService
 {
+    private $em;
+    private $router;
+
+        public function __construct (EntityManager $em, RouterInterface $router)
+        {
+            $this->em = $em;
+            $this->router = $router;
+        }
+
         function getConnect($page)
         {
 
@@ -110,14 +124,23 @@ class FacebookLoginService
 // You can redirect them to a members-only page.
 //header('Location: https://example.com/members.php');
 
+
             if ($pageCourante == "inscription")
             {
-                echo 'page inscription !!';
+                $inscription = new Utilisateurs();
+                $inscription->setEmail($user->getEmail());
+                $inscription->setCompte('particulier');
+                $inscription->setUsername($user->getName());
+                $inscription->setNom($user->getName());
+                $inscription->setPassword('123456789');
+                $inscription->setFacebookId($user->getId());
+                $inscription->setSalt('');
+                $inscription->setRoles(array('ROLE_PARTICULIER'));
+                $this->em->persist($inscription);
+                $this->em->flush();
 
-            }
-            elseif ($pageCourante == "connexion")
-            {
-                echo 'page connexion !!';
+                //marche pas
+                return new RedirectResponse($this->router->generate('login'));
             }
         }
 }

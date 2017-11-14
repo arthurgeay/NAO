@@ -25,4 +25,12 @@ services:
 
     NAOBundle.FacebookLogin :
             class: Omega\NAOBundle\Services\FacebookLoginService
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@router"
 
+    NAOBundle.authenticatorFB:
+            class: Omega\NAOBundle\Facebook\TokenAuthenticatorFBService
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@router"
