@@ -1,5 +1,11 @@
 {% extends "OmegaNAOBundle::layout.html.twig" %}
 
+{% block head %}
+    {{ parent() }}
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="245954021654-njn5rgupo32u6qnn9c86ae2nejhqq9ho.apps.googleusercontent.com">
+{% endblock %}
+
 {% block title %}
 	Accueil - {{ parent() }}
 {% endblock %}
@@ -26,5 +32,17 @@ document.location.href = 'http://localhost/NAO/web/app_dev.php/login'+'?fb='+fb;
 		<br />
 		<input type="submit" value="Connexion" />
 	</form>
-	<a href="{{ url }}">FACEBOOK</a>
+
+
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <a href="{{ url }}">FACEBOOK</a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+    var path = '{{ path('login') }}';
+    </script>
+    <script src="{{ asset('js/googleConnect.js') }}"></script>
 {% endblock %}

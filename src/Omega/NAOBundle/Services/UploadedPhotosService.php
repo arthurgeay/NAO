@@ -1,10 +1,10 @@
 <?php
 
-namespace Omega\NAOBundle\UploadedFile;
+namespace Omega\NAOBundle\Services;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Omega\NAOBundle\Entity\Observations;
 
-class UploadedPhotos
+class UploadedPhotosService
 {
 	private $targetDir;
 

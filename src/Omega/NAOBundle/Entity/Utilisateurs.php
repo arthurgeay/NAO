@@ -25,8 +25,15 @@ class Utilisateurs implements UserInterface
 
     /**
      * @var string
+     * 
+     * @ORM\Column(name="googleid", type="string", nullable=true)
+     */
+    private $googleId;
+
+    /**
+     * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=100, unique=true)
+     * @ORM\Column(name="nom", type="string", length=100)
      */
     private $nom;
 
@@ -64,13 +71,6 @@ class Utilisateurs implements UserInterface
      * @ORM\Column(name="facebookId", type="string", length=100, nullable=true)
      */
     private $facebookId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="googleId", type="string", length=100, nullable=true)
-     */
-    private $googleId;
 
     /**
      * @var bool
@@ -301,6 +301,20 @@ class Utilisateurs implements UserInterface
     }
 
     /**
+     * Set googleId
+     *
+     * @param string $googleId
+     *
+     * @return Utilisateurs
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    /**
      * Get facebookId
      *
      * @return string
@@ -326,11 +340,4 @@ class Utilisateurs implements UserInterface
         return $this->googleId;
     }
 
-    /**
-     * @param string $googleId
-     */
-    public function setGoogleId($googleId)
-    {
-        $this->googleId = $googleId;
-    }
 }

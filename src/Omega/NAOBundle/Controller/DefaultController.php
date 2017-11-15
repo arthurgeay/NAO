@@ -10,6 +10,8 @@ use Omega\NAOBundle\Form\RechercheType;
 use Omega\NAOBundle\Services\FacebookLoginService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Omega\NAOBundle\Entity\Observations;
 use Omega\NAOBundle\Form\ObservationsType;
@@ -321,6 +323,45 @@ class DefaultController extends Controller
         return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView(), 'url' =>$urlFB));
     }
 
+    public function inscriptionGoogleAction(Request $request)
+    {
+
+        if($request->isXMLHttpRequest())
+        {
+            $lastname = $request->get('lastname');
+            $firstname = $request->get('firstname');
+            $email = $request->get('email');
+            $googleId = $request->get('id');
+
+            $username = $lastname.''.$firstname;
+            $password = uniqid();
+
+            $inscription = new Utilisateurs();
+            $inscription->setNom($lastname)
+                        ->setUsername($username)
+                        ->setEmail($email)
+                        ->setPassword($password)
+                        ->setCompte('particulier')
+                        ->setRoles(array('ROLE_PARTICULIER'))
+                        ->setSalt('')
+                        ->setGoogleId($googleId)
+            ;
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($inscription);
+            $em->flush();
+
+            $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
+            $subject = 'Votre compte a bien été enregistré';
+            $mailerService = $this->container->get('NAOBundle.mailInscription');
+            $mailerService->getMailService($emailBody, $email);
+
+            return $this->redirectToRoute('omega_nao_homepage');
+
+        }
+
+        return new Response('Erreur ce n\'est pas une requête Ajax', 400);
+    }
+
     public function rechercheAction (Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -345,6 +386,36 @@ class DefaultController extends Controller
         return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche,
                                                                                             'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces, 'noms' => $noms));
     }
+
+
+    /**
+     * @Security("has_role('ROLE_PARTICULIER')")
+     */
+    public function profilAction()
+    {
+        $user = $this->getUser();
+        $id = $user->getId();
+        $username = $user->getUsername();
+        $email = $user->getEmail();
+        $compte = $user->getCompte();
+
+        return $this->render('OmegaNAOBundle:utilisateurs:profil.html.twig', array('username' => $username, 'email' => $email, 'compte' => $compte, 'id' => $id));
+    }
+
+    public function changerTypeCompteAction($id)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
+        $utilisateur = $repository->find($id);
+
+        $utilisateur->setCompte('naturaliste');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($utilisateur);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('infoCompte', "Votre demande de changement de type de compte a été pris en compte. Votre recevrez très prochainement une réponse concernant votre demande. ");           
+
+        return $this->redirectToRoute('omega_nao_profile');
 
     public function authentificationFB ()
     {

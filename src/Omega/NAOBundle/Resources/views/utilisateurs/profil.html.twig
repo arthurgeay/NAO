@@ -1,0 +1,31 @@
+{% extends "OmegaNAOBundle::layout.html.twig" %}
+
+{% block title %}
+	Votre profil - {{ parent() }}
+{% endblock %}
+
+{% block naobundle_body %}
+	<h1>Profil de {{ username }}</h1>
+	<hr>
+
+	{% if app.session.flashBag.has('infoCompte') %}
+		<div class="alert alert-success">
+			{% for message in app.session.flashbag.get('infoCompte') %}
+		        <p>{{ message }}</p>
+		    {% endfor %}
+	    </div>
+  {% endif %}
+
+	<h3>Vos informations</h3>
+	<ul>
+		<li>Email: {{ email }}</li>
+		<li>Type de compte : {{ compte }} </li>
+	</ul>
+	
+	{% if compte == 'particulier' %}
+		<hr>
+		<h3>Changer son type de compte</h3>
+		<a href="{{ path('omega_nao_changement_compte', {id: id}) }}" class="btn btn-primary">Je veux avoir un compte naturaliste</a>
+    {% endif %}
+
+{% endblock %}

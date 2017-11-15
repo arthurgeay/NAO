@@ -1,12 +1,12 @@
 services:
 
     omega_nao.datataxref:
-        class: Omega\NAOBundle\DataAutoComplete\DataTaxref
+        class: Omega\NAOBundle\Services\DataTaxrefService
         arguments:
             - "@doctrine.orm.entity_manager"
 
     omega_nao.upload:
-        class: Omega\NAOBundle\UploadedFile\UploadedPhotos
+        class: Omega\NAOBundle\Services\UploadedPhotosService
         arguments:
             $targetDir: '%img_directory%'
 
@@ -23,6 +23,13 @@ services:
     NAOBundle.mailInscription :
             class: Omega\NAOBundle\Services\MailInscriptionService
 
+
+    omega_nao.authenticator:
+        class: Omega\NAOBundle\Services\TokenAuthenticatorService
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@router"
+
     NAOBundle.FacebookLogin :
             class: Omega\NAOBundle\Services\FacebookLoginService
             arguments:
@@ -34,3 +41,4 @@ services:
             arguments:
                 - "@doctrine.orm.entity_manager"
                 - "@router"
+
