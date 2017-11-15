@@ -25,4 +25,14 @@ class UtilisateursRepository extends \Doctrine\ORM\EntityRepository
 		 	->getResult()
 		 ;
 	}
+
+    public function countCompte ()
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('count(a)');
+
+        return $qb  ->getQuery()
+            ->getSingleScalarResult();
+
+    }
 }

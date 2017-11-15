@@ -2,6 +2,9 @@
 
     namespace Omega\NAOBundle\Facebook;
 
+    use Facebook\Exceptions\FacebookResponseException;
+    use Facebook\Exceptions\FacebookSDKException;
+    use Facebook\Facebook;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\HttpFoundation\Response;
@@ -25,12 +28,11 @@ class TokenAuthenticatorFBService extends AbstractGuardAuthenticator
         $this->router = $router;
     }
 
-
-
     public function getCredentials(Request $request)
     {
-        return $request->query->get('code');
+        return $request->query->get( 'fb');
     }
+
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $user = $this->em->getRepository('OmegaNAOBundle:Utilisateurs')
@@ -38,24 +40,32 @@ class TokenAuthenticatorFBService extends AbstractGuardAuthenticator
 
         return $user;
     }
+
     public function checkCredentials($credentials, UserInterface $user)
     {
         if($user->getFacebookId() == $credentials)
         {
             return true;
         }
-        throw new AuthenticationException('Les identifiants sont incorrects');
+        else
+        {
+            echo 'Les identifiants sont incorrects';
+        }
+       // throw new AuthenticationException('Les identifiants sont incorrects');
     }
+
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         // on success, let the request continue
         return null;
     }
+
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
         $url = $this->router->generate('inscription');
         return new RedirectResponse($url);
     }
+
     /**
      * Called when authentication is needed, but it's not sent
      */
@@ -67,6 +77,7 @@ class TokenAuthenticatorFBService extends AbstractGuardAuthenticator
         );
         return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
     }
+
     public function supportsRememberMe()
     {
         return false;

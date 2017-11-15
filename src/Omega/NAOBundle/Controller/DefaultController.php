@@ -26,6 +26,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+
         return $this->render('OmegaNAOBundle:Default:index.html.twig');
     }
 
@@ -226,7 +227,16 @@ class DefaultController extends Controller
         if ($request->query->get('code'))
         {
             $user = $this->container->get('NAOBundle.FacebookLogin');
-            $user->getConnect('connexion');
+            $varibaleFB = $user->getConnect('connexion');
+
+            var_dump($varibaleFB);
+            $request->query->set('code', $varibaleFB);
+            $authenticationUtils = $this->get('security.authentication_utils');
+
+            return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
+                'id' => $varibaleFB, 'last_username' => $authenticationUtils->getLastUsername(),
+            'error'         => $authenticationUtils->getLastAuthenticationError()));
+
         }
 
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
@@ -270,7 +280,12 @@ class DefaultController extends Controller
             $user = $this->container->get('NAOBundle.FacebookLogin');
             $user->getConnect('inscription');
 
+            $request->query->set('state', 'salut');
+            var_dump($request->query->get('state'));
+
+
         }
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -313,5 +328,22 @@ class DefaultController extends Controller
 
         return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche,
                                                                                             'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces, 'noms' => $noms));
+    }
+
+    public function authentificationFB ()
+    {
+        // Si le visiteur est déjà identifié, on le redirige vers l'accueil
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('omega_nao_homepage');
+        }
+        // Le service authentication_utils permet de récupérer le nom d'utilisateur
+        // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
+        // (mauvais mot de passe par exemple)
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
+            'last_username' => $authenticationUtils->getLastUsername(),
+            'error'         => $authenticationUtils->getLastAuthenticationError(),
+        ));
     }
 }

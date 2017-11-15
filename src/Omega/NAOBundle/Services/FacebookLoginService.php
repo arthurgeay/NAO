@@ -2,6 +2,7 @@
 
 namespace Omega\NAOBundle\Services;
 
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Omega\NAOBundle\Entity\Utilisateurs;
 
 use Facebook\Exceptions\FacebookResponseException;
@@ -15,11 +16,15 @@ use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+
 
 class FacebookLoginService
 {
     private $em;
     private $router;
+
 
         public function __construct (EntityManager $em, RouterInterface $router)
         {
@@ -73,16 +78,16 @@ class FacebookLoginService
             }
 
 // Logged in
-            echo '<h3>Access Token</h3>';
-            var_dump($accessToken->getValue());
+            //echo '<h3>Access Token</h3>';
+           // var_dump($accessToken->getValue());
 
 // The OAuth 2.0 client handler helps us manage access tokens
             $oAuth2Client = $fb->getOAuth2Client();
 
 // Get the access token metadata from /debug_token
             $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-            echo '<h3>Metadata</h3>';
-            var_dump($tokenMetadata);
+            //echo '<h3>Metadata</h3>';
+            //var_dump($tokenMetadata);
 
 // Validation (these will throw FacebookSDKException's when they fail)
             $tokenMetadata->validateAppId( '164427444154033'); // Replace {app-id} with your app id
@@ -118,7 +123,7 @@ class FacebookLoginService
 
             $user = $response->getGraphUser();
 
-           var_dump($user);
+           //var_dump($user);
 
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
@@ -139,8 +144,26 @@ class FacebookLoginService
                 $this->em->persist($inscription);
                 $this->em->flush();
 
-                //marche pas
                 return new RedirectResponse($this->router->generate('login'));
+            }
+            elseif ($pageCourante == "connexion")
+            {
+                $utilisateur = $this->em
+                    ->getRepository('OmegaNAOBundle:Utilisateurs')
+                    ->findAll();
+                $countComptes = $this->em->getRepository('OmegaNAOBundle:Utilisateurs')->countCompte();
+                $count = (int) $countComptes;
+
+                for ($i = 0; $count > $i ; $i ++)
+                {
+                    if ($utilisateur[$i]->getFacebookId() == $user->getId())
+                    {
+                       // var_dump($utilisateur[$i]);
+                        $_SESSION['fb_access_token'] = (string) $tokenMetadata->getUserId();
+                        return $_SESSION['fb_access_token'];
+                    }
+                }
+
             }
         }
 }
