@@ -223,19 +223,18 @@ class DefaultController extends Controller
         $permissions = ['email']; // Optional permissions
         $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/login', $permissions);
 
-        echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
         if ($request->query->get('code'))
         {
             $user = $this->container->get('NAOBundle.FacebookLogin');
             $varibaleFB = $user->getConnect('connexion');
 
-            var_dump($varibaleFB);
+            //var_dump($varibaleFB);
             $request->query->set('code', $varibaleFB);
             $authenticationUtils = $this->get('security.authentication_utils');
 
             return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
                 'id' => $varibaleFB, 'last_username' => $authenticationUtils->getLastUsername(),
-            'error'         => $authenticationUtils->getLastAuthenticationError()));
+            'error'         => $authenticationUtils->getLastAuthenticationError(), 'url' => $loginUrl));
 
         }
 
@@ -250,7 +249,7 @@ class DefaultController extends Controller
 
         return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
             'last_username' => $authenticationUtils->getLastUsername(),
-            'error'         => $authenticationUtils->getLastAuthenticationError(),
+            'error'         => $authenticationUtils->getLastAuthenticationError(), 'url' => $loginUrl
         ));
     }
 
@@ -273,23 +272,24 @@ class DefaultController extends Controller
 
         $permissions = ['email']; // Optional permissions
         $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/inscription', $permissions);
-
-        echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+        $urlFB = "";
+        if (!$request->query->get('code'))
+        {
+            $urlFB = $loginUrl;
+        }
         if ($request->query->get('code'))
         {
             $user = $this->container->get('NAOBundle.FacebookLogin');
             $user->getConnect('inscription');
 
-            $request->query->set('state', 'salut');
-            var_dump($request->query->get('state'));
+            $authenticationUtils = $this->get('security.authentication_utils');
 
-
+            return $this->render('OmegaNAOBundle:Default:index.html.twig');
         }
-
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
+        elseif ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
         {
             $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
             $subject = 'Votre compte a bien été enregistré';
@@ -302,7 +302,7 @@ class DefaultController extends Controller
             $mailerService->getMailInscriptionService($emailBody, $inscription->getEmail());
         }
 
-        return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView()));
+        return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView(), 'url' =>$urlFB));
     }
 
     public function rechercheAction (Request $request)

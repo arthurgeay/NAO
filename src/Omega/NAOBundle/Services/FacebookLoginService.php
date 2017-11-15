@@ -144,7 +144,6 @@ class FacebookLoginService
                 $this->em->persist($inscription);
                 $this->em->flush();
 
-                return new RedirectResponse($this->router->generate('login'));
             }
             elseif ($pageCourante == "connexion")
             {
