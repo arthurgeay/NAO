@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/Omega/NAOBundle/Form/RechercheType.php" line="17" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a81a4fee-f9e1-48dd-a154-1c4ddd5f5079" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="a81a4fee-f9e1-48dd-a154-1c4ddd5f5079" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -648,12 +646,12 @@
       <workItem from="1510219012610" duration="13002000" />
       <workItem from="1510393775051" duration="7844000" />
       <workItem from="1510567614185" duration="23738000" />
-      <workItem from="1510738072743" duration="11881000" />
+      <workItem from="1510738072743" duration="12043000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171457000" />
+    <option name="totallyTimeSpent" value="171619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="22" width="1696" height="1026" extended-state="6" />
