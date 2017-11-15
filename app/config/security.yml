@@ -20,6 +20,11 @@ security:
                 class:    Omega\NAOBundle\Entity\Utilisateurs
                 property: username
 
+        api_facebook:
+              entity:
+                class: Omega\NAOBundle\Entity\Utilisateurs
+                property: facebookId
+
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -34,7 +39,11 @@ security:
                 check_path: login_check
             logout:
                 path:   logout
-                target: login
+                target: /
+
+            guard:
+                authenticators:
+                   - NAOBundle.authenticatorFB
 
     access_control:
         - { path: ^/moderation-observation, roles: ROLE_NATURALISTE }

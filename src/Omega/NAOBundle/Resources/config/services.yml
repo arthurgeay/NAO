@@ -21,5 +21,16 @@ services:
             - { name: validator.constraint_validator, alias: omega_nao_espece }
 
     NAOBundle.mailInscription :
-            class: Omega\NAOBundle\Services\MailServiceInscription
+            class: Omega\NAOBundle\Services\MailInscriptionService
 
+    NAOBundle.FacebookLogin :
+            class: Omega\NAOBundle\Services\FacebookLoginService
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@router"
+
+    NAOBundle.authenticatorFB:
+            class: Omega\NAOBundle\Facebook\TokenAuthenticatorFBService
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@router"

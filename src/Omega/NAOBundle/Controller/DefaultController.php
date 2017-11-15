@@ -2,8 +2,12 @@
 
 namespace Omega\NAOBundle\Controller;
 
+use Facebook\Exceptions\FacebookResponseException;
+use Facebook\Facebook;
+use Facebook\FacebookSDKException;
 use Omega\NAOBundle\Entity\Utilisateurs;
 use Omega\NAOBundle\Form\RechercheType;
+use Omega\NAOBundle\Services\FacebookLoginService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,6 +19,7 @@ use Omega\NAOBundle\Form\UtilisateursType;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 
 class DefaultController extends Controller
@@ -220,6 +225,35 @@ class DefaultController extends Controller
 
     public function loginAction(Request $request)
     {
+        //Facebook inscription//////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //v.5.x  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        $fb = new Facebook([
+            'app_id' => '164427444154033', // Replace {app-id} with your app id
+            'app_secret' => 'd50ce35719164703e0941dc134283aed',
+            'default_graph_version' => 'v2.4',
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+
+        $permissions = ['email']; // Optional permissions
+        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/login', $permissions);
+
+        if ($request->query->get('code'))
+        {
+            $user = $this->container->get('NAOBundle.FacebookLogin');
+            $varibaleFB = $user->getConnect('connexion');
+
+            //var_dump($varibaleFB);
+            $request->query->set('code', $varibaleFB);
+            $authenticationUtils = $this->get('security.authentication_utils');
+
+            return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
+                'id' => $varibaleFB, 'last_username' => $authenticationUtils->getLastUsername(),
+            'error'         => $authenticationUtils->getLastAuthenticationError(), 'url' => $loginUrl));
+
+        }
+
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('omega_nao_homepage');
@@ -231,7 +265,7 @@ class DefaultController extends Controller
 
         return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
             'last_username' => $authenticationUtils->getLastUsername(),
-            'error'         => $authenticationUtils->getLastAuthenticationError(),
+            'error'         => $authenticationUtils->getLastAuthenticationError(), 'url' => $loginUrl
         ));
     }
 
@@ -241,7 +275,37 @@ class DefaultController extends Controller
         $formInscription = $this->get('form.factory')->create(UtilisateursType::class, $inscription);
         $em = $this->getDoctrine()->getManager();
 
-        if ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
+        //Facebook inscription//////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //v.5.x  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        $fb = new Facebook([
+            'app_id' => '164427444154033', // Replace {app-id} with your app id
+            'app_secret' => 'd50ce35719164703e0941dc134283aed',
+            'default_graph_version' => 'v2.4',
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+
+        $permissions = ['email']; // Optional permissions
+        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/inscription', $permissions);
+        $urlFB = "";
+        if (!$request->query->get('code'))
+        {
+            $urlFB = $loginUrl;
+        }
+        if ($request->query->get('code'))
+        {
+            $user = $this->container->get('NAOBundle.FacebookLogin');
+            $user->getConnect('inscription');
+
+            $authenticationUtils = $this->get('security.authentication_utils');
+
+            return $this->render('OmegaNAOBundle:Default:index.html.twig');
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        elseif ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
         {
             $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
             $subject = 'Votre compte a bien été enregistré';
@@ -251,10 +315,10 @@ class DefaultController extends Controller
             $em->flush();
 
             $mailerService = $this->container->get('NAOBundle.mailInscription');
-            $mailerService->getMailService($emailBody, $inscription->getEmail());
+            $mailerService->getMailInscriptionService($emailBody, $inscription->getEmail());
         }
 
-        return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView()));
+        return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView(), 'url' =>$urlFB));
     }
 
     public function rechercheAction (Request $request)
@@ -280,5 +344,22 @@ class DefaultController extends Controller
 
         return $this->render('OmegaNAOBundle:Rechercher:rechercher.html.twig', array('formRecherche' => $formRecherche->createView(),  'recherche'=> $recherche,
                                                                                             'count' => $count, 'ficheEspece' => $ficheEspece, 'countEspece' => $countEspeces, 'noms' => $noms));
+    }
+
+    public function authentificationFB ()
+    {
+        // Si le visiteur est déjà identifié, on le redirige vers l'accueil
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('omega_nao_homepage');
+        }
+        // Le service authentication_utils permet de récupérer le nom d'utilisateur
+        // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
+        // (mauvais mot de passe par exemple)
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
+            'last_username' => $authenticationUtils->getLastUsername(),
+            'error'         => $authenticationUtils->getLastAuthenticationError(),
+        ));
     }
 }
