@@ -24,6 +24,12 @@ security:
             entity:
                 class: Omega\NAOBundle\Entity\Utilisateurs
                 property: googleId
+                
+        api_facebook:
+              entity:
+                class: Omega\NAOBundle\Entity\Utilisateurs
+                property: facebookId
+
 
     firewalls:
         dev:
@@ -44,6 +50,10 @@ security:
             guard:
                 authenticators: 
                     - omega_nao.authenticator
+                    - NAOBundle.authenticatorFB
+                entry_point:
+                    omega_nao.authenticator
+
 
     access_control:
         - { path: ^/moderation-observation, roles: ROLE_NATURALISTE }

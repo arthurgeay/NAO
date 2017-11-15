@@ -26,6 +26,16 @@ class UtilisateursRepository extends \Doctrine\ORM\EntityRepository
 		 ;
 	}
 
+    public function countComptes ()
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('count(a)');
+
+        return $qb  ->getQuery()
+            ->getSingleScalarResult();
+
+    }
+
 	public function countCompte()
 	{
 		$qb = $this->createQueryBuilder('u');
@@ -42,4 +52,5 @@ class UtilisateursRepository extends \Doctrine\ORM\EntityRepository
 		 		 ->getSingleScalarResult()
 		 		 ;
 	}
+
 }
