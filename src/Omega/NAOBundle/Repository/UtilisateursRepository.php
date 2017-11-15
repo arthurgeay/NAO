@@ -26,7 +26,7 @@ class UtilisateursRepository extends \Doctrine\ORM\EntityRepository
 		 ;
 	}
 
-    public function countCompte ()
+    public function countComptes ()
     {
         $qb = $this->createQueryBuilder('a')
             ->select('count(a)');

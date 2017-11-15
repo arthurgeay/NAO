@@ -150,7 +150,7 @@ class FacebookLoginService
                 $utilisateur = $this->em
                     ->getRepository('OmegaNAOBundle:Utilisateurs')
                     ->findAll();
-                $countComptes = $this->em->getRepository('OmegaNAOBundle:Utilisateurs')->countCompte();
+                $countComptes = $this->em->getRepository('OmegaNAOBundle:Utilisateurs')->countComptes();
                 $count = (int) $countComptes;
 
                 for ($i = 0; $count > $i ; $i ++)
