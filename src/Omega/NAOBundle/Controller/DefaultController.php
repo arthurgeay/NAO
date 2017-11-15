@@ -416,6 +416,7 @@ class DefaultController extends Controller
         $this->get('session')->getFlashBag()->add('infoCompte', "Votre demande de changement de type de compte a été pris en compte. Votre recevrez très prochainement une réponse concernant votre demande. ");           
 
         return $this->redirectToRoute('omega_nao_profile');
+    }
 
     public function authentificationFB ()
     {

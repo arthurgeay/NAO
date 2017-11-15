@@ -6,13 +6,13 @@
 
 {% block naobundle_body %}
 	
-	{% if nbCompte > 0 %}
+	{% if nbCompte is defined and nbCompte > 0 %}
 	<div class="alert alert-warning">
 		<p>Il y a {{ nbCompte }} compte(s) en attente de modération.</p>
 	</div>
 	{% endif %}
 
-	{% if nbObs > 0 %}
+	{% if nbObs is defined and nbObs > 0 %}
 		<div class="alert alert-info">
 			<p>Il y a {{ nbObs }} observation(s) en attente de modération.</p>
 		</div>
