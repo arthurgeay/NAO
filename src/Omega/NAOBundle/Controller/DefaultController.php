@@ -352,8 +352,8 @@ class DefaultController extends Controller
 
             $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
             $subject = 'Votre compte a bien été enregistré';
-            $mailerService = $this->container->get('NAOBundle.mailInscription');
-            $mailerService->getMailService($emailBody, $email);
+            $mailerService = $this->container->get('NAOBundle.mail');
+            $mailerService->getMailService($emailBody, $email, $subject);
 
             return $this->redirectToRoute('omega_nao_homepage');
 
