@@ -5,14 +5,19 @@
 {% endblock %}
 
 {% block naobundle_body %}
-
-	<center><p id="pErreur"></p></center>
-    <div>    {{ form_start(formRecherche) }}
-        {{ form_row(formRecherche.espece) }}
-        {{ form_row(formRecherche.rechercher) }} <br/>
-        {{ form_end(formRecherche) }}<br>
-    </div>
-
+<div class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-5">
+				<center><p id="pErreur"></p></center>
+			<div>    {{ form_start(formRecherche) }}
+                     {{ form_row(formRecherche.espece) }}
+            		 {{ form_row(formRecherche.rechercher) }} <br/>
+                     {{ form_end(formRecherche) }}<br>
+			</div>
+			</div>
+			<div class="col">
+			</div>
     <style>
        #map {
         height: 400px;
@@ -86,12 +91,10 @@
 </div>
     <div id="map"></div>
 {% if countEspece > 0 %}
-    <table  class="table-responsive" id="ficheEspece">
-
-        <th>Fiche technique</th>
+    <table  class="table table-striped" id="ficheEspece">
         <tr>
                 <td>
-                    Nom de l'espèce --
+                    Nom de l'espèce
                 </td>
                 <td>
                     {{ ficheEspece[0].a_nomVern }}
@@ -99,7 +102,7 @@
         </tr>
         <tr>
                 <td>
-                    ordre --
+                    ordre
                 </td>
                 <td>
                     {{ ficheEspece[0].a_ordre }}
@@ -107,7 +110,7 @@
         </tr>
         <tr>
             <td>
-                Famille --
+                Famille
             </td>
             <td>
                 {{ ficheEspece[0].a_famille }}
@@ -115,7 +118,7 @@
         </tr>
         <tr>
             <td>
-                Nom complet (avec auteur) --
+                Nom complet (avec auteur)
             </td>
             <td>
                 {{ ficheEspece[0].a_nomComplet }}

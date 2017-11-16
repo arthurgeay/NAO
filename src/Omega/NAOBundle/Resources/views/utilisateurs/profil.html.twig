@@ -5,8 +5,19 @@
 {% endblock %}
 
 {% block naobundle_body %}
-	<h1>Profil de {{ username }}</h1>
-	<hr>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-2">
+				</div>
+				<div class="col-8">
+					<center><h1>Profil de {{ username }}</h1></center>
+				</div>
+				<div class="col-2">
+				</div>
+			</div>
+		</div>
+	</div>
 
 	{% if app.session.flashBag.has('infoCompte') %}
 		<div class="alert alert-success">
@@ -16,16 +27,43 @@
 	    </div>
   {% endif %}
 
-	<h3>Vos informations</h3>
-	<ul>
-		<li>Email: {{ email }}</li>
-		<li>Type de compte : {{ compte }} </li>
-	</ul>
+	<div class="jumbotron">
+			<div class="row">
+				<div class="col-6">
+					<h3>Vos informations</h3>
+					<table  class="table table-bordered" id="infoCompte">
+							<tr>
+								<td>
+									<b>Email</b>
+								</td>
+								<td>
+									{{ email }}
+								</td>
+							</tr>
+						<tr>
+							<td>
+								<b>Type de compte</b>
+							</td>
+							<td>
+								{{ compte }}
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="col-6">
+                    {% if compte == 'particulier' %}
+						<hr>
+						<h4>Changer son type de compte</h4>
+						<a href="{{ path('omega_nao_changement_compte', {id: id}) }}" class="btn btn-primary">Je souhaite avoir un compte naturaliste</a>
+                    {% endif %}
+				</div>
+			</div>
+	</div>
+
+
+
 	
-	{% if compte == 'particulier' %}
-		<hr>
-		<h3>Changer son type de compte</h3>
-		<a href="{{ path('omega_nao_changement_compte', {id: id}) }}" class="btn btn-primary">Je veux avoir un compte naturaliste</a>
-    {% endif %}
+
 
 {% endblock %}
