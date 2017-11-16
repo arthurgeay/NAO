@@ -5,20 +5,8 @@
 {% endblock %}
 
 {% block naobundle_body %}
-	
-	{% if nbCompte is defined and nbCompte > 0 %}
-	<div class="alert alert-warning">
-		<p>Il y a {{ nbCompte }} compte(s) en attente de modération.</p>
-	</div>
-	{% endif %}
 
-	{% if nbObs is defined and nbObs > 0 %}
-		<div class="alert alert-info">
-			<p>Il y a {{ nbObs }} observation(s) en attente de modération.</p>
-		</div>
-	{% endif %}
-
-	<div class="jumbotron">
+	<div class="jumbotron bg-home">
 	  <h1 class="display-3 text-center">Bienvenue à tous !</h1>
 	  <hr class="my-4">
 	  <h3>Notre vocation</h3>
@@ -27,25 +15,43 @@
 	  	<p>Pour cela rien de plus simple, il suffit de créer un compte en cliquant sur le bouton "Participer".</p>
 		
 			<div class="center-block text-center">
-		    	<a href="{{ path('recherche')}}"><button class="btn btn-info btn-lg">Rechercher</button></a>
+		    	<a href="{{ path('recherche')}}"><button class="btn btn-default btn-lg"><i class="fa fa-search" aria-hidden="true"></i>  Rechercher</button></a>
 
-		    	<a href="{{ path('inscription')}}"><button class="btn btn-info btn-lg">Participer</button></a>
+		    	<a href="{{ path('inscription')}}"><button class="btn btn-default btn-lg"> <i class="fa fa-sign-in" aria-hidden="true"></i>  Participer</button></a>
 		  </div>
 		
 		<hr> 
-		<h3>S'inscrire à la newsletter</h3>
-        <form action="">
-          <div class="form-group row ">
-          	<div class="col-md-6">
-            	<input class="form-control" type="email" placeholder="Adresse e-mail" />
-        	</div>
-          </div>
-          <div class="form-group">
-            <input class="btn btn-success" type="submit" value="S'inscrire" />
-          </div>
-        </div>
-      </form>
-	</div>
-	
+		
+        <form>
+    <p class="h5 text-center mb-4">S'abonner à la newsletter</p>
 
+    <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="form3" class="form-control">
+        <label for="form3">Prénom</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="text" id="form2" class="form-control">
+        <label for="form2">Adresse e-mail</label>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-success">S'abonner <i class="fa fa-paper-plane-o ml-1"></i></button>
+    </div>
+
+	</form>
+  	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+<script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
+<script>
+	var compte = '{{ nbCompte }}';
+	var obs = '{{ nbObs }}';
+</script>
+<script src="{{ asset('js/notifs-home.js') }}"></script>
 {% endblock %}

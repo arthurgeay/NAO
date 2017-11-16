@@ -12,131 +12,119 @@
 {% block naobundle_body %}
 	<h1 class="text-center">Ajouter une observation</h1>
 	<hr>
-	{% if app.session.flashBag.has('success') %}
-		<div class="alert alert-success">
-			{% for message in app.session.flashbag.get('success') %}
-		        <p>{{ message }}</p>
-		    {% endfor %}
-	    </div>
-	{% endif %}
 	
-
 	<div class="well">
-	  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+		{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+		{# Les erreurs générales du formulaire. #}
+		{% if form.vars.errors|length > 0 %}
+			<div class="alert alert-danger">
+				<p>{{ form_errors(form) }}</p>
+			</div>
+		{% endif %}
+		{# Génération manuelle et éclatée : #}
+		{% if form.espece.vars.errors|length > 0 %}
+				<div class="alert alert-danger">
+					<p>{{ form_errors(form.espece) }}</p>
+				</div>
+		{% endif %}
+		<div class="md-form">
+			{# Génération du label. #}
+			{{ form_label(form.espece, "Espèce") }}
+			{# Génération de l'input. #}
+			{{ form_widget(form.espece, {'attr': {'data-provide': 'typeahead'}}) }}
+		</div>
 
-	  {# Les erreurs générales du formulaire. #}
-	  {{ form_errors(form) }}
+		{% if form.date.vars.errors|length > 0 %}
+				<div class="alert alert-danger">
+					<p>{{ form_errors(form.date) }}</p>
+				</div>
+		{% endif %}
+		<div class="md-form">
+			{# Génération du label. #}
+			{{ form_label(form.date, "Date d'observation") }}
+			
+			{# Génération de l'input. #}
+			{{ form_widget(form.date, {'attr': {'class': 'js-datepicker'}}) }}
+			
+		</div>
 
-	  {# Génération manuelle et éclatée : #}
-	  <div class="form-group">
-	    {# Génération du label. #}
-	    {{ form_label(form.espece, "Espèce", {'label_attr': {'class': 'col-sm-2'}}) }}
-
-	    {# Affichage des erreurs pour ce champ précis. #}
-	    {{ form_errors(form.espece) }}
-
-	    <div class="col-md-10">
-	      {# Génération de l'input. #}
-	      {{ form_widget(form.espece, {'attr': {'data-provide': 'typeahead'}}) }}
-	    </div>
-	  </div>
-
-	  <div class="form-group">
-	    {# Génération du label. #}
-	    {{ form_label(form.date, "Date d'observation", {'label_attr': {'class': 'col-sm-2'}}) }}
-
-	    {# Affichage des erreurs pour ce champ précis. #}
-	    {{ form_errors(form.date) }}
-
-	    <div class="col-md-10">
-	      {# Génération de l'input. #}
-	      {{ form_widget(form.date, {'attr': {'placeholder': 'jj/mm/aaaa', 'class': 'js-datepicker'}}) }}
-	    </div>
-	  </div>
-
-	  <div class="form-group">
-	    {# Génération du label. #}
-	    {{ form_label(form.commentaire, "Commentaire", {'label_attr': {'class': 'col-sm-2'}}) }}
-
-	    {# Affichage des erreurs pour ce champ précis. #}
-	    {{ form_errors(form.commentaire) }}
-
-	    <div class="col-md-10">
-	      {# Génération de l'input. #}
-	      {{ form_widget(form.commentaire) }}
-	    </div>
-	  </div>
-	
-	  <div class="form-group">
-	  	<div class="col-md-10">
+		{# Affichage des erreurs pour ce champ précis. #}
+			{% if form.commentaire.vars.errors|length > 0 %}
+				<div class="alert alert-danger">
+					<p>{{ form_errors(form.commentaire) }}</p>
+				</div>
+			{% endif %}
+		<div class="md-form">
+			{# Génération du label. #}
+			{{ form_label(form.commentaire, "Commentaire") }}
+			
+			{# Génération de l'input. #}
+			{{ form_widget(form.commentaire, {'attr': {'class': 'md-textarea'}}) }}
+			
+		</div>
+		
+		<div class="form-group">
 			<button id="geolocation"class="btn btn-primary"><i class="fa fa-location-arrow" aria-hidden="true"></i> Me trouver</button>
 		</div>
-	  </div>
-	
-	  <div class="form-group">
-	  	<div class="col-md-10">
-	  		<div id="map"></div>
-	  	</div>
-	  </div>
+		
+		<div class="md-form">
+			<div id="map"></div>
+		</div>
 
-	  <div class="form-group">
-	    {# Génération du label. #}
-	    {{ form_label(form.longitude, "Longitude", {'label_attr': {'class': 'col-sm-2'}}) }}
+		{# Affichage des erreurs pour ce champ précis. #}
+			{% if form.longitude.vars.errors|length > 0 %}
+				<div class="alert alert-danger">
+					<p>{{ form_errors(form.longitude) }}</p>
+				</div>
+			{% endif %}
+		<div class="md-form">
+			{# Génération du label. #}
+			{{ form_label(form.longitude) }}
+			{# Génération de l'input. #}
+			{{ form_widget(form.longitude, {'attr': {'placeholder': ' '}}) }}
+		</div>
 
-	    {# Affichage des erreurs pour ce champ précis. #}
-	    {{ form_errors(form.longitude) }}
+		{# Affichage des erreurs pour ce champ précis. #}
+			{% if form.latitude.vars.errors|length > 0 %}
+				<div class="alert alert-danger">
+					<p>{{ form_errors(form.latitude) }}</p>
+				</div>
+			{% endif %}
+		<div class="md-form">
+			{# Génération du label. #}
+			{{ form_label(form.latitude) }}
+			{# Génération de l'input. #}
+			{{ form_widget(form.latitude, {'attr': {'placeholder': ' '}}) }}
+		</div>
 
-	    <div class="col-md-10">
-	      {# Génération de l'input. #}
-	      {{ form_widget(form.longitude) }}
-	    </div>
-	  </div>
-
-	  <div class="form-group">
-	    {# Génération du label. #}
-	    {{ form_label(form.latitude, "Latitude", {'label_attr': {'class': 'col-sm-2'}}) }}
-
-	    {# Affichage des erreurs pour ce champ précis. #}
-	    {{ form_errors(form.latitude) }}
-
-	    <div class="col-md-10">
-	      {# Génération de l'input. #}
-	      {{ form_widget(form.latitude) }}
-	    </div>
-	  </div>
-
-	  <div class="form-group">
-	    {# Génération du label. #}
-	    {{ form_label(form.photo, "Ajouter une photo (JPG | max. 1024 Ko)", {'label_attr': {'class': 'col-sm-5'}}) }}
-
-	    {# Affichage des erreurs pour ce champ précis. #}
-	    {{ form_errors(form.photo) }}
-
-	    <div class="col-md-10">
-	      {# Génération de l'input. #}
-	      {{ form_widget(form.photo) }}
-	    </div>
-	  </div>
-	
-	  <div class="form-group">
-	  	<div class="col-md-10">	
-	  		<button type="submit" class="btn btn-success">
-	  			<i class="fa fa-plus" aria-hidden="true"></i> Ajouter une observation
-	  		</button>
-	  	</div>
-	  </div>
-
-
-
-	  {# Génération automatique des champs pas encore écrits.
-	     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
-	     et tous les champs cachés (type « hidden »). #}
-	  {{ form_rest(form) }}
-
-	  {# Fermeture de la balise <form> du formulaire HTML #}
-	  {{ form_end(form) }}
-	</div>
-{% endblock %}
+		{# Affichage des erreurs pour ce champ précis. #}
+			{% if form.photo.vars.errors|length > 0 %}
+				<div class="alert alert-danger">
+					{{ form_errors(form.photo) }}
+				</div>
+			{% endif %}
+		<div class="form-group">
+			{# Génération du label. #}
+			{{ form_label(form.photo, "Ajouter une photo (JPG | max. 1024 Ko)", {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-md-10">
+				{# Génération de l'input. #}
+				{{ form_widget(form.photo) }}
+			</div>
+		</div>
+		
+		<button type="submit" class="btn btn-success">
+		<i class="fa fa-plus" aria-hidden="true"></i>  Ajouter une observation
+		</button>
+		
+		
+		{# Génération automatique des champs pas encore écrits.
+		Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+		et tous les champs cachés (type « hidden »). #}
+		{{ form_rest(form) }}
+		{# Fermeture de la balise <form> du formulaire HTML #}
+			{{ form_end(form) }}
+		</div>
+	{% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}
@@ -154,5 +142,14 @@
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.fr.min.js') }}"></script>
     <script src="{{ asset('js/datepicker.js') }}"></script>
+    <script>
+    	{% if app.session.flashBag.has('success') %}
+			{% for message in app.session.flashbag.get('success') %}
+				var notif = '{{ message }}';
+			{% endfor %}
+		{% endif %}
+    </script>
+    <script src="{{ asset('js/bootstrap-notify.min.js')}}"></script>
+    <script src="{{ asset('js/notify-add-obs.js')}}"></script>
 
 {% endblock %}
