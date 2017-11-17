@@ -54,7 +54,7 @@ class Utilisateurs implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=50)
+     * @ORM\Column(name="password", type="string", length=250)
      */
     private $password;
 

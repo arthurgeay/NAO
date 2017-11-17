@@ -16,12 +16,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Omega\NAOBundle\Entity\Observations;
 use Omega\NAOBundle\Form\ObservationsType;
 
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Omega\NAOBundle\Form\UtilisateursType;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-
 
 
 class DefaultController extends Controller
@@ -276,7 +276,7 @@ class DefaultController extends Controller
         $inscription = new Utilisateurs();
         $formInscription = $this->get('form.factory')->create(UtilisateursType::class, $inscription);
         $em = $this->getDoctrine()->getManager();
-
+        $passwordEncoder = $this->get('security.password_encoder');
         //Facebook inscription//////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //v.5.x  ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -310,7 +310,9 @@ class DefaultController extends Controller
         elseif ($request->isMethod('POST') && $formInscription->handleRequest($request)->isValid())
         {
             $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
-            $subject = 'Votre compte a bien été enregistré';
+
+            $password = $passwordEncoder->encodePassword($inscription, $inscription->getPassword());
+            $inscription->setPassword($password);
             $inscription->setSalt('');
             $inscription->setRoles(array('ROLE_PARTICULIER'));
             $em->persist($inscription);
@@ -437,6 +439,22 @@ class DefaultController extends Controller
 
     public function contactAction (Request $request)
     {
-        return $this->render('OmegaNAOBundle:Contact:contact.html.twig');
+        $formContact = $this->createForm(ContactType::class, null);
+        if ($request->isMethod('POST') && $formContact->handleRequest($request)->isValid())
+        {
+            $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
+            $subject = 'Votre compte a bien été enregistré';
+            $mailerService = $this->container->get('NAOBundle.mail');
+            $mailerService->getMailService($emailBody, $email, $subject);
+
+            return $this->redirectToRoute('omega_nao_homepage');
+        }
+
+        return $this->render('OmegaNAOBundle:Contact:contact.html.twig', array('formContact' => $formContact->createView()));
+    }
+
+    public function EnvoiMail ()
+    {
+
     }
 }
