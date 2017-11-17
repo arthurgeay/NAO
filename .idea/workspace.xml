@@ -4,10 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/Omega/NAOBundle/Form/RechercheType.php" line="17" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a81a4fee-f9e1-48dd-a154-1c4ddd5f5079" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Omega/NAOBundle/Repository/UtilisateursRepository.php" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Repository/UtilisateursRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Omega/NAOBundle/Services/FacebookLoginService.php" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Services/FacebookLoginService.php" />
-    </list>
+    <list default="true" id="a81a4fee-f9e1-48dd-a154-1c4ddd5f5079" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,23 +15,131 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Utilisateurs.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Entity/Utilisateurs.php">
+      <file leaf-file-name="inscription.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/inscription.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="46" column="7" lean-forward="false" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+            <state relative-caret-position="153">
+              <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+              <folding>
+                <marker date="1510941043568" expanded="true" signature="349:1186" ph="{% block naobundle_body ...%}" />
+                <marker date="1510941043568" expanded="true" signature="1165:1170" ph="..." />
+                <marker date="1510941043568" expanded="true" signature="1188:1577" ph="{% block javascripts ...%}" />
+                <marker date="1510941043568" expanded="true" signature="1321:1440" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FacebookLoginService.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Services/FacebookLoginService.php">
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="152" column="101" lean-forward="false" selection-start-line="152" selection-start-column="101" selection-end-line="152" selection-end-column="101" />
+            <state relative-caret-position="544">
+              <caret line="320" column="9" lean-forward="false" selection-start-line="320" selection-start-column="9" selection-end-line="320" selection-end-column="9" />
               <folding>
-                <element signature="e#44#88#0#PHP" expanded="true" />
+                <element signature="e#46#96#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utilisateurs.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Entity/Utilisateurs.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="47" column="18" lean-forward="false" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+              <folding>
+                <marker date="1510941043517" expanded="true" signature="494:520" ph=" @var string ..." />
+                <marker date="1510941043517" expanded="true" signature="1024:1118" ph=" @var string ..." />
+                <marker date="1510941043517" expanded="true" signature="1152:1247" ph=" @var string ..." />
+                <marker date="1510941043517" expanded="true" signature="1280:1392" ph=" @var string ..." />
+                <marker date="1510941043517" expanded="true" signature="1428:1509" ph=" @var bool ..." />
+                <marker date="1510941043517" expanded="true" signature="1550:1641" ph=" @var string ..." />
+                <marker date="1510941043517" expanded="true" signature="1671:1749" ph=" @var array ..." />
+                <marker date="1510941043517" expanded="true" signature="1821:1833" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="1843:1889" ph=" Get id ..." />
+                <marker date="1510941043517" expanded="true" signature="1919:1957" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="1966:2055" ph=" Set nom ..." />
+                <marker date="1510941043517" expanded="true" signature="2090:2152" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="2161:2211" ph=" Get nom ..." />
+                <marker date="1510941043517" expanded="true" signature="2242:2281" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="2290:2383" ph=" Set email ..." />
+                <marker date="1510941043517" expanded="true" signature="2422:2488" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="2497:2549" ph=" Get email ..." />
+                <marker date="1510941043517" expanded="true" signature="2582:2623" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="2632:2730" ph=" Set verifie ..." />
+                <marker date="1510941043517" expanded="true" signature="2773:2843" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="2852:2904" ph=" Get verifie ..." />
+                <marker date="1510941043517" expanded="true" signature="2939:2982" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="2991:3082" ph=" Set salt ..." />
+                <marker date="1510941043517" expanded="true" signature="3119:3183" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="3192:3243" ph=" Get salt ..." />
+                <marker date="1510941043517" expanded="true" signature="3275:3315" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="3324:3416" ph=" Set roles ..." />
+                <marker date="1510941043517" expanded="true" signature="3455:3521" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="3530:3581" ph=" Get roles ..." />
+                <marker date="1510941043517" expanded="true" signature="3614:3655" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="3664:3763" ph=" Set username ..." />
+                <marker date="1510941043517" expanded="true" signature="3808:3880" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="3889:3944" ph=" Get username ..." />
+                <marker date="1510941043517" expanded="true" signature="3980:4024" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="4033:4132" ph=" Set password ..." />
+                <marker date="1510941043517" expanded="true" signature="4177:4249" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="4258:4313" ph=" Get password ..." />
+                <marker date="1510941043517" expanded="true" signature="4349:4393" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="4402:4497" ph=" Set compte ..." />
+                <marker date="1510941043517" expanded="true" signature="4538:4606" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="4615:4668" ph=" Get compte ..." />
+                <marker date="1510941043517" expanded="true" signature="4702:4744" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="4753:4852" ph=" Set googleId ..." />
+                <marker date="1510941043517" expanded="true" signature="4897:4969" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="4978:5035" ph=" Get facebookId ..." />
+                <marker date="1510941043517" expanded="true" signature="5073:5119" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="5128:5167" ph=" @param string $facebookId ..." />
+                <marker date="1510941043517" expanded="true" signature="5216:5269" ph="{...}" />
+                <marker date="1510941043517" expanded="true" signature="5278:5306" ph=" @return string ..." />
+                <marker date="1510941043517" expanded="true" signature="5342:5386" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/services.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MailService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Services/MailService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RechercheType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Form/RechercheType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="e#40#80#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,61 +148,72 @@
       <file leaf-file-name="security.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="251" column="101" lean-forward="false" selection-start-line="251" selection-start-column="101" selection-end-line="251" selection-end-column="101" />
+            <state relative-caret-position="51">
+              <caret line="3" column="51" lean-forward="false" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
               <folding>
-                <element signature="e#46#96#0#PHP" expanded="true" />
+                <marker date="1510941043487" expanded="true" signature="0:1793" ph="security: &lt;5 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="14:75" ph="encoders: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="145:389" ph="role_hierarchy: &lt;4 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="187:196" ph="ROLE_USER" />
+                <marker date="1510941043487" expanded="true" signature="205:252" ph="ROLE_NATURALISTE: [2 items]" />
+                <marker date="1510941043487" expanded="true" signature="224:233" ph="ROLE_USER" />
+                <marker date="1510941043487" expanded="true" signature="235:251" ph="ROLE_PARTICULIER" />
+                <marker date="1510941043487" expanded="true" signature="261:326" ph="ROLE_ADMIN: [3 items]" />
+                <marker date="1510941043487" expanded="true" signature="280:289" ph="ROLE_USER" />
+                <marker date="1510941043487" expanded="true" signature="291:307" ph="ROLE_PARTICULIER" />
+                <marker date="1510941043487" expanded="true" signature="309:325" ph="ROLE_NATURALISTE" />
+                <marker date="1510941043487" expanded="true" signature="335:389" ph="ROLE_SUPER_ADMIN: [2 items]" />
+                <marker date="1510941043487" expanded="true" signature="354:364" ph="ROLE_ADMIN" />
+                <marker date="1510941043487" expanded="true" signature="366:388" ph="ROLE_ALLO…_TO_SWITCH" />
+                <marker date="1510941043487" expanded="true" signature="395:750" ph="providers: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="395:1035" ph="providers: &lt;4 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="414:617" ph="in_memory: &lt;1 key&gt;" />
+                <marker date="1510941043487" expanded="true" signature="437:617" ph="memory: &lt;1 key&gt;" />
+                <marker date="1510941043487" expanded="true" signature="461:617" ph="users: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="488:541" ph="user: {2 keys}" />
+                <marker date="1510941043487" expanded="true" signature="507:515" ph="userpass" />
+                <marker date="1510941043487" expanded="true" signature="517:539" ph="roles: [1 item]" />
+                <marker date="1510941043487" expanded="true" signature="526:537" ph="ROLE_USER" />
+                <marker date="1510941043487" expanded="true" signature="562:617" ph="admin: {2 keys}" />
+                <marker date="1510941043487" expanded="true" signature="581:590" ph="adminpass" />
+                <marker date="1510941043487" expanded="true" signature="592:615" ph="roles: [1 item]" />
+                <marker date="1510941043487" expanded="true" signature="601:613" ph="ROLE_ADMIN" />
+                <marker date="1510941043487" expanded="true" signature="626:750" ph="main: &lt;1 key&gt;" />
+                <marker date="1510941043487" expanded="true" signature="646:750" ph="entity: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="680:715" ph="Omega\NAO…ilisateurs" />
+                <marker date="1510941043487" expanded="true" signature="742:750" ph="username" />
+                <marker date="1510941043487" expanded="true" signature="760:878" ph="api: &lt;1 key&gt;" />
+                <marker date="1510941043487" expanded="true" signature="777:878" ph="entity: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="808:843" ph="Omega\NAO…ilisateurs" />
+                <marker date="1510941043487" expanded="true" signature="870:878" ph="googleId" />
+                <marker date="1510941043487" expanded="true" signature="904:1035" ph="api_facebook: &lt;1 key&gt;" />
+                <marker date="1510941043487" expanded="true" signature="932:1035" ph="entity: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="963:998" ph="Omega\NAO…ilisateurs" />
+                <marker date="1510941043487" expanded="true" signature="1025:1035" ph="facebookId" />
+                <marker date="1510941043487" expanded="true" signature="1042:1642" ph="firewalls: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="1061:1150" ph="dev: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="1088:1122" ph="^/(_(prof…mages|js)/" />
+                <marker date="1510941043487" expanded="true" signature="1145:1150" ph="false" />
+                <marker date="1510941043487" expanded="true" signature="1160:1642" ph="main: &lt;6 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="1189:1191" ph="^/" />
+                <marker date="1510941043487" expanded="true" signature="1215:1219" ph="true" />
+                <marker date="1510941043487" expanded="true" signature="1243:1247" ph="main" />
+                <marker date="1510941043487" expanded="true" signature="1260:1345" ph="form_login: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="1300:1305" ph="login" />
+                <marker date="1510941043487" expanded="true" signature="1334:1345" ph="login_check" />
+                <marker date="1510941043487" expanded="true" signature="1358:1422" ph="logout: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="1390:1396" ph="logout" />
+                <marker date="1510941043487" expanded="true" signature="1436:1642" ph="guard: &lt;2 keys&gt;" />
+                <marker date="1510941043487" expanded="true" signature="1459:1569" ph="authenticators: &lt;2 items&gt;" />
+                <marker date="1510941043487" expanded="true" signature="1498:1521" ph="omega_nao…henticator" />
+                <marker date="1510941043487" expanded="true" signature="1544:1569" ph="NAOBundle…nticatorFB" />
+                <marker date="1510941043487" expanded="true" signature="1619:1642" ph="omega_nao…henticator" />
+                <marker date="1510941043487" expanded="true" signature="1649:1793" ph="access_control: &lt;2 items&gt;" />
+                <marker date="1510941043487" expanded="true" signature="1683:1707" ph="^/moderat…bservation" />
+                <marker date="1510941043487" expanded="true" signature="1716:1732" ph="ROLE_NATURALISTE" />
+                <marker date="1510941043487" expanded="true" signature="1753:1772" ph="^/moderation-compte" />
+                <marker date="1510941043487" expanded="true" signature="1781:1791" ph="ROLE_ADMIN" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UtilisateursRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Repository/UtilisateursRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Default/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/login.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="36" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inscription.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/inscription.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="40" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -193,6 +309,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -216,6 +334,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -337,6 +473,176 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utilisateurs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omega" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAOBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rechercher" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omega" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAOBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Observations" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omega" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAOBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Moderation" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omega" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAOBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omega" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAOBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -364,6 +670,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Repository" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omega" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAOBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -429,6 +761,32 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omega" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAOBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -475,8 +833,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -484,14 +840,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\utilisateurs" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Services" />
       <recent name="C:\wamp64\www\NAO\web\js" />
       <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\Rechercher" />
       <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\Default" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\utilisateurs" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -621,13 +977,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170745000" />
+    <option name="totallyTimeSpent" value="170749000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22604166" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27708334" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -638,13 +993,23 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22604166" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,7 +1059,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -743,9 +1107,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Form/RechercheType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="58" />
-          <folding />
+        <state relative-caret-position="187">
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#80#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -753,7 +1119,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="122" column="29" lean-forward="false" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -761,17 +1126,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="41" lean-forward="false" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/DataAutoComplete/DataTaxref.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="27" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/DataAutoComplete/DataTaxref.php" />
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Observations/add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -797,7 +1155,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
           <caret line="61" column="19" lean-forward="false" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -838,8 +1195,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Services/MailService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="408">
+          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -862,7 +1219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,8 +1261,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="385">
+          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -928,7 +1285,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
           <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,22 +1292,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
-          <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Entity/Utilisateurs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="46" column="7" lean-forward="false" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="374">
+          <caret line="47" column="18" lean-forward="false" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+          <folding>
+            <marker date="1510941043517" expanded="true" signature="494:520" ph=" @var string ..." />
+            <marker date="1510941043517" expanded="true" signature="1024:1118" ph=" @var string ..." />
+            <marker date="1510941043517" expanded="true" signature="1152:1247" ph=" @var string ..." />
+            <marker date="1510941043517" expanded="true" signature="1280:1392" ph=" @var string ..." />
+            <marker date="1510941043517" expanded="true" signature="1428:1509" ph=" @var bool ..." />
+            <marker date="1510941043517" expanded="true" signature="1550:1641" ph=" @var string ..." />
+            <marker date="1510941043517" expanded="true" signature="1671:1749" ph=" @var array ..." />
+            <marker date="1510941043517" expanded="true" signature="1821:1833" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="1843:1889" ph=" Get id ..." />
+            <marker date="1510941043517" expanded="true" signature="1919:1957" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="1966:2055" ph=" Set nom ..." />
+            <marker date="1510941043517" expanded="true" signature="2090:2152" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="2161:2211" ph=" Get nom ..." />
+            <marker date="1510941043517" expanded="true" signature="2242:2281" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="2290:2383" ph=" Set email ..." />
+            <marker date="1510941043517" expanded="true" signature="2422:2488" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="2497:2549" ph=" Get email ..." />
+            <marker date="1510941043517" expanded="true" signature="2582:2623" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="2632:2730" ph=" Set verifie ..." />
+            <marker date="1510941043517" expanded="true" signature="2773:2843" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="2852:2904" ph=" Get verifie ..." />
+            <marker date="1510941043517" expanded="true" signature="2939:2982" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="2991:3082" ph=" Set salt ..." />
+            <marker date="1510941043517" expanded="true" signature="3119:3183" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="3192:3243" ph=" Get salt ..." />
+            <marker date="1510941043517" expanded="true" signature="3275:3315" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="3324:3416" ph=" Set roles ..." />
+            <marker date="1510941043517" expanded="true" signature="3455:3521" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="3530:3581" ph=" Get roles ..." />
+            <marker date="1510941043517" expanded="true" signature="3614:3655" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="3664:3763" ph=" Set username ..." />
+            <marker date="1510941043517" expanded="true" signature="3808:3880" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="3889:3944" ph=" Get username ..." />
+            <marker date="1510941043517" expanded="true" signature="3980:4024" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="4033:4132" ph=" Set password ..." />
+            <marker date="1510941043517" expanded="true" signature="4177:4249" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="4258:4313" ph=" Get password ..." />
+            <marker date="1510941043517" expanded="true" signature="4349:4393" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="4402:4497" ph=" Set compte ..." />
+            <marker date="1510941043517" expanded="true" signature="4538:4606" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="4615:4668" ph=" Get compte ..." />
+            <marker date="1510941043517" expanded="true" signature="4702:4744" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="4753:4852" ph=" Set googleId ..." />
+            <marker date="1510941043517" expanded="true" signature="4897:4969" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="4978:5035" ph=" Get facebookId ..." />
+            <marker date="1510941043517" expanded="true" signature="5073:5119" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="5128:5167" ph=" @param string $facebookId ..." />
+            <marker date="1510941043517" expanded="true" signature="5216:5269" ph="{...}" />
+            <marker date="1510941043517" expanded="true" signature="5278:5306" ph=" @return string ..." />
+            <marker date="1510941043517" expanded="true" signature="5342:5386" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -959,15 +1366,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="32" column="40" lean-forward="false" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="51">
+          <caret line="3" column="51" lean-forward="false" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
+          <folding>
+            <marker date="1510941043487" expanded="true" signature="0:1793" ph="security: &lt;5 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="14:75" ph="encoders: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="145:389" ph="role_hierarchy: &lt;4 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="187:196" ph="ROLE_USER" />
+            <marker date="1510941043487" expanded="true" signature="205:252" ph="ROLE_NATURALISTE: [2 items]" />
+            <marker date="1510941043487" expanded="true" signature="224:233" ph="ROLE_USER" />
+            <marker date="1510941043487" expanded="true" signature="235:251" ph="ROLE_PARTICULIER" />
+            <marker date="1510941043487" expanded="true" signature="261:326" ph="ROLE_ADMIN: [3 items]" />
+            <marker date="1510941043487" expanded="true" signature="280:289" ph="ROLE_USER" />
+            <marker date="1510941043487" expanded="true" signature="291:307" ph="ROLE_PARTICULIER" />
+            <marker date="1510941043487" expanded="true" signature="309:325" ph="ROLE_NATURALISTE" />
+            <marker date="1510941043487" expanded="true" signature="335:389" ph="ROLE_SUPER_ADMIN: [2 items]" />
+            <marker date="1510941043487" expanded="true" signature="354:364" ph="ROLE_ADMIN" />
+            <marker date="1510941043487" expanded="true" signature="366:388" ph="ROLE_ALLO…_TO_SWITCH" />
+            <marker date="1510941043487" expanded="true" signature="395:750" ph="providers: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="395:1035" ph="providers: &lt;4 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="414:617" ph="in_memory: &lt;1 key&gt;" />
+            <marker date="1510941043487" expanded="true" signature="437:617" ph="memory: &lt;1 key&gt;" />
+            <marker date="1510941043487" expanded="true" signature="461:617" ph="users: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="488:541" ph="user: {2 keys}" />
+            <marker date="1510941043487" expanded="true" signature="507:515" ph="userpass" />
+            <marker date="1510941043487" expanded="true" signature="517:539" ph="roles: [1 item]" />
+            <marker date="1510941043487" expanded="true" signature="526:537" ph="ROLE_USER" />
+            <marker date="1510941043487" expanded="true" signature="562:617" ph="admin: {2 keys}" />
+            <marker date="1510941043487" expanded="true" signature="581:590" ph="adminpass" />
+            <marker date="1510941043487" expanded="true" signature="592:615" ph="roles: [1 item]" />
+            <marker date="1510941043487" expanded="true" signature="601:613" ph="ROLE_ADMIN" />
+            <marker date="1510941043487" expanded="true" signature="626:750" ph="main: &lt;1 key&gt;" />
+            <marker date="1510941043487" expanded="true" signature="646:750" ph="entity: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="680:715" ph="Omega\NAO…ilisateurs" />
+            <marker date="1510941043487" expanded="true" signature="742:750" ph="username" />
+            <marker date="1510941043487" expanded="true" signature="760:878" ph="api: &lt;1 key&gt;" />
+            <marker date="1510941043487" expanded="true" signature="777:878" ph="entity: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="808:843" ph="Omega\NAO…ilisateurs" />
+            <marker date="1510941043487" expanded="true" signature="870:878" ph="googleId" />
+            <marker date="1510941043487" expanded="true" signature="904:1035" ph="api_facebook: &lt;1 key&gt;" />
+            <marker date="1510941043487" expanded="true" signature="932:1035" ph="entity: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="963:998" ph="Omega\NAO…ilisateurs" />
+            <marker date="1510941043487" expanded="true" signature="1025:1035" ph="facebookId" />
+            <marker date="1510941043487" expanded="true" signature="1042:1642" ph="firewalls: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="1061:1150" ph="dev: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="1088:1122" ph="^/(_(prof…mages|js)/" />
+            <marker date="1510941043487" expanded="true" signature="1145:1150" ph="false" />
+            <marker date="1510941043487" expanded="true" signature="1160:1642" ph="main: &lt;6 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="1189:1191" ph="^/" />
+            <marker date="1510941043487" expanded="true" signature="1215:1219" ph="true" />
+            <marker date="1510941043487" expanded="true" signature="1243:1247" ph="main" />
+            <marker date="1510941043487" expanded="true" signature="1260:1345" ph="form_login: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="1300:1305" ph="login" />
+            <marker date="1510941043487" expanded="true" signature="1334:1345" ph="login_check" />
+            <marker date="1510941043487" expanded="true" signature="1358:1422" ph="logout: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="1390:1396" ph="logout" />
+            <marker date="1510941043487" expanded="true" signature="1436:1642" ph="guard: &lt;2 keys&gt;" />
+            <marker date="1510941043487" expanded="true" signature="1459:1569" ph="authenticators: &lt;2 items&gt;" />
+            <marker date="1510941043487" expanded="true" signature="1498:1521" ph="omega_nao…henticator" />
+            <marker date="1510941043487" expanded="true" signature="1544:1569" ph="NAOBundle…nticatorFB" />
+            <marker date="1510941043487" expanded="true" signature="1619:1642" ph="omega_nao…henticator" />
+            <marker date="1510941043487" expanded="true" signature="1649:1793" ph="access_control: &lt;2 items&gt;" />
+            <marker date="1510941043487" expanded="true" signature="1683:1707" ph="^/moderat…bservation" />
+            <marker date="1510941043487" expanded="true" signature="1716:1732" ph="ROLE_NATURALISTE" />
+            <marker date="1510941043487" expanded="true" signature="1753:1772" ph="^/moderation-compte" />
+            <marker date="1510941043487" expanded="true" signature="1781:1791" ph="ROLE_ADMIN" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -975,15 +1444,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/inscription.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="153">
+          <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+          <folding>
+            <marker date="1510941043568" expanded="true" signature="349:1186" ph="{% block naobundle_body ...%}" />
+            <marker date="1510941043568" expanded="true" signature="1165:1170" ph="..." />
+            <marker date="1510941043568" expanded="true" signature="1188:1577" ph="{% block javascripts ...%}" />
+            <marker date="1510941043568" expanded="true" signature="1321:1440" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -991,14 +1464,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="36" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="251" column="101" lean-forward="false" selection-start-line="251" selection-start-column="101" selection-end-line="251" selection-end-column="101" />
+        <state relative-caret-position="544">
+          <caret line="320" column="9" lean-forward="false" selection-start-line="320" selection-start-column="9" selection-end-line="320" selection-end-column="9" />
           <folding>
             <element signature="e#46#96#0#PHP" expanded="true" />
           </folding>
@@ -1009,7 +1481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
