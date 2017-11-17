@@ -62,3 +62,6 @@ omega_nao_changement_compte:
     requirements:
         id: \d+
 
+contact:
+    path:     /contact
+    defaults: { _controller: OmegaNAOBundle:Default:contact }

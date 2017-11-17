@@ -11,25 +11,59 @@
 {% endblock %}
 
 {% block naobundle_body %}
+<div class="jumbotron">
     <div class="container">
-        <div class="row"><center><h1>Inscription</h1></center></div>
         <div class="row">
-
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-            <div class="col-lg-offset-3 col-lg-5 ">
-                {{ form_start(formInscription) }}
-                {{ form_row(formInscription.nom) }} <br/>
-                {{ form_row(formInscription.username) }} <br/>
-                {{ form_row(formInscription.email) }} <br/>
-                {{ form_row(formInscription.password) }} <br/>
-                {{ form_row(formInscription.compte) }} <br/>
-                {{ form_row(formInscription.valider) }} <br/>
-                {{ form_end(formInscription) }}
+            <div class="col">
+            </div>
+            <div class="col-lg-offset-3 col-lg-5 "> <center><h1>Inscription</h1></center> </div>
+            <div class="col">
             </div>
         </div>
-        <a href="{{ url }}">FACEBOOK</a>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-lg-offset-3 col-lg-5 ">
+                <div class="md-form">
+                {{ form_start(formInscription) }}
+                <label for="orangeForm-name"></label><br/>
+                </div>
+                <div class="md-form">
+                {{ form_row(formInscription.nom) }}
+                    <label for="orangeForm-name"></label>
+                </div><br/>
+                <div class="md-form">
+                {{ form_row(formInscription.username) }}
+                    <label for="orangeForm-name"></label>
+                </div><br/>
+                <div class="md-form">
+                {{ form_row(formInscription.email) }}
+                <label for="orangeForm-name"></label>
+                </div><br/>
+                <div class="md-form">
+                {{ form_row(formInscription.password) }}
+                    <label for="orangeForm-name"></label>
+                </div><br/>
+                {{ form_row(formInscription.compte) }}
+                {{ form_row(formInscription.valider) }}<br/>
+                {{ form_end(formInscription) }}
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+            </div>
+            <div class="col-lg-2 ">
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
+            <div class="col-3">
+                <a href="{{ url }}" class="btn btn-block btn-social btn-facebook">
+                    <span class="fa fa-facebook"></span>Inscription Facebook</a>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}

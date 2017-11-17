@@ -434,4 +434,9 @@ class DefaultController extends Controller
             'error'         => $authenticationUtils->getLastAuthenticationError(),
         ));
     }
+
+    public function contactAction (Request $request)
+    {
+        return $this->render('OmegaNAOBundle:Contact:contact.html.twig');
+    }
 }
