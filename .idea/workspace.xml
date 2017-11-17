@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a81a4fee-f9e1-48dd-a154-1c4ddd5f5079" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Contact/contact.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/symfony_requirements" afterPath="$PROJECT_DIR$/bin/symfony_requirements" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Rechercher/rechercher.html.twig" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Rechercher/rechercher.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/inscription.html.twig" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/inscription.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/login.html.twig" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/login.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/profil.html.twig" afterPath="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/profil.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/var/SymfonyRequirements.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/main.css" afterPath="$PROJECT_DIR$/web/css/main.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,31 +21,43 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rechercher.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Rechercher/rechercher.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profil.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="profil.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/profil.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="33" column="55" lean-forward="false" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+            <state relative-caret-position="266">
+              <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contact.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Contact/contact.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
+              <folding>
+                <element signature="e#1064#1085#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="711">
+              <caret line="438" column="5" lean-forward="false" selection-start-line="438" selection-start-column="5" selection-end-line="438" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -91,7 +98,6 @@
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Observations/add.html.twig" />
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Form/RechercheType.php" />
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Repository/TaxrefRepository.php" />
-        <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/web/js/autocompleteRecherche.js" />
         <option value="$PROJECT_DIR$/web/js/localisationRecherche.js" />
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Services/MailService.php" />
@@ -106,7 +112,6 @@
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Entity/Utilisateurs.php" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Facebook/TokenAuthenticatorFBService.php" />
-        <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Repository/UtilisateursRepository.php" />
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Services/FacebookLoginService.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
@@ -116,6 +121,9 @@
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Rechercher/rechercher.html.twig" />
         <option value="$PROJECT_DIR$/web/css/main.css" />
         <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/profil.html.twig" />
+        <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Contact/contact.html.twig" />
+        <option value="$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php" />
       </list>
     </option>
   </component>
@@ -149,6 +157,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -599,6 +608,32 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omega" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAOBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -645,7 +680,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -653,14 +687,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\utilisateurs" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\Contact" />
       <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Services" />
       <recent name="C:\wamp64\www\NAO\web\js" />
       <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\Rechercher" />
       <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\Default" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\NAO\src\Omega\NAOBundle\Resources\views\utilisateurs" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -787,15 +822,16 @@
       <workItem from="1510567614185" duration="23738000" />
       <workItem from="1510738072743" duration="11169000" />
       <workItem from="1510762448253" duration="1145000" />
-      <workItem from="1510825181573" duration="15365000" />
+      <workItem from="1510825181573" duration="15494000" />
+      <workItem from="1510912740437" duration="3756000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187255000" />
+    <option name="totallyTimeSpent" value="191140000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27708334" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -831,8 +867,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -898,13 +932,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/DataAutoComplete/DataTaxref.php" />
-    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Observations/add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="150" column="61" lean-forward="false" selection-start-line="150" selection-start-column="61" selection-end-line="150" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/autocompleteRecherche.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -966,7 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1026,13 +1052,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1097,17 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="793">
           <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
-          <folding>
-            <marker date="1510762228734" expanded="true" signature="395:750" ph="providers: &lt;2 keys&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="374" column="93" lean-forward="false" selection-start-line="374" selection-start-column="93" selection-end-line="374" selection-end-column="93" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,7 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1131,7 +1138,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1139,10 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
           <caret line="62" column="30" lean-forward="false" selection-start-line="62" selection-start-column="15" selection-end-line="62" selection-end-column="30" />
-          <folding>
-            <marker date="1510841746011" expanded="true" signature="50:59" ph="{% block title ...%}" />
-            <marker date="1510841746011" expanded="true" signature="2555:2571" ph="{% block naobundle_body ...%}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1158,10 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-          <folding>
-            <marker date="1510841771768" expanded="true" signature="50:59" ph="{% block title ...%}" />
-            <marker date="1510841771768" expanded="true" signature="2761:2777" ph="{% block naobundle_body ...%}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1169,6 +1167,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="88" lean-forward="true" selection-start-line="14" selection-start-column="88" selection-end-line="14" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Observations/add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="150" column="61" lean-forward="false" selection-start-line="150" selection-start-column="61" selection-end-line="150" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Moderation/compte.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Rechercher/rechercher.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1181,18 +1202,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Rechercher/rechercher.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/Contact/contact.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="306">
+          <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
+          <folding>
+            <element signature="e#1064#1085#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/views/utilisateurs/profil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="33" column="55" lean-forward="false" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        <state relative-caret-position="266">
+          <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Omega/NAOBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="438" column="5" lean-forward="false" selection-start-line="438" selection-start-column="5" selection-end-line="438" selection-end-column="5" />
           <folding />
         </state>
       </provider>
