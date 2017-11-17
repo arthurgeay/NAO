@@ -16,36 +16,41 @@
 	<div class="well">
 		{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 		{# Les erreurs générales du formulaire. #}
-		{% if form.vars.errors|length > 0 %}
-			<div class="alert alert-danger">
-				<p>{{ form_errors(form) }}</p>
+		<div class="row">
+			<div class="col-md-6">
+				{% if form.vars.errors|length > 0 %}
+					<div class="alert alert-danger">
+						<p>{{ form_errors(form) }}</p>
+					</div>
+				{% endif %}
+				{# Génération manuelle et éclatée : #}
+				{% if form.espece.vars.errors|length > 0 %}
+						<div class="alert alert-danger">
+							<p>{{ form_errors(form.espece) }}</p>
+						</div>
+				{% endif %}
+				<div class="md-form">
+					{# Génération du label. #}
+					{{ form_label(form.espece, "Espèce") }}
+					{# Génération de l'input. #}
+					{{ form_widget(form.espece, {'attr': {'data-provide': 'typeahead'}}) }}
+				</div>
 			</div>
-		{% endif %}
-		{# Génération manuelle et éclatée : #}
-		{% if form.espece.vars.errors|length > 0 %}
-				<div class="alert alert-danger">
-					<p>{{ form_errors(form.espece) }}</p>
+			<div class="col-md-6">
+				{% if form.date.vars.errors|length > 0 %}
+					<div class="alert alert-danger">
+						<p>{{ form_errors(form.date) }}</p>
+					</div>
+				{% endif %}
+				<div class="md-form">
+					{# Génération du label. #}
+					{{ form_label(form.date, "Date d'observation") }}
+					
+					{# Génération de l'input. #}
+					{{ form_widget(form.date, {'attr': {'class': 'js-datepicker'}}) }}
+					
 				</div>
-		{% endif %}
-		<div class="md-form">
-			{# Génération du label. #}
-			{{ form_label(form.espece, "Espèce") }}
-			{# Génération de l'input. #}
-			{{ form_widget(form.espece, {'attr': {'data-provide': 'typeahead'}}) }}
-		</div>
-
-		{% if form.date.vars.errors|length > 0 %}
-				<div class="alert alert-danger">
-					<p>{{ form_errors(form.date) }}</p>
-				</div>
-		{% endif %}
-		<div class="md-form">
-			{# Génération du label. #}
-			{{ form_label(form.date, "Date d'observation") }}
-			
-			{# Génération de l'input. #}
-			{{ form_widget(form.date, {'attr': {'class': 'js-datepicker'}}) }}
-			
+			</div>
 		</div>
 
 		{# Affichage des erreurs pour ce champ précis. #}
@@ -70,31 +75,36 @@
 		<div class="md-form">
 			<div id="map"></div>
 		</div>
-
-		{# Affichage des erreurs pour ce champ précis. #}
-			{% if form.longitude.vars.errors|length > 0 %}
-				<div class="alert alert-danger">
-					<p>{{ form_errors(form.longitude) }}</p>
+		
+		<div class="row">
+			<div class="col-md-6">
+				{# Affichage des erreurs pour ce champ précis. #}
+					{% if form.longitude.vars.errors|length > 0 %}
+						<div class="alert alert-danger">
+							<p>{{ form_errors(form.longitude) }}</p>
+						</div>
+					{% endif %}
+				<div class="md-form">
+					{# Génération du label. #}
+					{{ form_label(form.longitude) }}
+					{# Génération de l'input. #}
+					{{ form_widget(form.longitude, {'attr': {'placeholder': ' '}}) }}
 				</div>
-			{% endif %}
-		<div class="md-form">
-			{# Génération du label. #}
-			{{ form_label(form.longitude) }}
-			{# Génération de l'input. #}
-			{{ form_widget(form.longitude, {'attr': {'placeholder': ' '}}) }}
-		</div>
-
-		{# Affichage des erreurs pour ce champ précis. #}
-			{% if form.latitude.vars.errors|length > 0 %}
-				<div class="alert alert-danger">
-					<p>{{ form_errors(form.latitude) }}</p>
+			</div>
+			<div class="col-md-6">
+				{# Affichage des erreurs pour ce champ précis. #}
+				{% if form.latitude.vars.errors|length > 0 %}
+					<div class="alert alert-danger">
+						<p>{{ form_errors(form.latitude) }}</p>
+					</div>
+				{% endif %}
+				<div class="md-form">
+					{# Génération du label. #}
+					{{ form_label(form.latitude) }}
+					{# Génération de l'input. #}
+					{{ form_widget(form.latitude, {'attr': {'placeholder': ' '}}) }}
 				</div>
-			{% endif %}
-		<div class="md-form">
-			{# Génération du label. #}
-			{{ form_label(form.latitude) }}
-			{# Génération de l'input. #}
-			{{ form_widget(form.latitude, {'attr': {'placeholder': ' '}}) }}
+			</div>
 		</div>
 
 		{# Affichage des erreurs pour ce champ précis. #}
