@@ -8,20 +8,6 @@
   
   <h1 class="text-center">Modération - Compte</h1>
   <hr>
-	
-  {% if app.session.flashBag.has('success') %}
-		<div class="alert alert-success">
-			{% for message in app.session.flashbag.get('success') %}
-		        <p>{{ message }}</p>
-		    {% endfor %}
-	    </div>
-  {% endif %}
-
-  {% if comptes == null %}
-  	<div class="alert alert-info">
-  		<p>Il n'y a pas de compte à modérer pour le moment. Revenez plus tard.</p>
-  	</div>
-  {% endif %}
 
 {% if comptes != null %}
   <table class="table table-striped table-bordered">
@@ -45,4 +31,23 @@
 	  </tbody>
   </table>
  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
+	<script>
+		{% if app.session.flashBag.has('success') %}
+			{% for message in app.session.flashbag.get('success') %}
+		        var message = '{{ message}}';
+		    {% endfor %}
+		{% else %}
+			var message = null;
+  		{% endif %}
+
+  		{% if comptes == null %}
+  			var comptes = null;
+  		{% endif %}
+	</script>
+	<script src="{{ asset('js/notify.js') }}"></script>
 {% endblock %}

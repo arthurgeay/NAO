@@ -8,20 +8,7 @@
   
   <h1 class="text-center">Modération - Observations</h1>
   <hr>
-	
-  {% if app.session.flashBag.has('success') %}
-		<div class="alert alert-success">
-			{% for message in app.session.flashbag.get('success') %}
-		        <p>{{ message }}</p>
-		    {% endfor %}
-	    </div>
-  {% endif %}
 
-  {% if observations == null %}
-  	<div class="alert alert-info">
-  		<p>Il n'y a pas d'observation à modérer pour le moment. Revenez plus tard.</p>
-  	</div>
-  {% endif %}
 
 {% if observations != null %}
   <table class="table table-striped table-bordered">
@@ -57,4 +44,23 @@
 	  </tbody>
   </table>
  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
+	<script>
+		{% if app.session.flashBag.has('success') %}
+			{% for message in app.session.flashbag.get('success') %}
+		        var message = '{{ message}}';
+		    {% endfor %}
+		{% else %}
+			var message = null;
+  		{% endif %}
+
+  		{% if observations == null %}
+  			var obs = null;
+  		{% endif %}
+	</script>
+	<script src="{{ asset('js/notify.js') }}"></script>
 {% endblock %}
