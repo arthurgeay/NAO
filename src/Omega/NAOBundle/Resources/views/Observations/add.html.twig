@@ -145,11 +145,11 @@
     <script>
     	{% if app.session.flashBag.has('success') %}
 			{% for message in app.session.flashbag.get('success') %}
-				var notif = '{{ message }}';
+				var message = '{{ message }}';
 			{% endfor %}
 		{% endif %}
     </script>
     <script src="{{ asset('js/bootstrap-notify.min.js')}}"></script>
-    <script src="{{ asset('js/notify-add-obs.js')}}"></script>
+    <script src="{{ asset('js/notify.js')}}"></script>
 
 {% endblock %}
