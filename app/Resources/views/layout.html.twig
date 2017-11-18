@@ -75,10 +75,21 @@
     <div class="container">
       {% block body %}
       {% endblock %}
-      <footer>
-        
+    </div>
+
+        <!--Footer-->
+    <footer class="page-footer transparent center-on-small-only">
+
+        <!--Copyright-->
+        <div class="footer-copyright default-color-dark">
+            <div class="container-fluid">
+                © 2017 Copyright: <a href="{{ path('omega_nao_homepage')}}" class="link-style">Nos Amis les Oiseaux</a> - <a href="{{ path('omega_nao_mentions_legales')}}" class="link-style">Mentions légales</a> - <a href="{{ path('omega_nao_cgu') }}" class="link-style">CGU</a>
+            </div>
+        </div>
+        <!--/.Copyright-->
+
     </footer>
-  </div>
+    <!--/.Footer-->
 
   {% block javascripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

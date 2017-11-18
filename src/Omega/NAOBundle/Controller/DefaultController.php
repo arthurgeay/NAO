@@ -434,4 +434,14 @@ class DefaultController extends Controller
             'error'         => $authenticationUtils->getLastAuthenticationError(),
         ));
     }
+
+    public function mentionsLegalesAction()
+    {
+        return $this->render('OmegaNAOBundle:Default:mentions-legales.html.twig');
+    }
+
+    public function cguAction()
+    {
+        return $this->render('OmegaNAOBundle:Default:cgu.html.twig');
+    }
 }
