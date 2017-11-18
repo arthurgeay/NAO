@@ -42,7 +42,7 @@
             </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href=""><i class="fa fa-envelope-o" aria-hidden="true"></i> Contact</a>
+            <a class="nav-link" href="{{ path('contact') }}"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contact</a>
           </li>
           {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <li class="nav-item dropdown">
