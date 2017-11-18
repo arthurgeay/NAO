@@ -333,7 +333,7 @@ class DefaultController extends Controller
             $email = $request->get('email');
             $googleId = $request->get('id');
 
-            $username = $lastname.''.$firstname;
+            $username = $firstname.' '.$lastname;
             $password = uniqid();
 
             $inscription = new Utilisateurs();
