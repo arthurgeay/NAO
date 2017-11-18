@@ -22,25 +22,31 @@
   </head>
   <body>
     <header>
-    <nav class="navbar navbar-expand-lg scrolling-navbar navbar-dark bg-default">
-      <a class="navbar-brand" href="{{ path('omega_nao_homepage') }}">Nos amis les oiseaux</a>
+    <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar navbar-dark bg-default">
+      <!--<a class="navbar-brand" href="{{ path('omega_nao_homepage') }}">Nos amis les oiseaux</a>-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mx-auto">
+          <a class="navbar-brand" href="{{ path('omega_nao_homepage') }}">Nos Amis les Oiseaux</a>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('omega_nao_homepage') }}">Accueil <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ path('omega_nao_homepage') }}"> <i class="fa fa-home" aria-hidden="true"></i> Accueil <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('recherche') }}">Rechercher une espèce</a>
+            <a class="nav-link" href="{{ path('recherche') }}"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</a>
           </li>
           {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ path('omega_nao_add_observation') }}">Saisir une observation</a>
+              <a class="nav-link" href="{{ path('omega_nao_add_observation') }}"><i class="fa fa-plus" aria-hidden="true"></i> Observation</a>
             </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href=""><i class="fa fa-envelope-o" aria-hidden="true"></i> Contact</a>
+          </li>
+          {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bonjour, {{ app.user.username }}</a>
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Bonjour, {{ app.user.username }}</a>
               <div class="dropdown-menu" aria-labelledby="dropdown01">
                 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_NATURALISTE') %}
                   <a class="dropdown-item" href="{{ path('omega_nao_moderation_observation') }}">Modération des observations</a>
@@ -48,16 +54,17 @@
                 {% if is_granted('ROLE_ADMIN') %}
                   <a class="dropdown-item" href="{{ path('omega_nao_moderation_compte') }}">Modération des comptes</a>
                 {% endif %}
-                <a class="dropdown-item" href="{{ path('omega_nao_profile') }}">Mon profil</a>
-                <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
+                <a class="dropdown-item" href="{{ path('omega_nao_profile') }}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                 Mon profil</a>
+                <a class="dropdown-item" href="{{ path('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
               </div>
             </li>
           {% else %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Se connecter</a>
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a>
               <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown01">
-                <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
-                <a class="dropdown-item" href="{{ path('inscription') }}">Inscription</a>
+                <a class="dropdown-item" href="{{ path('login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a>
+                <a class="dropdown-item" href="{{ path('inscription') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
               </div>
             </li>
           {% endif %}
@@ -69,10 +76,21 @@
     <div class="container">
       {% block body %}
       {% endblock %}
-      <footer>
-        
+    </div>
+
+        <!--Footer-->
+    <footer class="page-footer transparent center-on-small-only">
+
+        <!--Copyright-->
+        <div class="footer-copyright default-color-dark">
+            <div class="container-fluid">
+                © 2017 Copyright: <a href="{{ path('omega_nao_homepage')}}" class="link-style">Nos Amis les Oiseaux</a> - <a href="{{ path('omega_nao_mentions_legales')}}" class="link-style">Mentions légales</a> - <a href="{{ path('omega_nao_cgu') }}" class="link-style">CGU</a>
+            </div>
+        </div>
+        <!--/.Copyright-->
+
     </footer>
-  </div>
+    <!--/.Footer-->
 
   {% block javascripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

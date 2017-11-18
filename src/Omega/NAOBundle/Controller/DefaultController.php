@@ -335,7 +335,7 @@ class DefaultController extends Controller
             $email = $request->get('email');
             $googleId = $request->get('id');
 
-            $username = $lastname.''.$firstname;
+            $username = $firstname.' '.$lastname;
             $password = uniqid();
 
             $inscription = new Utilisateurs();
@@ -437,6 +437,17 @@ class DefaultController extends Controller
         ));
     }
 
+
+    public function mentionsLegalesAction()
+    {
+        return $this->render('OmegaNAOBundle:Default:mentions-legales.html.twig');
+    }
+
+    public function cguAction()
+    {
+        return $this->render('OmegaNAOBundle:Default:cgu.html.twig');
+    }
+  
     public function contactAction (Request $request)
     {
         $formContact = $this->createForm(ContactType::class, null);
