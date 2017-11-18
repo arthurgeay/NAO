@@ -19,14 +19,6 @@
 		</div>
 	</div>
 
-	{% if app.session.flashBag.has('infoCompte') %}
-		<div class="alert alert-success">
-			{% for message in app.session.flashbag.get('infoCompte') %}
-		        <p>{{ message }}</p>
-		    {% endfor %}
-	    </div>
-  {% endif %}
-
 	<div class="jumbotron">
 			<div class="row">
 				<div class="col-6">
@@ -60,4 +52,17 @@
 				</div>
 			</div>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+	{% if app.session.flashBag.has('infoCompte') %}
+			{% for message in app.session.flashbag.get('infoCompte') %}
+		        var message = '{{ message }}';
+		    {% endfor %}
+  {% endif %}
+  </script>
+	<script src="{{ asset('js/bootstrap-notify.min.js')}}"></script>
+    <script src="{{ asset('js/notify.js')}}"></script>
 {% endblock %}
