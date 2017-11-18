@@ -62,6 +62,7 @@ omega_nao_changement_compte:
     requirements:
         id: \d+
 
+
 omega_nao_mentions_legales:
     path: /mentions-legales
     defaults: { _controller: OmegaNAOBundle:Default:mentionsLegales }
@@ -70,3 +71,6 @@ omega_nao_cgu:
    path: /cgu
    defaults: { _controller: OmegaNAOBundle:Default:cgu }
 
+contact:
+    path:     /contact
+    defaults: { _controller: OmegaNAOBundle:Default:contact }
