@@ -1,0 +1,13 @@
+{% extends "OmegaNAOBundle::layout.html.twig" %}
+
+{% block title %}
+	{{ status_text }} - {{ parent() }}
+{% endblock %}
+
+{% block naobundle_body %}
+	<div class="jumbotron bg-home">
+	  <h1 class="display-3 text-center">Une erreur s'est produite <i class="fa fa-frown-o" aria-hidden="true"></i></h1>
+	  <h2 class="text-center">Le serveur a retourné "{{status_code}} {{status_text}}".</h2>
+	  <p class="text-center">Si le problème persiste, veuillez nous contacter grâce à la page contact.</p>
+	</div>
+{% endblock %}
