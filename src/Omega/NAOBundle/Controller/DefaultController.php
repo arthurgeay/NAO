@@ -28,24 +28,8 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $nbCompte = null;
-        $nbObs = null;
-
-        $security = $this->get('security.authorization_checker');
-
-        if($security->isGranted('ROLE_ADMIN'))
-        {
-            $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
-            $nbCompte = $repository->countCompte(); 
-        }
-
-        if($security->isGranted('ROLE_NATURALISTE') OR $security->isGranted('ROLE_ADMIN'))
-        {
-            $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Observations');
-            $nbObs = $repository->countObsNotVerifie();
-        }
-        
-        return $this->render('OmegaNAOBundle:Default:index.html.twig', array('nbCompte' => $nbCompte, 'nbObs' => $nbObs));
+        $result = $this->get('omega_nao.index')->verifSecurity();
+        return $this->render('OmegaNAOBundle:Default:index.html.twig', $result);
     }
 
     /**
@@ -55,35 +39,11 @@ class DefaultController extends Controller
     {
     	$observation = new Observations();
     	$form = $this->get('form.factory')->create(ObservationsType::class, $observation); // Création du form
-
     	$noms = $this->get('omega_nao.datataxref')->getData(); // On récupère les données pour l'autocomplétion
 
     	if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
     	{
-    		$this->get('omega_nao.upload')->upload($observation); // service d'upload d'image
-
-            $user = $this->getUser(); // On récupère le user courant et on le relie à l'observation
-            $observation->setUtilisateur($user);
-
-            $roles = $user->getRoles(); // Si le user est naturaliste
-            if($roles == array('ROLE_NATURALISTE') OR $roles == array('ROLE_ADMIN'))
-            {
-                $observation->setVerifie(true); //On valide directement son observation
-            }
-    		
-    		$em = $this->getDoctrine()->getManager();
-    		$em->persist($observation);
-    		$em->flush();
-
-            if($roles == array('ROLE_PARTICULIER'))
-            {
-                $this->get('session')->getFlashBag()->add('success', 'Votre observation a bien été prise en compte, et est désormais en attente de modération.');
-            }
-            else if($roles = array('ROLE_NATURALISTE'))
-            {
-                $this->get('session')->getFlashBag()->add('success', 'Votre observation a bien été ajoutée');
-            }
-
+    		$this->get('omega_nao.add_obs')->persistData($observation);
     		return $this->redirectToRoute('omega_nao_add_observation');
     	}
 
@@ -103,57 +63,14 @@ class DefaultController extends Controller
 
     public function acceptCompteAction($id)
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
-        $compte = $repository->find($id);
-
-        if($compte == null)
-        {
-            throw new NotFoundHttpException("Le compte n'existe pas");
-        }
-
-        $compte->setVerifie(true);
-        $compte->setRoles(array('ROLE_NATURALISTE'));
-
-        $emailBody = $this->renderView('OmegaNAOBundle:Default:mailAcceptCompte.html.twig', array('name' => $compte->getUsername()));
-        $subject = "Validation du compte";
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($compte);
-        $em->flush();
-
-        
-        $mail = $this->container->get('NAOBundle.mail');
-        $mail->getMailService($emailBody, $compte->getEmail(), $subject);
-
-
-        $this->get('session')->getFlashBag()->add('success', 'Le compte a bien été validé en tant que naturaliste.');
+        $this->get('omega_nao.moderation_compte')->accept($id);
 
         return $this->redirectToRoute('omega_nao_moderation_compte');
     }
 
     public function refusedCompteAction($id)
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
-        $compte = $repository->find($id);
-
-        if($compte == null)
-        {
-            throw new NotFoundHttpException("Le compte n'existe pas");
-        }
-
-        $compte->setCompte('particulier');
-
-        $emailBody = $this->renderView('OmegaNAOBundle:Default:mailRefusedCompte.html.twig', array('name' => $compte->getUsername()));
-        $subject = "Votre demande a été rejetée";
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($compte);
-        $em->flush();
-
-        $mail = $this->container->get('NAOBundle.mail');
-        $mail->getMailService($emailBody, $compte->getEmail(), $subject);
-
-        $this->get('session')->getFlashBag()->add('success', 'Le compte a bien été refusé. Le type du compte a été basculé en particulier.');
+        $this->get('omega_nao.moderation_compte')->refused($id);
 
         return $this->redirectToRoute('omega_nao_moderation_compte');
 
@@ -169,58 +86,14 @@ class DefaultController extends Controller
 
     public function acceptObsAction($id)
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Observations');
-        $observation = $repository->find($id);
-
-        if($observation == null)
-        {
-            throw new NotFoundHttpException("L'observation n'existe pas");
-        }
-
-        $observation->setVerifie(true);
-
-        $emailBody = $this->renderView('OmegaNAOBundle:Default:mailAcceptObs.html.twig', array('name' => $observation->getUtilisateur()->getUsername()));
-        $subject = "Validation de votre observation";
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($observation);
-        $em->flush();
-
-        $mail = $this->container->get('NAOBundle.mail');
-        $mail->getMailService($emailBody, $observation->getUtilisateur()->getEmail(), $subject);
-
-        $this->get('session')->getFlashBag()->add('success', "L'observation a bien été validée.");
+        $this->get('omega_nao.moderation_observation')->accept($id);
 
         return $this->redirectToRoute('omega_nao_moderation_observation');   
     }
 
     public function deleteObsAction($id)
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Observations');
-        $observation = $repository->find($id);
-
-        if($observation == null)
-        {
-            throw new NotFoundHttpException("L'observation n'existe pas");
-        }
-
-        $emailBody = $this->renderView('OmegaNAOBundle:Default:mailDeleteObs.html.twig', array('name' => $observation->getUtilisateur()->getUsername()));
-        $subject = "Observation refusée";
-
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($observation);
-
-        if($observation->getPhoto() != null)
-        {
-            $this->get('omega_nao.upload')->remove($observation);
-        }
-
-        $em->flush();
-
-        $mail = $this->container->get('NAOBundle.mail');
-        $mail->getMailService($emailBody, $observation->getUtilisateur()->getEmail(), $subject);
-
-        $this->get('session')->getFlashBag()->add('success', "L'observation a bien été supprimée.");
+        $this->get('omega_nao.moderation_observation')->delete($id);
 
         return $this->redirectToRoute('omega_nao_moderation_observation');
     }
@@ -327,38 +200,10 @@ class DefaultController extends Controller
 
     public function inscriptionGoogleAction(Request $request)
     {
-
         if($request->isXMLHttpRequest())
         {
-            $lastname = $request->get('lastname');
-            $firstname = $request->get('firstname');
-            $email = $request->get('email');
-            $googleId = $request->get('id');
-
-            $username = $firstname.' '.$lastname;
-            $password = uniqid();
-
-            $inscription = new Utilisateurs();
-            $inscription->setNom($lastname)
-                        ->setUsername($username)
-                        ->setEmail($email)
-                        ->setPassword($password)
-                        ->setCompte('particulier')
-                        ->setRoles(array('ROLE_PARTICULIER'))
-                        ->setSalt('')
-                        ->setGoogleId($googleId)
-            ;
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($inscription);
-            $em->flush();
-
-            $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
-            $subject = 'Votre compte a bien été enregistré';
-            $mailerService = $this->container->get('NAOBundle.mail');
-            $mailerService->getMailService($emailBody, $email, $subject);
-
+            $this->get('omega_nao.register_google')->register($request);
             return $this->redirectToRoute('omega_nao_homepage');
-
         }
 
         return new Response('Erreur ce n\'est pas une requête Ajax', 400);
@@ -396,27 +241,13 @@ class DefaultController extends Controller
     public function profilAction()
     {
         $user = $this->getUser();
-        $id = $user->getId();
-        $username = $user->getUsername();
-        $email = $user->getEmail();
-        $compte = $user->getCompte();
 
-        return $this->render('OmegaNAOBundle:utilisateurs:profil.html.twig', array('username' => $username, 'email' => $email, 'compte' => $compte, 'id' => $id));
+        return $this->render('OmegaNAOBundle:utilisateurs:profil.html.twig', array('user' => $user));
     }
 
     public function changerTypeCompteAction($id)
-    {
-        $repository = $this->getDoctrine()->getManager()->getRepository('OmegaNAOBundle:Utilisateurs');
-        $utilisateur = $repository->find($id);
-
-        $utilisateur->setCompte('naturaliste');
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($utilisateur);
-        $em->flush();
-
-        $this->get('session')->getFlashBag()->add('infoCompte', "Votre demande de changement de type de compte a été pris en compte. Votre recevrez très prochainement une réponse concernant votre demande. ");           
-
+    {           
+        $this->get('omega_nao.change_compte')->change($id);
         return $this->redirectToRoute('omega_nao_profile');
     }
 

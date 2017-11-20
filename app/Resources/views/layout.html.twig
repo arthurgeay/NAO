@@ -23,7 +23,6 @@
   <body>
     <header>
     <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar navbar-dark bg-default">
-      <!--<a class="navbar-brand" href="{{ path('omega_nao_homepage') }}">Nos amis les oiseaux</a>-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,10 +48,10 @@
               <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Bonjour, {{ app.user.username }}</a>
               <div class="dropdown-menu" aria-labelledby="dropdown01">
                 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_NATURALISTE') %}
-                  <a class="dropdown-item" href="{{ path('omega_nao_moderation_observation') }}">Modération des observations</a>
+                  <a class="dropdown-item" href="{{ path('omega_nao_moderation_observation') }}"><i class="fa fa-pencil" aria-hidden="true"></i> Modération des observations</a>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
-                  <a class="dropdown-item" href="{{ path('omega_nao_moderation_compte') }}">Modération des comptes</a>
+                  <a class="dropdown-item" href="{{ path('omega_nao_moderation_compte') }}"><i class="fa fa-users" aria-hidden="true"></i> Modération des comptes</a>
                 {% endif %}
                 <a class="dropdown-item" href="{{ path('omega_nao_profile') }}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                  Mon profil</a>
