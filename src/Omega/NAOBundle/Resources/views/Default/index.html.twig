@@ -106,8 +106,10 @@
 	{{ parent() }}
 <script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
 <script>
+	{% if nbCompte is defined and nbObs is defined %}
 	var compte = '{{ nbCompte }}';
 	var obs = '{{ nbObs }}';
+	{% endif %}
 </script>
 <script src="{{ asset('js/notify.js') }}"></script>
 {% endblock %}
