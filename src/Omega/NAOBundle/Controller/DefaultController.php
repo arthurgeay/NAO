@@ -19,7 +19,7 @@ use Omega\NAOBundle\Form\ObservationsType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Omega\NAOBundle\Form\UtilisateursType;
-
+use Omega\NAOBundle\Form\ContactType;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -447,14 +447,17 @@ class DefaultController extends Controller
     {
         return $this->render('OmegaNAOBundle:Default:cgu.html.twig');
     }
-  
+
     public function contactAction (Request $request)
     {
         $formContact = $this->createForm(ContactType::class, null);
         if ($request->isMethod('POST') && $formContact->handleRequest($request)->isValid())
         {
-            $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMail.html.twig');
-            $subject = 'Votre compte a bien été enregistré';
+            $corps = $formContact['Message']->getData();
+
+            $subject = $formContact['Sujet']->getData();
+            $email = $formContact['Email']->getData();
+            $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMailContact.html.twig', array('corps' => $corps));
             $mailerService = $this->container->get('NAOBundle.mail');
             $mailerService->getMailService($emailBody, $email, $subject);
 
