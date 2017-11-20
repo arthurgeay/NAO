@@ -11,7 +11,7 @@
 				<div class="col-2">
 				</div>
 				<div class="col-8">
-					<center><h1>Profil de {{ username }}</h1></center>
+					<center><h1>Profil de {{ user.username }}</h1></center>
 				</div>
 				<div class="col-2">
 				</div>
@@ -29,7 +29,7 @@
 									<b>Email</b>
 								</td>
 								<td>
-									{{ email }}
+									{{ user.email }}
 								</td>
 							</tr>
 						<tr>
@@ -37,17 +37,17 @@
 								<b>Type de compte</b>
 							</td>
 							<td>
-								{{ compte }}
+								{{ user.compte }}
 							</td>
 						</tr>
 					</table>
 				</div>
 
 				<div class="col-6">
-                    {% if compte == 'particulier' %}
+                    {% if user.compte == 'particulier' %}
 						<hr>
 						<h4>Changer son type de compte</h4>
-						<a href="{{ path('omega_nao_changement_compte', {id: id}) }}" class="btn btn-primary">Je souhaite avoir un compte naturaliste</a>
+						<a href="{{ path('omega_nao_changement_compte', {id: user.id}) }}" class="btn btn-primary">Je souhaite avoir un compte naturaliste</a>
                     {% endif %}
 				</div>
 			</div>

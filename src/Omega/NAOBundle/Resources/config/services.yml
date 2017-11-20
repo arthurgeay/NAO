@@ -42,3 +42,47 @@ services:
                 - "@doctrine.orm.entity_manager"
                 - "@router"
 
+    omega_nao.index:
+        class: Omega\NAOBundle\Services\IndexService
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@security.authorization_checker"
+
+    omega_nao.add_obs:
+        class: Omega\NAOBundle\Services\AddObservationService
+        arguments:
+            - "@omega_nao.upload"
+            - "@security.token_storage"
+            - "@doctrine.orm.entity_manager"
+            - "@session"
+
+    omega_nao.moderation_compte:
+        class: Omega\NAOBundle\Services\ModerationCompteService
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@templating"
+            - "@NAOBundle.mail"
+            - "@session"
+
+    omega_nao.moderation_observation:
+        class: Omega\NAOBundle\Services\ModerationObservationService
+        arguments: 
+            - "@doctrine.orm.entity_manager"
+            - "@templating"
+            - "@NAOBundle.mail"
+            - "@session"
+            - "@omega_nao.upload"
+
+    omega_nao.register_google:
+        class: Omega\NAOBundle\Services\InscriptionGoogleService
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@templating"
+            - "@NAOBundle.mail"
+
+    omega_nao.change_compte:
+        class: Omega\NAOBundle\Services\ChangeCompteService
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@session"
+
