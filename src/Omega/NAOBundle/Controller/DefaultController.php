@@ -139,7 +139,7 @@ class DefaultController extends Controller
         // (mauvais mot de passe par exemple)
         $authenticationUtils = $this->get('security.authentication_utils');
 
-        return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
+        return $this->render('OmegaNAOBundle:utilisateurs:login.html.twig', array(
             'last_username' => $authenticationUtils->getLastUsername(),
             'error'         => $authenticationUtils->getLastAuthenticationError(), 'url' => $loginUrl
         ));
@@ -198,7 +198,7 @@ class DefaultController extends Controller
             $mailerService->getMailInscriptionService($emailBody, $inscription->getEmail());
         }
 
-        return $this->render('OmegaNAOBundle:Utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView(), 'url' =>$urlFB));
+        return $this->render('OmegaNAOBundle:utilisateurs:inscription.html.twig', array('formInscription' => $formInscription->createView(), 'url' =>$urlFB));
     }
 
     public function inscriptionGoogleAction(Request $request)
