@@ -73,7 +73,9 @@ swiftmailer:
 
 assetic:
     debug: '%kernel.debug%'
-    use_controller: '%kernel.debug%'
+    use_controller: 
+        enabled: '%kernel.debug%'
+        profiler: false
     filters:
         jsqueeze: ~
         scssphp:
