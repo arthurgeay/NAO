@@ -293,7 +293,7 @@ class DefaultController extends Controller
             $email = $formContact['Email']->getData();
             $emailBody = $this->renderView('OmegaNAOBundle:Default:bodyMailContact.html.twig', array('corps' => $corps));
             $mailerService = $this->container->get('NAOBundle.mail');
-            $mailerService->getMailService($emailBody, $email, $subject);
+            $mailerService->getMailContactService($emailBody, $email, $subject);
 
             return $this->redirectToRoute('omega_nao_homepage');
         }

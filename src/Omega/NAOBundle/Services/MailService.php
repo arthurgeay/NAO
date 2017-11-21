@@ -31,8 +31,8 @@ class MailService
         $mailer = \Swift_Mailer::newInstance($transport);
         $message = \Swift_Message::newInstance();
         $message->setSubject($subject);
-        $message->setFrom('geteolastpiece@gmail.com');
-        $message->setTo($mail);
+        $message->setFrom($mail);
+        $message->setTo('geteolastpiece@gmail.com');
         // pour envoyer le message en HTML
         $message->setBody($bodyEmail,'text/html');
         //envoi du message
