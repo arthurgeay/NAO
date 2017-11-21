@@ -29,7 +29,7 @@
         "php-http/httplug-bundle": "^1.7.1",
         "symfony/assetic-bundle": "^2.7.1",
         "leafo/scssphp": "~0.6",
-        "patchwork/jsqueeze": "~1.0"
+        "patchwork/jsqueeze": "~1.0",
         "phpunit/phpunit": "5.7.*"
     },
     "require-dev": {
