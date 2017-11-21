@@ -109,10 +109,12 @@ class DefaultController extends Controller
             'default_graph_version' => 'v2.4',
         ]);
 
+    
+        
         $helper = $fb->getRedirectLoginHelper();
 
         $permissions = ['email']; // Optional permissions
-        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/login', $permissions);
+        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/login', $permissions);
 
         if ($request->query->get('code'))
         {
@@ -158,10 +160,12 @@ class DefaultController extends Controller
             'default_graph_version' => 'v2.4',
         ]);
 
+        $url = 'http://localhost'.$_SERVER['REDIRECT_URL'];
+
         $helper = $fb->getRedirectLoginHelper();
 
         $permissions = ['email']; // Optional permissions
-        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/inscription', $permissions);
+        $loginUrl = $helper->getLoginUrl($url, $permissions);
         $urlFB = "";
         if (!$request->query->get('code'))
         {

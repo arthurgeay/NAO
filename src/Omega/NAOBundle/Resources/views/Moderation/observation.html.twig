@@ -48,7 +48,6 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	<script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
 	<script>
 		{% if app.session.flashBag.has('success') %}
 			{% for message in app.session.flashbag.get('success') %}
@@ -62,5 +61,9 @@
   			var obs = null;
   		{% endif %}
 	</script>
-	<script src="{{ asset('js/notify.js') }}"></script>
+	{% javascripts filter='jsqueeze' output='js/compiled/*.js'
+		'js/bootstrap-notify.min.js'
+		'js/notify.js' %}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
 {% endblock %}

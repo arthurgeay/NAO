@@ -27,6 +27,9 @@
         "hwi/oauth-bundle": "^0.5.3",
         "php-http/guzzle6-adapter": "^1.1.1",
         "php-http/httplug-bundle": "^1.7.1",
+        "symfony/assetic-bundle": "^2.7.1",
+        "leafo/scssphp": "~0.6",
+        "patchwork/jsqueeze": "~1.0"
         "phpunit/phpunit": "5.7.*"
     },
     "require-dev": {

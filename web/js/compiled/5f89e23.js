@@ -1,0 +1,2 @@
+;function sendData(t,a,e,n){$.ajax({type:'post',url:path,data:{id:t,lastname:a,firstname:e,email:n},complete:function(t,a){document.location.href=returnPath}})};
+;function onSignIn(a){var e=a.getBasicProfile(),i=e.getId(),n=e.getFamilyName(),t=e.getGivenName(),g=e.getEmail();sendData(i,n,t,g)};

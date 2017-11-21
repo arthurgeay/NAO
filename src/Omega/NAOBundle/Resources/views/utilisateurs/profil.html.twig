@@ -63,6 +63,9 @@
 		    {% endfor %}
   {% endif %}
   </script>
-	<script src="{{ asset('js/bootstrap-notify.min.js')}}"></script>
-    <script src="{{ asset('js/notify.js')}}"></script>
+    {% javascripts filter='jsqueeze' output='js/compiled/*.js'
+        'js/bootstrap-notify.min.js'
+        'js/notify.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
