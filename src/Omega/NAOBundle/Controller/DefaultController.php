@@ -246,7 +246,6 @@ class DefaultController extends Controller
             $user = $this->container->get('NAOBundle.FacebookLogin');
             $varibaleFB = $user->getConnect('connexion');
 
-            //var_dump($varibaleFB);
             $request->query->set('code', $varibaleFB);
             $authenticationUtils = $this->get('security.authentication_utils');
 

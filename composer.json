@@ -26,7 +26,8 @@
         "twig/twig": "^1.0||^2.0",
         "hwi/oauth-bundle": "^0.5.3",
         "php-http/guzzle6-adapter": "^1.1.1",
-        "php-http/httplug-bundle": "^1.7.1"
+        "php-http/httplug-bundle": "^1.7.1",
+        "phpunit/phpunit": "5.7.*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^2.4",
