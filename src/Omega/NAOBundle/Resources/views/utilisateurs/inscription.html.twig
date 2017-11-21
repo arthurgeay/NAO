@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block title %}
-	Accueil - {{ parent() }}
+	Inscription - {{ parent() }}
 {% endblock %}
 
 {% block naobundle_body %}
@@ -73,6 +73,9 @@
     var path = '{{ path('omega_nao_inscription_google') }}';
     var returnPath = '{{ path('login') }}';
     </script>
-    <script src="{{ asset('js/sendData.js') }}"></script>
-    <script src="{{ asset('js/googleAccount.js') }}"></script>
+    {% javascripts filter='jsqueeze' output='js/compiled/*.js'
+        'js/sendData.js'
+        'js/googleAccount.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

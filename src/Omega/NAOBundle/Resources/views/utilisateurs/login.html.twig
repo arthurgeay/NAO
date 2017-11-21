@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block title %}
-	Accueil - {{ parent() }}
+	Connexion - {{ parent() }}
 {% endblock %}
 
 {% block naobundle_body %}
@@ -16,12 +16,6 @@
     {% if error %}
         <div class="alert alert-danger">{{ error.message }}</div>
     {% endif %}
-
-{% if id is defined %}
-    <script>var fb = "{{ id }}";
-        document.location.href = 'http://localhost/NAO/web/app_dev.php/login'+'?fb='+fb;
-    </script>
-{% endif %}
 <div class="jumbotron">
 <div class="container">
     <div class="row">
@@ -80,5 +74,13 @@
     <script>
     var path = '{{ path('login') }}';
     </script>
-    <script src="{{ asset('js/googleConnect.js') }}"></script>
+    {% if id is defined %}
+    <script>var fb = "{{ id }}";
+        document.location.href = path +'?fb='+fb;
+    </script>
+    {% endif %}
+    {% javascripts filter='jsqueeze' output='js/compiled/*.js'
+        'js/googleConnect.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

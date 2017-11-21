@@ -109,10 +109,12 @@ class DefaultController extends Controller
             'default_graph_version' => 'v2.4',
         ]);
 
+    
+        
         $helper = $fb->getRedirectLoginHelper();
 
         $permissions = ['email']; // Optional permissions
-        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/login', $permissions);
+        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/login', $permissions);
 
         if ($request->query->get('code'))
         {
@@ -130,7 +132,7 @@ class DefaultController extends Controller
         }
 
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+        elseif ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('omega_nao_homepage');
         }
         // Le service authentication_utils permet de récupérer le nom d'utilisateur
@@ -159,10 +161,12 @@ class DefaultController extends Controller
             'default_graph_version' => 'v2.4',
         ]);
 
+        $url = 'http://localhost'.$_SERVER['REDIRECT_URL'];
+
         $helper = $fb->getRedirectLoginHelper();
 
         $permissions = ['email']; // Optional permissions
-        $loginUrl = $helper->getLoginUrl('http://localhost/NAO/web/app_dev.php/inscription', $permissions);
+        $loginUrl = $helper->getLoginUrl($url, $permissions);
         $urlFB = "";
         if (!$request->query->get('code'))
         {

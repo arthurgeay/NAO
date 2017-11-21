@@ -1,0 +1,1 @@
+;function onSignIn(n){var i=n.getBasicProfile(),o=i.getId();document.location.href=path+'?api='+o};

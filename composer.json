@@ -26,7 +26,10 @@
         "twig/twig": "^1.0||^2.0",
         "hwi/oauth-bundle": "^0.5.3",
         "php-http/guzzle6-adapter": "^1.1.1",
-        "php-http/httplug-bundle": "^1.7.1"
+        "php-http/httplug-bundle": "^1.7.1",
+        "symfony/assetic-bundle": "^2.7.1",
+        "leafo/scssphp": "~0.6",
+        "patchwork/jsqueeze": "~1.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^2.4",

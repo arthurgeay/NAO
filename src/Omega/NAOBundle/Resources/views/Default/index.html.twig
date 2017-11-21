@@ -104,12 +104,17 @@
 
 {% block javascripts %}
 	{{ parent() }}
-<script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
-<script>
-	{% if nbCompte is defined and nbObs is defined %}
-	var compte = '{{ nbCompte }}';
-	var obs = '{{ nbObs }}';
-	{% endif %}
-</script>
-<script src="{{ asset('js/notify.js') }}"></script>
+	<script>
+		{% if nbCompte is defined and nbObs is defined %}
+		var compte = '{{ nbCompte }}';
+		var obs = '{{ nbObs }}';
+		{% endif %}
+	</script>
+
+	{% javascripts filter='jsqueeze' output='js/compiled/*.js'
+		'js/bootstrap-notify.min.js'
+		'js/notify.js' %}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+
 {% endblock %}

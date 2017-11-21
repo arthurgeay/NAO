@@ -138,20 +138,12 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	<script src="{{ asset('js/bootstrap3-typeahead.js')}}"></script>
 	<script>
            var noms = {% if noms is defined %}
            	{{ noms|json_encode|raw }}
            	{% else %} null
            	{% endif %}
-       </script>
-	<script src="{{ asset('js/autocomplete.js') }}"></script>
-	<script src="{{ asset('js/localisation.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtE4xVHrJdaSivopE-_T93pQfJ41Z3Hds&callback=initMap" async defer>
     </script>
-    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datepicker.fr.min.js') }}"></script>
-    <script src="{{ asset('js/datepicker.js') }}"></script>
     <script>
     	{% if app.session.flashBag.has('success') %}
 			{% for message in app.session.flashbag.get('success') %}
@@ -159,7 +151,18 @@
 			{% endfor %}
 		{% endif %}
     </script>
-    <script src="{{ asset('js/bootstrap-notify.min.js')}}"></script>
-    <script src="{{ asset('js/notify.js')}}"></script>
+    {% javascripts filter='jsqueeze' output='js/compiled/*.js'
+    	'js/bootstrap3-typeahead.js'
+    	'js/autocomplete.js'
+    	'js/localisation.js'
+    	'js/bootstrap-datepicker.min.js'
+    	'js/bootstrap-datepicker.fr.min.js'
+    	'js/datepicker.js' 
+		'js/bootstrap-notify.min.js'
+		'js/notify.js' %}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtE4xVHrJdaSivopE-_T93pQfJ41Z3Hds&callback=initMap" async defer>
+    </script>
 
 {% endblock %}
