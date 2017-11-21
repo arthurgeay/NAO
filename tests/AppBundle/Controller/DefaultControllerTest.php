@@ -1,18 +1,34 @@
 <?php
 
-namespace Tests\AppBundle\Controller;
+namespace tests\AppBundle\Tests\Controller;
 
+use Omega\NAOBundle\Entity\Observations;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Omega\NAOBundle\Entity\Utilisateurs;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testCorrectMail()
     {
-        $client = static::createClient();
+        $user = new Utilisateurs();
+        $email = "julien.boulnois@gmail.com";
+        $user->setEmail($email);
+        $this->assertEquals($email, $user->getEmail());
+    }
 
-        $crawler = $client->request('GET', '/');
+    public function testCorrectObservationEspece()
+    {
+        $obs = new Observations();
+        $espece = "Épervier brun";
+        $obs->setEspece($espece);
+        $this->assertEquals($espece, $obs->getEspece());
+    }
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
+    public function testCorrectInscription()
+    {
+        $user = new Utilisateurs();
+        $userName = "Gérard";
+        $user->setUsername($userName);
+        $this->assertEquals($userName, $user->getUsername());
     }
 }
