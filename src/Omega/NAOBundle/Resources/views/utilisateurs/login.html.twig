@@ -17,13 +17,10 @@
         <div class="alert alert-danger">{{ error.message }}</div>
     {% endif %}
 <div class="jumbotron">
-<div class="container">
-    <div class="row">
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-        <div class="col-6">
+        <div class="row">
+            <div class="col">
+            </div>
+        <div class="col-md-6">
             <!-- Form register -->
             <form action="{{ path('login_check') }}" method="post">
                 <p class="h5 text-center mb-4">Connexion</p>
@@ -40,31 +37,20 @@
                     <label for="orangeForm-pass">mot de passe</label>
                 </div>
 
-                <input type="submit" value="Connexion" />
+                <input type="submit" value="Connexion" class="text-center" style="margin: 15px;"/>
             </form>
+            <div class="row">
+                <p>
+                    <a href="{{ url }}" class="btn btn-block btn-social btn-facebook" style="width: 275px; margin-right: 10px;">
+                    <span class="fa fa-facebook"></span>Se connecter avec Facebook</a>
+                </p>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
         </div>
-        <div class="col">
-
-        </div>
-        <div class="col">
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-5">
-        </div>
-        <div class="col-3">
-            <a href="{{ url }}" class="btn btn-block btn-social btn-facebook">
-                <span class="fa fa-facebook"></span>connexion Facebook</a>
-        </div>
-        <div class="col-1">
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        </div>
-        <div class="col-3">
+        <div class="col"></div>
         </div>
     </div>
-</div>
-</div>
+    
 
 {% endblock %}
 

@@ -12,7 +12,6 @@
 
 {% block naobundle_body %}
 <div class="jumbotron">
-    <div class="container">
         <div class="row">
             <div class="col">
             </div>
@@ -23,7 +22,7 @@
         <div class="row">
             <div class="col">
             </div>
-            <div class="col-lg-offset-3 col-lg-5 ">
+            <div class="col-lg-offset-3 col-md-6 ">
                 <div class="md-form">
                 {{ form_start(formInscription) }}
                 <label for="orangeForm-name"></label><br/>
@@ -47,23 +46,22 @@
                 {{ form_row(formInscription.compte) }}
                 {{ form_row(formInscription.valider) }}<br/>
                 {{ form_end(formInscription) }}
+
+                <div class="row">
+            
+                    <div class="g-signin2" data-onsuccess="onSignIn" style="margin-right: 35px;"></div>
+                
+                
+                    <a href="{{ url }}" class="btn btn-block btn-social btn-facebook" style="width: 275px;">
+                        <span class="fa fa-facebook"></span>Inscription Facebook</a>
+            
+                </div>
             </div>
             <div class="col">
             </div>
         </div>
-        <div class="row">
-            <div class="col-4">
-            </div>
-            <div class="col-lg-2 ">
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            </div>
-            <div class="col-3">
-                <a href="{{ url }}" class="btn btn-block btn-social btn-facebook">
-                    <span class="fa fa-facebook"></span>Inscription Facebook</a>
-            </div>
-        </div>
+        
     </div>
-</div>
 {% endblock %}
 
 {% block javascripts %}
