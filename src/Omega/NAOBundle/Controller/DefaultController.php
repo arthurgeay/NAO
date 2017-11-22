@@ -265,7 +265,7 @@ class DefaultController extends Controller
         // (mauvais mot de passe par exemple)
         $authenticationUtils = $this->get('security.authentication_utils');
 
-        return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
+        return $this->render('OmegaNAOBundle:utilisateurs:login.html.twig', array(
             'last_username' => $authenticationUtils->getLastUsername(),
             'error'         => $authenticationUtils->getLastAuthenticationError(),
         ));
