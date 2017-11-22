@@ -124,7 +124,7 @@ class DefaultController extends Controller
             $request->query->set('code', $varibaleFB);
             $authenticationUtils = $this->get('security.authentication_utils');
 
-            return $this->render('OmegaNAOBundle:Utilisateurs:login.html.twig', array(
+            return $this->render('OmegaNAOBundle:utilisateurs:login.html.twig', array(
                 'id' => $varibaleFB, 'last_username' => $authenticationUtils->getLastUsername(),
             'error'         => $authenticationUtils->getLastAuthenticationError(), 'url' => $loginUrl));
 
