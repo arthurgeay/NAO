@@ -12,7 +12,7 @@
 {% block naobundle_body %}
 	<h1 class="text-center">Ajouter une observation</h1>
 	<hr>
-	
+	<div class="jumbotron">
 	<div class="well">
 		{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 		{# Les erreurs générales du formulaire. #}
@@ -133,6 +133,7 @@
 		{{ form_rest(form) }}
 		{# Fermeture de la balise <form> du formulaire HTML #}
 			{{ form_end(form) }}
+		</div>
 		</div>
 	{% endblock %}
 
