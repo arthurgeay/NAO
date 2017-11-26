@@ -282,9 +282,4 @@ class DefaultController extends Controller
 
         return $this->render('OmegaNAOBundle:Contact:contact.html.twig', array('formContact' => $formContact->createView()));
     }
-
-    public function EnvoiMail ()
-    {
-
-    }
 }
